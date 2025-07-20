@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAWGLITCH - Hire Top Professionals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #121212;
+            --secondary-bg: #1E1E1E;
+            --accent-gold: #D4AF37;
+            --light-gold: #F5E6C8;
+            --cream: #F5F5DC;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --card-bg: #2A2A2A;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="light"] {
+    --primary-bg: #F4F1EC;
+    --secondary-bg: #FFFFFF;
+    --accent-gold: #C28800;     /* bronze gold */
+    --light-gold: #FFD700;      /* golden yellow for hover */
+    --cream: #FFF2D8;
+    --text-light: #1A1A1A;
+    --text-dark: #FFFFFF;
+    --card-bg: #FAF8F4;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+        }
+
+        header {
+            background-color: var(--secondary-bg);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .theme-toggle {
+            background: var(--secondary-bg);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle i {
+            margin-right: 8px;
+        }
+
+        .container {
+            padding: 2rem 5%;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+            border-radius: 3px;
+        }
+
+        .search-container {
+            background-color: var(--secondary-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 0 1.5rem;
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-options select, .filter-options input {
+            padding: 0.8rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: var(--border-radius);
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            min-width: 200px;
+        }
+
+        /* Advertisement Section Fixes */
+.ads-container {
+    margin: 2rem 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.ads-carousel {
+    display: flex;
+    width: 100%;
+    height: 300px; /* Fixed height for container */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.ad-item {
+    min-width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.ad-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill container */
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+/* Responsive height adjustments */
+@media (max-width: 768px) {
+    .ads-carousel {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ads-carousel {
+        height: 150px;
+    }
+}
+.carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .pros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .pro-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+
+        .pro-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pro-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pro-details {
+            padding: 1.5rem;
+        }
+
+        .pro-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        .pro-profession {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.2);
+            color: var(--accent-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pro-rating {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .pro-experience, .pro-description {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        .pro-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .pro-price {
+            font-weight: bold;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        .featured-pros {
+            margin: 3rem 0;
+        }
+
+        .featured-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            scrollbar-width: none;
+        }
+
+        .featured-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .featured-card {
+            min-width: 280px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .featured-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .blogs-container {
+            margin: 3rem 0;
+        }
+
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-gold);
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .author-name {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .blog-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background-color: var(--secondary-bg);
+            width: 80%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: var(--border-radius);
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .modal-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-text {
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .pros-grid, .blogs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+		.filter-toggle {
+    padding: 0.8rem 1rem;
+    background-color: var(--secondary-bg);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    border-radius: var(--border-radius);
+    margin-left: 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.filter-toggle:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.filter-options {
+    display: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+/* Back to Home Button */
+.back-to-home {
+    background-color: var(--secondary-bg);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-to-home:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+/* Mobile-First Responsive Styles for LawGlitch */
+@media screen and (max-width: 768px) {
+    /* Base Layout Adjustments */
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    /* Header */
+    header {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    nav ul {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+    }
+    
+    nav ul li {
+        margin-left: 0;
+    }
+    
+    .theme-toggle {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Search Section */
+    .search-section {
+        margin-top: 1rem;
+    }
+    
+    .search-container {
+        padding: 1rem;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .search-bar input {
+        border-radius: var(--border-radius) !important;
+    }
+    
+    .search-bar button {
+        border-radius: var(--border-radius) !important;
+        padding: 1rem;
+    }
+    
+    .filter-toggle {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .filter-options {
+        flex-direction: column;
+    }
+    
+    .filter-options select, 
+    .filter-options input {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    /* Featured Professionals - Horizontal Scroll */
+    .featured-container {
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .featured-card {
+        min-width: 250px;
+    }
+    
+    /* Professionals Grid */
+    .pros-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .pro-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Ads Carousel - Touch Swipe */
+    .ads-carousel {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .ad-item {
+        scroll-snap-align: start;
+    }
+    
+    .carousel-btn {
+        display: none; /* Rely on touch swipe instead */
+    }
+    
+    /* Blogs Grid */
+    .blogs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Modal Adjustments */
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .modal-image {
+        height: 200px;
+    }
+    
+    /* Footer */
+    .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    /* Touch Feedback for Interactive Elements */
+    button, .pro-card, .blog-card, .featured-card {
+        transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+    
+    button:active, 
+    .pro-card:active, 
+    .blog-card:active, 
+    .featured-card:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+    
+    /* Back to Home Button */
+    .back-to-home {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Swipeable Containers */
+.swipe-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+
+.swipe-item {
+    display: inline-block;
+    width: 100%;
+    scroll-snap-align: start;
+    white-space: normal;
+}
+
+/* Touch Target Sizes */
+button, 
+input[type="submit"], 
+input[type="button"], 
+.whatsapp-btn, 
+.filter-toggle, 
+.back-to-home {
+    min-height: 44px; /* Recommended minimum touch target size */
+}
+
+/* Prevent Zoom on Input */
+input, select, textarea {
+    font-size: 16px; /* Prevent iOS zoom */
+}
+
+/* Hide elements on mobile */
+.mobile-hidden {
+    display: none !important;
+}
+
+/* Show elements only on mobile */
+.mobile-only {
+    display: block !important;
+}
+
+/* Tablet Styles (Optional) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .pros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .blogs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .mobile-hidden {
+        display: initial !important;
+    }
+    
+    .mobile-only {
+        display: none !important;
+    }
+}
+.ads-container {
+    height: 300px !important; /* Start with this to test */
+    min-height: 300px !important;
+    max-height: none !important;
+}
+
+.ads-carousel,
+.ads-carousel .ad-item,
+.ads-carousel .ad-item img {
+    height: 100% !important;
+    min-height: 100% !important;
+}
+
+@media (max-width: 1200px) {
+    .ads-container { height: 450px; }
+}
+
+@media (max-width: 992px) {
+    .ads-container { height: 300px; }
+}
+
+@media (max-width: 768px) {
+    .ads-container { height: 250px; }
+}
+
+@media (max-width: 576px) {
+    .ads-container { height: 200px; }
+}
+
+.ads-carousel, .ad-item {
+    height: 100%;
+}
+
+.ad-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+/* Results sections styling */
+.results-section {
+    grid-column: 1 / -1;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.results-section:first-child {
+    margin-top: 0;
+}
+
+.section-subtitle {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+.exact-match-badge {
+    display: inline-block;
+    background-color: rgba(0, 200, 0, 0.2);
+    color: #00c000;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+ /* Hero Section Responsiveness */
+    @media (max-width: 768px) {
+        .marketing-hero h1 {
+            font-size: 2.2rem !important;
+        }
+        
+        .marketing-hero p {
+            font-size: 1.1rem !important;
+        }
+    }
+    
+    /* Features Grid Responsiveness */
+    @media (max-width: 600px) {
+        .features-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    
+    /* Steps Container Responsiveness */
+    @media (min-width: 992px) {
+        .connecting-line {
+            display: block !important;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .steps-container {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+        }
+        
+        .step-card {
+            margin-bottom: 1.5rem !important;
+        }
+    }
+    
+    /* Testimonials Responsiveness */
+    @media (max-width: 600px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    
+    /* Hover Effects */
+    .feature-card:hover, 
+    .testimonial-card:hover, 
+    .trust-badge:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2) !important;
+        border-color: rgba(212, 175, 55, 0.6) !important;
+    }
+    
+    .hero-btn:hover, 
+    .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5) !important;
+    }
+	@media (max-width: 768px) {
+  .marketing-hero {
+    background: linear-gradient(rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.9)), url('hero-section-mobile.png') !important;
+    min-height: 70vh;
+    padding: 2rem 5%;
+  }
+}
+/* Updated Hero Section */
+.marketing-hero {
+    width: 100%;
+    height: 60vh; /* Reduced height */
+    background-size: cover;
+    background-position: top center; /* Changed to top center */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Hero image container with bottom cropping */
+.marketing-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-position: top center;
+    background-size: cover;
+}
+
+/* Adjust hero content positioning */
+.hero-container {
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease-out 0.3s forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .marketing-hero {
+        height: 50vh; /* Slightly shorter on mobile */
+        background-position: top center; /* Maintain top alignment */
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Center all section headers */
+.section-title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+}
+
+/* Adjust hero content positioning */
+.hero-container {
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+    transform: translateY(-20px); /* Slight upward shift */
+    animation: slideUp 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .marketing-hero {
+        height: 60vh; /* Slightly shorter on mobile */
+    }
+}
+
+.marketing-hero h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.marketing-hero h1 span {
+    color: var(--cream);
+}
+
+.marketing-hero p {
+    font-size: 1.4rem;
+    color: var(--cream);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: var(--accent-gold);
+    color: var(--text-dark);
+    padding: 1rem 2.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Responsive Background Images */
+@media screen and (min-width: 769px) {
+    .marketing-hero {
+        background-image: url('hero-section-pc.png');
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .marketing-hero {
+        background-image: url('hero-section-mobile.png');
+    }
+    
+    .marketing-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .marketing-hero p {
+        font-size: 1.1rem;
+    }
+}
+.marketing-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.marketing-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150%; /* Extend height for downward adjustment */
+    background-image: inherit;
+    background-size: cover;
+    background-position: center 25%; /* Adjust this percentage */
+    z-index: -1;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <i class="fas fa-gavel"></i> LawGlitch
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#searchInput">Home</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="https://forms.google.com/your-link" target="_blank">Join as Pro</a></li>
+            </ul>
+        </nav>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+    </header>
+<!-- Hero Branding Section -->
+<section class="marketing-hero">
+    <div class="hero-container"> 
+        <h1>LAWGLITCH <span>- Hire Experts That Matter</span></h1>
+        <p>We connect you to verified legal & financial pros instantly.</p>
+        <a href="#searchInput" class="hero-btn">Get Started</a>
+    </div>
+</section>
+<!-- Replace the search section with this version -->
+<section class="search-section">
+    <h2 class="section-title">Find Professional</h2>
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by profession, location, expertise, experience or fees...">
+            <button id="searchBtn">Search</button>
+            <button id="filterToggle" class="filter-toggle">
+                <i class="fas fa-sliders-h"></i> Filters
+            </button>
+        </div>
+        <div class="filter-options" id="filterOptions">
+            <select id="professionFilter">
+                <option value="">All Professions</option>
+                <option value="Lawyer">Lawyer</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Financial Advisor">Financial Advisor</option>
+            </select>
+            <select id="locationFilter">
+                <option value="">All Locations</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Dubai">Dubai</option>
+                <option value="Riyadh">Riyadh</option>
+            </select>
+            <select id="experienceFilter">
+                <option value="">Any Experience</option>
+                <option value="5">5+ Years</option>
+                <option value="10">10+ Years</option>
+                <option value="15">15+ Years</option>
+            </select>
+            <input type="number" id="priceFilter" placeholder="Max Fee (RS)">
+        </div>
+    </div>
+</section>
+
+<!-- This div will contain ONLY search results -->
+<div id="searchResultsContainer" class="container" style="display: none;">
+    <div class="pros-grid" id="prosGrid"></div>
+</div>
+        <section class="ads-container">
+            <div class="ads-carousel" id="adsCarousel">
+                <!-- Ads will be loaded here by ads.js -->
+            </div>
+            <button class="carousel-btn prev" id="prevAd"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn next" id="nextAd"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <section class="featured-pros">
+            <h2 class="section-title">Featured Professionals</h2>
+            <div class="featured-container" id="featuredPros">
+                <!-- Featured pros will be loaded here by featured-pros.js -->
+            </div>
+        </section>
+
+
+<!-- How It Works Section -->
+<section class="how-it-works" style="padding: 3rem 5%; background-color: var(--primary-bg);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">How It Works</h2>
+        
+        <div class="steps-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; position: relative;">
+            <!-- Connecting line for visual flow -->
+            <div class="connecting-line" style="position: absolute; height: 3px; background: linear-gradient(90deg, var(--accent-gold), transparent); width: 80%; top: 50%; left: 10%; z-index: 1; display: none;"></div>
+            
+            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
+                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">1</div>
+                <i class="fas fa-search" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Search</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Find professionals by expertise, location, or service needed.</p>
+            </div>
+            
+            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
+                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">2</div>
+                <i class="fas fa-sliders-h" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Filter</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Refine results by experience, pricing, or availability.</p>
+            </div>
+            
+            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
+                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">3</div>
+                <i class="fas fa-handshake" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Hire</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Connect instantly and get your legal or financial matters resolved.</p>
+            </div>
+        </div>
+    </div>
+</section>
+        <section class="blogs-container" id="blogs">
+            <h2 class="section-title">Latest Blogs</h2>
+            <div class="blogs-grid" id="blogsGrid">
+                <!-- Blogs will be loaded here by blogs.js -->
+            </div>
+        </section>
+    </div>
+
+    <div class="blog-modal" id="blogModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <img src="" alt="Blog Image" class="modal-image" id="modalImage">
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-author">
+                <img src="" alt="Author" class="author-avatar" id="modalAuthorImg">
+                <span class="author-name" id="modalAuthorName"></span>
+            </div>
+            <div class="modal-text" id="modalText"></div>
+        </div>
+    </div>
+<!-- About LawGlitch Section -->
+<section class="about-section" style="padding: 3rem 5%; background-color: var(--secondary-bg);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">About LawGlitch</h2>
+        <p style="text-align: center; margin-bottom: 3rem; color: var(--text-light); max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
+            LawGlitch bridges the gap between clients and top-tier professionals. We vet every expert to ensure you get quality service with complete transparency.
+        </p>
+        
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div class="feature-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow);">
+                <i class="fas fa-user-shield" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Verified Pros</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Every professional undergoes strict verification before joining our platform.</p>
+            </div>
+            
+            <div class="feature-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow);">
+                <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Instant Contact</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Connect directly via WhatsApp with your chosen professional immediately.</p>
+            </div>
+            
+            <div class="feature-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow);">
+                <i class="fas fa-hand-holding-usd" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">No Hidden Fees</h3>
+                <p style="color: var(--text-light); opacity: 0.9;">Transparent pricing with no surprises - you see all costs upfront.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#blogs">Blogs</a>
+            <a href="https://forms.google.com/your-link" target="_blank">Join as Pro</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <p class="copyright">© 2025 LAWGLITCH. All rights reserved.</p>
+    </footer>
+
+    <script src="pros.js"></script>
+    <script src="ads.js"></script>
+    <script src="blogs.js"></script>
+    <script src="featured-pros.js"></script>
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        let darkMode = true;
+
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('theme')) {
+            darkMode = localStorage.getItem('theme') === 'dark';
+        } else {
+            darkMode = !window.matchMedia('(prefers-color-scheme: light)').matches;
+        }
+
+        // Apply the initial theme
+        updateTheme();
+
+        themeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateTheme();
+            localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        });
+
+        function updateTheme() {
+            if (darkMode) {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+		// Mobile Touch and Swipe Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Add touch feedback to interactive elements
+    const touchElements = document.querySelectorAll('button, .pro-card, .blog-card, .featured-card, .ad-item');
+    touchElements.forEach(el => {
+        el.addEventListener('touchstart', function() {
+            this.classList.add('touch-active');
+        });
+        
+        el.addEventListener('touchend', function() {
+            this.classList.remove('touch-active');
+        });
+    });
+
+    // Swipe functionality for ads carousel
+    const adsCarousel = document.getElementById('adsCarousel');
+    if (adsCarousel) {
+        let startX, moveX;
+        let isDragging = false;
+
+        adsCarousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        adsCarousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            moveX = e.touches[0].clientX;
+        });
+
+        adsCarousel.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            if (startX - moveX > 50) {
+                // Swipe left - next ad
+                nextAd();
+            } else if (moveX - startX > 50) {
+                // Swipe right - previous ad
+                prevAd();
+            }
+        });
+    }
+
+    // Swipe for featured professionals
+    const featuredContainer = document.getElementById('featuredPros');
+    if (featuredContainer) {
+        let startX, moveX;
+        let isDragging = false;
+
+        featuredContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        featuredContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            moveX = e.touches[0].clientX;
+            featuredContainer.scrollLeft -= (moveX - startX);
+            startX = moveX;
+        });
+
+        featuredContainer.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+    }
+});
+
+// Touch-optimized filter toggle
+document.getElementById('filterToggle')?.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    this.click();
+});
+    </script>
+</body>
+</html>
