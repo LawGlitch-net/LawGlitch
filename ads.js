@@ -7,7 +7,7 @@ const advertisements = [
     },
     {
         id: 2,
-        image: "image-ads/WhatsApp Image 2025-07-06 at 21.54.43_2f53264f.jpg",
+        image: "image-ads/ads-1",
         link: "https://example.com/financial-offer"
     },
     {
