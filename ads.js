@@ -7,7 +7,7 @@ const advertisements = [
     },
     {
         id: 2,
-        image: "image-ads/ads-1",
+        image: "image-ads/ads-1.jpg",
         link: "https://example.com/financial-offer"
     },
     {
