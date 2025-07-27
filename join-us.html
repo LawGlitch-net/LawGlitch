@@ -1258,61 +1258,70 @@
             }
         });
 
-        // Form submission
-        document.getElementById('proForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const submitBtn = document.getElementById('submitBtn');
-            const formMessage = document.getElementById('form-message');
-            
-            // Validate form
-            if (!form.checkValidity()) {
-                formMessage.textContent = 'Please fill all required fields correctly.';
-                formMessage.className = 'error';
-                formMessage.style.display = 'block';
-                return;
-            }
-            
-            
-            
-            // Check languages selection
-            const languages = document.querySelectorAll('input[name="languages[]"]:checked');
-            if (languages.length === 0) {
-                showError('Please select at least one language');
-                return;
-            }
-            
-            // Check time availability
-            const fromTime = document.getElementById('availableFrom').value;
-            const toTime = document.getElementById('availableTo').value;
-            if (fromTime && toTime && fromTime >= toTime) {
-                showError('Available "From" time must be before "To" time');
-                return;
-            }
-            
-            // Check honeypot field
-            const honeypot = form.honeypot.value;
-            if (honeypot) {
-                console.log('Bot detected');
-                return;
-            }
-            
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-            
-            try {
-                const formData = new FormData(form);
-                
-                
-                // Prepare languages text
-                const languagesText = Array.from(languages).map(lang => 
-                    lang.value === 'Regional' ? `Regional: ${document.getElementById('regionalLanguagesText').value}` : lang.value
-                ).join(', ');
-                
-                // Prepare the data for Telegram
-                const caption = `New Pro Registration:
+       // Form submission
+document.getElementById('proForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('form-message');
+    
+    // Validate form
+    if (!form.checkValidity()) {
+        formMessage.textContent = 'Please fill all required fields correctly.';
+        formMessage.className = 'error';
+        formMessage.style.display = 'block';
+        return;
+    }
+    
+    // Check case types selection
+    const caseTypes = document.querySelectorAll('input[name="caseTypes[]"]:checked');
+    if (caseTypes.length === 0) {
+        showError('Please select at least one case type specialization');
+        return;
+    }
+    
+    // Check languages selection
+    const languages = document.querySelectorAll('input[name="languages[]"]:checked');
+    if (languages.length === 0) {
+        showError('Please select at least one language');
+        return;
+    }
+    
+    // Check time availability
+    const fromTime = document.getElementById('availableFrom').value;
+    const toTime = document.getElementById('availableTo').value;
+    if (fromTime && toTime && fromTime >= toTime) {
+        showError('Available "From" time must be before "To" time');
+        return;
+    }
+    
+    // Check honeypot field
+    const honeypot = form.honeypot.value;
+    if (honeypot) {
+        console.log('Bot detected');
+        return;
+    }
+    
+    // Disable submit button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+    
+    try {
+        const formData = new FormData(form);
+        
+        // Prepare case types text
+        const caseTypesText = Array.from(caseTypes).map(ct => 
+            ct.value === 'Other' ? `Other: ${document.getElementById('otherCaseTypeText').value}` : ct.value
+        ).join(', ');
+        
+        // Prepare languages text
+        const languagesText = Array.from(languages).map(lang => 
+            lang.value === 'Regional' ? `Regional: ${document.getElementById('regionalLanguagesText').value}` : lang.value
+        ).join(', ');
+        
+        // Prepare the data for Telegram
+        const caption = `New Pro Registration:
 Name: ${formData.get('fullName')}
 Email: ${formData.get('email')}
 WhatsApp: ${formData.get('phone')}
@@ -1320,6 +1329,7 @@ Profession: ${formData.get('profession')}
 Specialization: ${formData.get('specialization')}
 Experience: ${formData.get('experience')} years
 Qualification: ${formData.get('qualification')}
+Case Types: ${caseTypesText}
 Languages: ${languagesText}
 Location: ${formData.get('city')}, ${formData.get('country')}
 Practice Type: ${formData.get('practiceType')}
@@ -1334,103 +1344,92 @@ Max Clients: ${formData.get('maxClients') || 'Not specified'}
 Website: ${formData.get('website') || 'N/A'}
 Referral Source: ${formData.get('referral') || 'N/A'}
 Policies Accepted: Yes`;
-                
-                const certificateFile = formData.get('certificate');
-                const idProofFile = formData.get('idProof');
-                
-                // Send documents with caption if files are uploaded
-                if (certificateFile.size > 0 || idProofFile.size > 0) {
-                    const docData = new FormData();
-                    docData.append('chat_id', '8374420796');
-                    
-                    // Add certificate if uploaded
-                    if (certificateFile.size > 0) {
-                        docData.append('document', certificateFile);
-                        docData.append('caption', caption);
-                    }
-                    
-                    // Add ID proof as second document if uploaded
-                    if (idProofFile.size > 0) {
-                        if (certificateFile.size > 0) {
-                            // If both files are present, send certificate first with caption
-                            await fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendDocument', {
-                                method: 'POST',
-                                body: docData
-                            });
-                            
-                            // Then send ID proof with no caption
-                            const idProofData = new FormData();
-                            idProofData.append('chat_id', '8374420796');
-                            idProofData.append('document', idProofFile);
-                            
-                            await fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendDocument', {
-                                method: 'POST',
-                                body: idProofData
-                            });
-                        } else {
-                            // Only ID proof is present, send with caption
-                            docData.append('document', idProofFile);
-                            docData.append('caption', caption);
-                            
-                            await fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendDocument', {
-                                method: 'POST',
-                                body: docData
-                            });
-                        }
-                    } else {
-                        // Only certificate is present, send with caption
-                        await fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendDocument', {
-                            method: 'POST',
-                            body: docData
-                        });
-                    }
-                } else {
-                    // Send only text message if no files
-                    const textData = new URLSearchParams();
-                    textData.append('chat_id', '8374420796');
-                    textData.append('text', caption);
-                    
-                    await fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendMessage', {
-                        method: 'POST',
-                        body: textData
-                    });
-                }
-                
-                // Show success message
-                formMessage.textContent = 'Thank you! Your application has been received. Our team will review your information and contact you within 3 business days.';
-                formMessage.className = 'success';
-                formMessage.style.display = 'block';
-                
-                // Reset form
-                form.reset();
-                
-                // Scroll to message
-                window.scrollTo({
-                    top: formMessage.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-                
-                // Prevent form resubmission for 30 seconds
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Application';
-                }, 30000);
-                
-            } catch (error) {
-                console.error('Error:', error);
-                formMessage.textContent = 'An error occurred while submitting your application. Please try again later or contact support@lawglitch.com for assistance.';
-                formMessage.className = 'error';
-                formMessage.style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Application';
-                
-                // Scroll to message
-                window.scrollTo({
-                    top: formMessage.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+        
+        const certificateFile = formData.get('certificate');
+        const idProofFile = formData.get('idProof');
+        const profilePicFile = formData.get('profilePicture');
+        
+        // Array to store all our fetch promises
+        const uploadPromises = [];
+        
+        // Function to handle file uploads
+        const uploadFile = async (file, isFirstFile = false) => {
+            const fileData = new FormData();
+            fileData.append('chat_id', '8374420796');
+            fileData.append('document', file);
+            if (isFirstFile) {
+                fileData.append('caption', caption);
             }
+            return fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendDocument', {
+                method: 'POST',
+                body: fileData
+            });
+        };
+        
+        // Send profile picture first if it exists
+        if (profilePicFile.size > 0) {
+            uploadPromises.push(uploadFile(profilePicFile, true));
+        }
+        
+        // Send certificate if uploaded
+        if (certificateFile.size > 0) {
+            uploadPromises.push(uploadFile(certificateFile, uploadPromises.length === 0));
+        }
+        
+        // Send ID proof if uploaded
+        if (idProofFile.size > 0) {
+            uploadPromises.push(uploadFile(idProofFile, uploadPromises.length === 0));
+        }
+        
+        // If no files were uploaded, send just the text message
+        if (uploadPromises.length === 0) {
+            const textData = new URLSearchParams();
+            textData.append('chat_id', '8374420796');
+            textData.append('text', caption);
+            uploadPromises.push(fetch('https://api.telegram.org/bot7555059760:AAFLzKYQFvpHqoREvDaDux6AxdAaYuwPIUI/sendMessage', {
+                method: 'POST',
+                body: textData
+            }));
+        }
+        
+        // Execute all uploads
+        await Promise.all(uploadPromises);
+        
+        // Show success message
+        formMessage.textContent = 'Thank you! Your application has been received. Our team will review your information and contact you within 3 business days.';
+        formMessage.className = 'success';
+        formMessage.style.display = 'block';
+        
+        // Reset form
+        form.reset();
+        
+        // Scroll to message
+        window.scrollTo({
+            top: formMessage.offsetTop - 100,
+            behavior: 'smooth'
         });
+        
+        // Prevent form resubmission for 30 seconds
+        setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Application';
+        }, 30000);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        formMessage.textContent = 'An error occurred while submitting your application. Please try again later or contact support@lawglitch.com for assistance.';
+        formMessage.className = 'error';
+        formMessage.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Application';
+        
+        // Scroll to message
+        window.scrollTo({
+            top: formMessage.offsetTop - 100,
+            behavior: 'smooth'
+        });
+    }
+});
 
         // Show error message
         function showError(message) {
