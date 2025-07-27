@@ -1,4 +1,4 @@
-// Hardcoded database of professionals with India-based geolocation data
+// Professional Database with Enhanced Fields
 const professionals = [
     {
         id: 1,
@@ -10,9 +10,11 @@ const professionals = [
         experience: 8,
         rating: 4.7,
         fee: 15000,
+        pricing: "₹15,000 per consultation",
         description: "Specialized in corporate law with extensive experience in mergers and acquisitions. Expert in company formation and compliance.",
+        workingHours: "10:00 AM - 7:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
-        whatsapp: "+919876543210"
+        whatsapp: ""
     },
     {
         id: 2,
@@ -24,9 +26,11 @@ const professionals = [
         experience: 12,
         rating: 4.9,
         fee: 25000,
+        pricing: "₹25,000 for comprehensive planning",
         description: "Certified financial planner helping clients grow their wealth through strategic investment planning and mutual funds.",
+        workingHours: "9:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
-        whatsapp: "+919876543211"
+        whatsapp: ""
     },
     {
         id: 3,
@@ -38,9 +42,11 @@ const professionals = [
         experience: 6,
         rating: 4.5,
         fee: 12000,
+        pricing: "₹12,000 per tax filing",
         description: "Expert in GST, income tax, and financial reporting for small and medium businesses. CA qualified.",
+        workingHours: "10:00 AM - 5:00 PM, Tue-Sat",
         image: "https://randomuser.me/api/portraits/men/75.jpg",
-        whatsapp: "+919876543212"
+        whatsapp: ""
     },
     {
         id: 4,
@@ -52,9 +58,11 @@ const professionals = [
         experience: 5,
         rating: 4.3,
         fee: 18000,
+        pricing: "₹18,000 per session",
         description: "Compassionate family law attorney with expertise in divorce, child custody, and matrimonial disputes.",
+        workingHours: "11:00 AM - 8:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/women/63.jpg",
-        whatsapp: "+919876543213"
+        whatsapp: ""
     },
     {
         id: 5,
@@ -66,9 +74,11 @@ const professionals = [
         experience: 15,
         rating: 4.8,
         fee: 30000,
+        pricing: "₹30,000 retirement plan",
         description: "Helping clients plan for secure retirement with personalized financial strategies and pension planning.",
+        workingHours: "9:00 AM - 5:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/men/81.jpg",
-        whatsapp: "+919876543214"
+        whatsapp: ""
     },
     {
         id: 6,
@@ -80,9 +90,11 @@ const professionals = [
         experience: 7,
         rating: 4.6,
         fee: 16000,
+        pricing: "₹16,000 per audit",
         description: "Chartered accountant with expertise in financial auditing, compliance, and statutory reporting.",
+        workingHours: "10:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/68.jpg",
-        whatsapp: "+919876543215"
+        whatsapp: ""
     },
     {
         id: 7,
@@ -94,9 +106,11 @@ const professionals = [
         experience: 10,
         rating: 4.6,
         fee: 22000,
+        pricing: "₹22,000 per case review",
         description: "Expert criminal defense attorney with a strong track record in complex criminal cases and bail applications.",
+        workingHours: "10:00 AM - 7:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/45.jpg",
-        whatsapp: "+919876543216"
+        whatsapp: ""
     },
     {
         id: 8,
@@ -108,9 +122,11 @@ const professionals = [
         experience: 9,
         rating: 4.4,
         fee: 14000,
+        pricing: "₹14,000 per analysis",
         description: "Skilled financial analyst helping businesses optimize their financial performance and cash flow management.",
+        workingHours: "9:00 AM - 6:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/32.jpg",
-        whatsapp: "+919876543217"
+        whatsapp: ""
     },
     {
         id: 9,
@@ -122,9 +138,11 @@ const professionals = [
         experience: 11,
         rating: 4.7,
         fee: 20000,
+        pricing: "₹20,000 per consultation",
         description: "Specialist in property law, real estate transactions, and property disputes. Expert in RERA compliance.",
+        workingHours: "10:00 AM - 6:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/28.jpg",
-        whatsapp: "+919876543218"
+        whatsapp: ""
     },
     {
         id: 10,
@@ -136,9 +154,11 @@ const professionals = [
         experience: 8,
         rating: 4.5,
         fee: 18000,
+        pricing: "₹18,000 insurance plan",
         description: "Certified insurance advisor specializing in life, health, and general insurance planning for individuals and families.",
+        workingHours: "10:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/56.jpg",
-        whatsapp: "+919876543219"
+        whatsapp: ""
     },
     {
         id: 11,
@@ -150,9 +170,11 @@ const professionals = [
         experience: 6,
         rating: 4.3,
         fee: 13000,
+        pricing: "₹13,000 GST filing",
         description: "GST expert with comprehensive knowledge of indirect tax compliance, returns filing, and GST audits.",
+        workingHours: "11:00 AM - 7:00 PM, Tue-Sat",
         image: "https://randomuser.me/api/portraits/men/65.jpg",
-        whatsapp: "+919876543220"
+        whatsapp: ""
     },
     {
         id: 12,
@@ -164,13 +186,15 @@ const professionals = [
         experience: 9,
         rating: 4.6,
         fee: 17000,
+        pricing: "₹17,000 per consultation",
         description: "Labour law specialist handling employment disputes, industrial relations, and HR compliance matters.",
+        workingHours: "10:00 AM - 6:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/41.jpg",
-        whatsapp: "+919876543221"
+        whatsapp: ""
     }
 ];
 
-// Enhanced India-based location mapping with coordinates
+// Location Mapping (unchanged)
 const locationMap = {
     'mumbai': { 
         aliases: ['mumbai', 'bombay', 'maharashtra mumbai', 'mumbai city'],
@@ -219,7 +243,7 @@ const locationMap = {
     }
 };
 
-// Enhanced keywords mapping for Indian context
+// Search Keywords (unchanged)
 const searchKeywords = {
     professions: {
         'lawyer': ['lawyer', 'attorney', 'advocate', 'legal', 'counsel', 'barrister', 'solicitor', 'law', 'lawyers'],
@@ -242,9 +266,9 @@ const searchKeywords = {
     }
 };
 
-// Calculate distance between two coordinates (Haversine formula)
+// Distance Calculation (unchanged)
 function calculateDistance(lat1, lng1, lat2, lng2) {
-    const R = 6371; // Earth's radius in kilometers
+    const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLng = (lng2 - lng1) * Math.PI / 180;
     const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -254,7 +278,7 @@ function calculateDistance(lat1, lng1, lat2, lng2) {
     return R * c;
 }
 
-// Parse natural language query to extract criteria
+// Natural Query Parsing (unchanged)
 function parseNaturalQuery(query) {
     const queryLower = query.toLowerCase();
     const criteria = {
@@ -266,7 +290,6 @@ function parseNaturalQuery(query) {
         specialization: null
     };
 
-    // Extract profession
     for (const [profession, keywords] of Object.entries(searchKeywords.professions)) {
         if (keywords.some(keyword => queryLower.includes(keyword))) {
             criteria.profession = profession;
@@ -274,7 +297,6 @@ function parseNaturalQuery(query) {
         }
     }
 
-    // Extract location with improved matching
     for (const [location, data] of Object.entries(locationMap)) {
         if (data.aliases.some(alias => queryLower.includes(alias))) {
             criteria.location = data.standard;
@@ -282,7 +304,6 @@ function parseNaturalQuery(query) {
         }
     }
 
-    // Extract specialization
     for (const [specialization, keywords] of Object.entries(searchKeywords.specializations)) {
         if (keywords.some(keyword => queryLower.includes(keyword))) {
             criteria.specialization = specialization;
@@ -290,7 +311,6 @@ function parseNaturalQuery(query) {
         }
     }
 
-    // Extract fee/price patterns (Indian currency context)
     const feePatterns = [
         /under\s+(\d+)k?/i,
         /below\s+(\d+)k?/i,
@@ -310,7 +330,6 @@ function parseNaturalQuery(query) {
         const match = queryLower.match(pattern);
         if (match) {
             let amount = parseInt(match[1]);
-            // Handle 'k' suffix (e.g., "20k" = 20000)
             if (match[0].includes('k')) {
                 amount *= 1000;
             }
@@ -319,7 +338,6 @@ function parseNaturalQuery(query) {
         }
     }
 
-    // Extract experience patterns
     const experiencePatterns = [
         /(\d+)\+?\s+years?\s+experience/i,
         /(\d+)\+?\s+years?\s+exp/i,
@@ -338,7 +356,6 @@ function parseNaturalQuery(query) {
         }
     }
 
-    // Extract rating patterns
     const ratingPatterns = [
         /(\d+(?:\.\d+)?)\+?\s+stars?/i,
         /(\d+(?:\.\d+)?)\+?\s+rating/i,
@@ -358,41 +375,34 @@ function parseNaturalQuery(query) {
     return criteria;
 }
 
-// Enhanced search function with natural language processing
+// Search Professionals (unchanged)
 function searchProfessionals(query) {
     if (!query || query.trim() === '') return professionals;
     
     const criteria = parseNaturalQuery(query);
     const queryLower = query.toLowerCase().trim();
     
-    // Filter professionals based on extracted criteria
     let results = professionals.filter(pro => {
-        // Profession match
         if (criteria.profession && pro.profession.toLowerCase() !== criteria.profession) {
             return false;
         }
         
-        // Location match (if specified)
         if (criteria.location && pro.location !== criteria.location) {
             return false;
         }
         
-        // Fee constraint
         if (criteria.maxFee && pro.fee > criteria.maxFee) {
             return false;
         }
         
-        // Experience constraint
         if (criteria.minExperience && pro.experience < criteria.minExperience) {
             return false;
         }
         
-        // Rating constraint
         if (criteria.minRating && pro.rating < criteria.minRating) {
             return false;
         }
         
-        // Specialization match
         if (criteria.specialization && pro.specialization.toLowerCase() !== criteria.specialization) {
             return false;
         }
@@ -400,7 +410,6 @@ function searchProfessionals(query) {
         return true;
     });
     
-    // If no specific location was mentioned, perform general search
     if (!criteria.location) {
         const queryTerms = queryLower.split(/\s+/).filter(term => term.length > 0);
         results = results.filter(pro => {
@@ -416,16 +425,13 @@ function searchProfessionals(query) {
         });
     }
     
-    // Sort results by location proximity if a location was specified
     if (criteria.location) {
         const targetLocation = Object.values(locationMap).find(loc => loc.standard === criteria.location);
         if (targetLocation) {
             results.sort((a, b) => {
-                // Exact location match first
                 if (a.location === criteria.location && b.location !== criteria.location) return -1;
                 if (b.location === criteria.location && a.location !== criteria.location) return 1;
                 
-                // Then sort by distance
                 const distanceA = calculateDistance(
                     targetLocation.coordinates.lat, 
                     targetLocation.coordinates.lng,
@@ -447,7 +453,7 @@ function searchProfessionals(query) {
     return results;
 }
 
-// Filter professionals based on active filters
+// Filter Professionals (unchanged)
 function filterProfessionals(pros) {
     const professionFilter = document.getElementById('professionFilter')?.value || '';
     const locationFilter = document.getElementById('locationFilter')?.value || '';
@@ -464,7 +470,7 @@ function filterProfessionals(pros) {
     });
 }
 
-// Display professionals with location indicators
+// Display Professionals (updated for booking modal)
 function displayProfessionals(pros) {
     const prosGrid = document.getElementById('prosGrid');
     if (!prosGrid) return;
@@ -479,8 +485,8 @@ function displayProfessionals(pros) {
     pros.forEach((pro, index) => {
         const proCard = document.createElement('div');
         proCard.className = 'pro-card';
+        proCard.dataset.proId = pro.id;
         
-        // Add priority indicator for exact location matches
         const isExactLocationMatch = index === 0 || (index > 0 && pros[index-1].location === pro.location);
         const locationBadge = isExactLocationMatch ? '<span class="exact-match">📍 Exact Match</span>' : '';
         
@@ -499,8 +505,8 @@ function displayProfessionals(pros) {
                 <p class="pro-description">${pro.description}</p>
                 <div class="pro-footer">
                     <span class="pro-price">₹${pro.fee.toLocaleString()}</span>
-                    <button class="whatsapp-btn" onclick="window.open('https://wa.me/${pro.whatsapp}', '_blank')">
-                        <i class="fab fa-whatsapp"></i> Contact
+                    <button class="book-btn" onclick="openBookingModal(${pro.id})">
+                        <i class="fas fa-calendar-alt"></i> Book Appointment
                     </button>
                 </div>
             </div>
@@ -510,7 +516,7 @@ function displayProfessionals(pros) {
     });
 }
 
-// Toggle filter visibility
+// Toggle Filters (unchanged)
 function toggleFilters() {
     const filterOptions = document.getElementById('filterOptions');
     const filterToggle = document.getElementById('filterToggle');
@@ -526,26 +532,22 @@ function toggleFilters() {
     }
 }
 
-// Enhanced search and filter function
+// Perform Search (unchanged)
 function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput ? searchInput.value.trim() : '';
     
-    // Apply natural language search first, then manual filters
     const searchedPros = searchProfessionals(query);
     const filteredPros = filterProfessionals(searchedPros);
     
-    // Hide all other sections
     document.querySelectorAll('.container > section').forEach(section => {
         section.style.display = 'none';
     });
     
-    // Show search results container
     const resultsContainer = document.getElementById('searchResultsContainer');
     if (resultsContainer) {
         resultsContainer.style.display = 'block';
         
-        // Update results count and show parsed query info
         const resultsCount = document.getElementById('resultsCount');
         if (resultsCount) {
             const criteria = parseNaturalQuery(query);
@@ -566,10 +568,8 @@ function performSearch() {
         }
     }
     
-    // Display professionals
     displayProfessionals(filteredPros);
     
-    // Add back button if it doesn't exist
     if (!document.querySelector('.back-to-home') && resultsContainer) {
         const backButton = document.createElement('button');
         backButton.className = 'back-to-home';
@@ -586,7 +586,7 @@ function performSearch() {
     }
 }
 
-// Reset all filters
+// Reset Filters (unchanged)
 function resetFilters() {
     const filters = ['professionFilter', 'locationFilter', 'experienceFilter', 'priceFilter'];
     filters.forEach(filterId => {
@@ -597,7 +597,133 @@ function resetFilters() {
     });
 }
 
-// Initialize search functionality
+// Booking Modal Functions
+let currentProId = null;
+
+function openBookingModal(proId) {
+    const pro = professionals.find(p => p.id === proId);
+    if (!pro) return;
+    
+    currentProId = proId;
+    
+    // Populate professional info
+    document.getElementById('modalProImage').src = pro.image;
+    document.getElementById('modalProImage').alt = pro.name;
+    document.getElementById('modalProName').textContent = pro.name;
+    document.getElementById('modalProSpecialization').textContent = `${pro.profession} - ${pro.specialization}`;
+    document.getElementById('modalProLocation').querySelector('span').textContent = pro.location;
+    document.getElementById('modalProPricing').querySelector('span').textContent = pro.pricing || `₹${pro.fee.toLocaleString()}`;
+    document.getElementById('modalProHours').querySelector('span').textContent = pro.workingHours || '10:00 AM - 6:00 PM';
+    document.getElementById('modalProDescription').textContent = pro.description;
+    
+    // Generate time slots
+    generateTimeSlots(pro.workingHours || '10:00 AM - 6:00 PM');
+    
+    // Reset form
+    document.getElementById('userName').value = '';
+    document.getElementById('userEmail').value = '';
+    document.getElementById('userWhatsApp').value = pro.whatsapp;
+    document.getElementById('bookingSuccess').style.display = 'none';
+    document.getElementById('bookingSuccess').textContent = '';
+    
+    // Show modal
+    document.getElementById('bookingModal').classList.add('show');
+}
+
+function closeBookingModal() {
+    document.getElementById('bookingModal').classList.remove('show');
+    currentProId = null;
+}
+
+function generateTimeSlots(workingHours) {
+    // Parse working hours
+    const [startTime, endTime] = workingHours.split('-').map(t => t.trim());
+    const startHour = parseInt(startTime.split(':')[0]) + (startTime.includes('PM') && startTime.split(':')[0] !== '12' ? 12 : 0);
+    const endHour = parseInt(endTime.split(':')[0]) + (endTime.includes('PM') && endTime.split(':')[0] !== '12' ? 12 : 0);
+    
+    // Generate slots every 30 minutes
+    const timeSlots = [];
+    for (let hour = startHour; hour < endHour; hour++) {
+        for (let minute = 0; minute < 60; minute += 30) {
+            const displayHour = hour > 12 ? hour - 12 : hour;
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const displayMinute = minute === 0 ? '00' : '30';
+            timeSlots.push(`${displayHour}:${displayMinute} ${ampm}`);
+        }
+    }
+    
+    // Populate time slot selects
+    for (let i = 1; i <= 4; i++) {
+        const select = document.getElementById(`timeSlot${i}`);
+        select.innerHTML = i === 4 
+            ? '<option value="">Select Time 4 (Optional)</option>'
+            : `<option value="">Select Time ${i} (Required)</option>`;
+        
+        timeSlots.forEach(slot => {
+            const option = document.createElement('option');
+            option.value = slot;
+            option.textContent = slot;
+            select.appendChild(option);
+        });
+    }
+}
+
+async function submitBooking() {
+    if (!currentProId) return;
+    
+    const pro = professionals.find(p => p.id === currentProId);
+    if (!pro) return;
+    
+    // Validate form
+    const time1 = document.getElementById('timeSlot1').value;
+    const time2 = document.getElementById('timeSlot2').value;
+    const time3 = document.getElementById('timeSlot3').value;
+    const time4 = document.getElementById('timeSlot4').value;
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const whatsapp = document.getElementById('userWhatsApp').value.trim();
+    
+    if (!time1 || !time2 || !time3 || !name || !email || !whatsapp) {
+        alert('Please fill all required fields');
+        return;
+    }
+    
+    // Format message
+    const message = `📅 New Appointment Request:\n\n` +
+                    `👨‍💼 Professional: ${pro.name}\n` +
+                    `📌 Specialization: ${pro.specialization}\n` +
+                    `📍 Location: ${pro.location}\n` +
+                    `💰 Fee: ${pro.pricing || `₹${pro.fee.toLocaleString()}`}\n\n` +
+                    `⏰ Preferred Times:\n1. ${time1}\n2. ${time2}\n3. ${time3}` +
+                    (time4 ? `\n4. ${time4}` : '') + `\n\n` +
+                    `👤 Client Details:\nName: ${name}\nEmail: ${email}\nWhatsApp: ${whatsapp}`;
+    
+    try {
+        const botToken = '8099887805:AAF6Q3IUJyhR3Vo5gBp8Wc8ywGaOj_JjnIU';
+        const chatId = '8374420796'; // Replace with your chat ID
+        
+        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
+        
+        if (response.ok) {
+            const successEl = document.getElementById('bookingSuccess');
+            successEl.textContent = '✅ Your appointment request has been sent. We will contact you shortly.';
+            successEl.style.display = 'block';
+            
+            // Clear form
+            document.getElementById('timeSlot1').value = '';
+            document.getElementById('timeSlot2').value = '';
+            document.getElementById('timeSlot3').value = '';
+            document.getElementById('timeSlot4').value = '';
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch (error) {
+        console.error('Error sending to Telegram:', error);
+        alert('Failed to send booking request. Please try again later.');
+    }
+}
+
+// Initialize (updated)
 document.addEventListener('DOMContentLoaded', () => {
     // Hide filters by default
     const filterOptions = document.getElementById('filterOptions');
@@ -624,8 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') performSearch();
         });
         
-        // Add placeholder with Indian context example
-        searchInput.placeholder = 'e.g., "lawyers in Mumbai under 20k with 5+ years experience and 4+ star rating"';
+        searchInput.placeholder = 'e.g., "lawyers in Mumbai under 20k with 5+ years experience"';
     }
     
     // Filter change handlers
@@ -641,485 +766,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    
+    // Modal event listeners
+    document.querySelector('.close-btn').addEventListener('click', closeBookingModal);
+    document.getElementById('bookingModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('bookingModal')) {
+            closeBookingModal();
+        }
+    });
+    
+    // Submit booking form
+    document.getElementById('submitBookingBtn').addEventListener('click', submitBooking);
 });
 
-// Export functions for external use
+// Export functions
 window.searchProfessionals = searchProfessionals;
 window.filterProfessionals = filterProfessionals;
 window.performSearch = performSearch;
-window.parseNaturalQuery = parseNaturalQuery;
-// Enhanced search functionality with better natural language processing and fallback results
-function enhancedSearchProfessionals(query) {
-    if (!query || query.trim() === '') return professionals;
-    
-    const criteria = parseNaturalQuery(query);
-    const queryLower = query.toLowerCase().trim();
-    
-    // First, try exact matches
-    let exactResults = professionals.filter(pro => {
-        // Profession match
-        if (criteria.profession && pro.profession.toLowerCase() !== criteria.profession) {
-            return false;
-        }
-        
-        // Location match (if specified)
-        if (criteria.location && pro.location !== criteria.location) {
-            return false;
-        }
-        
-        // Fee constraint
-        if (criteria.maxFee && pro.fee > criteria.maxFee) {
-            return false;
-        }
-        
-        // Experience constraint
-        if (criteria.minExperience && pro.experience < criteria.minExperience) {
-            return false;
-        }
-        
-        // Rating constraint
-        if (criteria.minRating && pro.rating < criteria.minRating) {
-            return false;
-        }
-        
-        // Specialization match
-        if (criteria.specialization && pro.specialization.toLowerCase() !== criteria.specialization) {
-            return false;
-        }
-        
-        return true;
-    });
-    
-    // If we have exact matches, return them first
-    if (exactResults.length > 0) {
-        // Sort exact matches by relevance
-        exactResults = sortByRelevance(exactResults, criteria);
-        return exactResults;
-    }
-    
-    // If no exact matches, try partial/fuzzy matches
-    let partialResults = professionals.filter(pro => {
-        // Check if any criteria partially matches
-        let matches = 0;
-        let totalCriteria = 0;
-        
-        // Profession partial match
-        if (criteria.profession) {
-            totalCriteria++;
-            if (pro.profession.toLowerCase().includes(criteria.profession)) matches++;
-        }
-        
-        // Location partial match
-        if (criteria.location) {
-            totalCriteria++;
-            if (pro.location.toLowerCase().includes(criteria.location.toLowerCase())) matches++;
-        }
-        
-        // Fee partial match (within 20% of max fee)
-        if (criteria.maxFee) {
-            totalCriteria++;
-            if (pro.fee <= criteria.maxFee * 1.2) matches++;
-        }
-        
-        // Experience partial match (within 2 years of min experience)
-        if (criteria.minExperience) {
-            totalCriteria++;
-            if (pro.experience >= criteria.minExperience - 2) matches++;
-        }
-        
-        // Rating partial match (within 0.5 of min rating)
-        if (criteria.minRating) {
-            totalCriteria++;
-            if (pro.rating >= criteria.minRating - 0.5) matches++;
-        }
-        
-        // Specialization partial match
-        if (criteria.specialization) {
-            totalCriteria++;
-            if (pro.specialization.toLowerCase().includes(criteria.specialization)) matches++;
-        }
-        
-        // Consider it a partial match if at least half the criteria match
-        return matches > 0 && matches >= Math.ceil(totalCriteria / 2);
-    });
-    
-    // If we have partial matches, return them sorted by relevance
-    if (partialResults.length > 0) {
-        partialResults = sortByRelevance(partialResults, criteria);
-        return partialResults;
-    }
-    
-    // If still no results, try keyword matching without strict criteria
-    const queryTerms = queryLower.split(/\s+/).filter(term => term.length > 2); // ignore short words
-    
-    let keywordResults = professionals.filter(pro => {
-        const searchFields = [
-            pro.name.toLowerCase(),
-            pro.profession.toLowerCase(),
-            pro.specialization.toLowerCase(),
-            pro.location.toLowerCase(),
-            pro.description.toLowerCase()
-        ].join(' ');
-        
-        return queryTerms.some(term => searchFields.includes(term));
-    });
-    
-    // Sort keyword results by relevance
-    keywordResults = sortByRelevance(keywordResults, criteria);
-    
-    return keywordResults;
-}
-
-// Sort professionals by relevance to search criteria
-function sortByRelevance(pros, criteria) {
-    return pros.sort((a, b) => {
-        // Score each professional based on how well they match the criteria
-        const scoreA = calculateRelevanceScore(a, criteria);
-        const scoreB = calculateRelevanceScore(b, criteria);
-        
-        // Higher score first
-        return scoreB - scoreA;
-    });
-}
-
-// Calculate relevance score for a professional based on search criteria
-function calculateRelevanceScore(pro, criteria) {
-    let score = 0;
-    
-    // Profession match
-    if (criteria.profession) {
-        if (pro.profession.toLowerCase() === criteria.profession) score += 30;
-        else if (pro.profession.toLowerCase().includes(criteria.profession)) score += 15;
-    }
-    
-    // Location match
-    if (criteria.location) {
-        if (pro.location === criteria.location) score += 25;
-        else if (pro.location.toLowerCase().includes(criteria.location.toLowerCase())) score += 10;
-    }
-    
-    // Fee match (closer to max fee is better)
-    if (criteria.maxFee) {
-        if (pro.fee <= criteria.maxFee) score += 20;
-        else if (pro.fee <= criteria.maxFee * 1.2) score += 10;
-    }
-    
-    // Experience match (more experience is better)
-    if (criteria.minExperience) {
-        if (pro.experience >= criteria.minExperience) {
-            const extraYears = pro.experience - criteria.minExperience;
-            score += 15 + Math.min(extraYears, 5); // bonus for extra experience up to 5 years
-        } else if (pro.experience >= criteria.minExperience - 2) {
-            score += 5;
-        }
-    }
-    
-    // Rating match (higher rating is better)
-    if (criteria.minRating) {
-        if (pro.rating >= criteria.minRating) {
-            const extraRating = pro.rating - criteria.minRating;
-            score += 10 + extraRating * 5; // bonus for higher rating
-        } else if (pro.rating >= criteria.minRating - 0.5) {
-            score += 5;
-        }
-    }
-    
-    // Specialization match
-    if (criteria.specialization) {
-        if (pro.specialization.toLowerCase() === criteria.specialization) score += 20;
-        else if (pro.specialization.toLowerCase().includes(criteria.specialization)) score += 10;
-    }
-    
-    // Boost score for exact matches in description
-    if (criteria.profession && pro.description.toLowerCase().includes(criteria.profession)) {
-        score += 5;
-    }
-    if (criteria.specialization && pro.description.toLowerCase().includes(criteria.specialization)) {
-        score += 5;
-    }
-    
-    return score;
-}
-
-// Enhanced filter functionality that works with the new search
-function enhancedFilterProfessionals(pros) {
-    const professionFilter = document.getElementById('professionFilter')?.value || '';
-    const locationFilter = document.getElementById('locationFilter')?.value || '';
-    const experienceFilter = document.getElementById('experienceFilter')?.value || '';
-    const priceFilter = document.getElementById('priceFilter')?.value || '';
-    
-    // If no filters are applied, return all professionals
-    if (!professionFilter && !locationFilter && !experienceFilter && !priceFilter) {
-        return pros;
-    }
-    
-    // First, try exact matches
-    let exactResults = pros.filter(pro => {
-        const matchesProfession = !professionFilter || pro.profession.toLowerCase() === professionFilter.toLowerCase();
-        const matchesLocation = !locationFilter || pro.location.toLowerCase() === locationFilter.toLowerCase();
-        const matchesExperience = !experienceFilter || pro.experience >= parseInt(experienceFilter);
-        const matchesPrice = !priceFilter || pro.fee <= parseInt(priceFilter);
-        
-        return matchesProfession && matchesLocation && matchesExperience && matchesPrice;
-    });
-    
-    // If we have exact matches, return them first
-    if (exactResults.length > 0) {
-        return exactResults;
-    }
-    
-    // If no exact matches, try partial matches
-    let partialResults = pros.filter(pro => {
-        let matches = 0;
-        let totalFilters = 0;
-        
-        if (professionFilter) {
-            totalFilters++;
-            if (pro.profession.toLowerCase().includes(professionFilter.toLowerCase())) matches++;
-        }
-        
-        if (locationFilter) {
-            totalFilters++;
-            if (pro.location.toLowerCase().includes(locationFilter.toLowerCase())) matches++;
-        }
-        
-        if (experienceFilter) {
-            totalFilters++;
-            if (pro.experience >= parseInt(experienceFilter) - 2) matches++;
-        }
-        
-        if (priceFilter) {
-            totalFilters++;
-            if (pro.fee <= parseInt(priceFilter) * 1.2) matches++;
-        }
-        
-        return matches > 0 && matches >= Math.ceil(totalFilters / 2);
-    });
-    
-    return partialResults;
-}
-
-// Enhanced display function that shows relevance information
-function enhancedDisplayProfessionals(pros) {
-    const prosGrid = document.getElementById('prosGrid');
-    if (!prosGrid) return;
-    
-    prosGrid.innerHTML = '';
-    
-    if (pros.length === 0) {
-        prosGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-light);">No professionals found matching your criteria. Try broadening your search.</p>';
-        return;
-    }
-    
-    // Group by exact and partial matches
-    const exactMatches = [];
-    const partialMatches = [];
-    
-    pros.forEach(pro => {
-        // This is a simplified version - you might want to implement more sophisticated grouping
-        if (isExactMatch(pro)) {
-            exactMatches.push(pro);
-        } else {
-            partialMatches.push(pro);
-        }
-    });
-    
-    // Display exact matches first
-    if (exactMatches.length > 0) {
-        const exactHeader = document.createElement('h3');
-        exactHeader.className = 'results-header';
-        exactHeader.textContent = 'Exact Matches';
-        prosGrid.appendChild(exactHeader);
-        
-        exactMatches.forEach(pro => {
-            prosGrid.appendChild(createProCard(pro, true));
-        });
-    }
-    
-    // Display partial matches if there are any
-    if (partialMatches.length > 0) {
-        const partialHeader = document.createElement('h3');
-        partialHeader.className = 'results-header';
-        partialHeader.textContent = 'Related Professionals';
-        prosGrid.appendChild(partialHeader);
-        
-        partialMatches.forEach(pro => {
-            prosGrid.appendChild(createProCard(pro, false));
-        });
-    }
-}
-
-// Helper function to check if a professional is an exact match
-function isExactMatch(pro) {
-    // This should be implemented based on your criteria
-    // For now, we'll just return true for all as a placeholder
-    return true;
-}
-
-// Helper function to create a professional card
-function createProCard(pro, isExactMatch) {
-    const proCard = document.createElement('div');
-    proCard.className = 'pro-card';
-    
-    const stars = '★'.repeat(Math.floor(pro.rating)) + '☆'.repeat(5 - Math.floor(pro.rating));
-    const matchBadge = isExactMatch ? '<span class="exact-match">✓ Exact Match</span>' : '<span class="partial-match">∼ Close Match</span>';
-    
-    proCard.innerHTML = `
-        <img src="${pro.image}" alt="${pro.name}" class="pro-image">
-        <div class="pro-details">
-            ${matchBadge}
-            <h3 class="pro-name">${pro.name}</h3>
-            <span class="pro-profession">${pro.profession}</span>
-            <div class="pro-rating" title="${pro.rating.toFixed(1)}/5">${stars}</div>
-            <p class="pro-experience">${pro.experience}+ years experience</p>
-            <p class="pro-location">📍 ${pro.location}</p>
-            <p class="pro-specialization">${pro.specialization}</p>
-            <p class="pro-description">${pro.description}</p>
-            <div class="pro-footer">
-                <span class="pro-price">₹${pro.fee.toLocaleString()}</span>
-                <button class="whatsapp-btn" onclick="window.open('https://wa.me/${pro.whatsapp}', '_blank')">
-                    <i class="fab fa-whatsapp"></i> Contact
-                </button>
-            </div>
-        </div>
-    `;
-    
-    return proCard;
-}
-
-// Enhanced performSearch function that uses all the new features
-function enhancedPerformSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const query = searchInput ? searchInput.value.trim() : '';
-    
-    // Apply enhanced search
-    const searchedPros = enhancedSearchProfessionals(query);
-    const filteredPros = enhancedFilterProfessionals(searchedPros);
-    
-    // Hide all other sections
-    document.querySelectorAll('.container > section').forEach(section => {
-        section.style.display = 'none';
-    });
-    
-    // Show search results container
-    const resultsContainer = document.getElementById('searchResultsContainer');
-    if (resultsContainer) {
-        resultsContainer.style.display = 'block';
-        
-        // Update results count
-        const resultsCount = document.getElementById('resultsCount');
-        if (resultsCount) {
-            resultsCount.innerHTML = `
-                <div>${filteredPros.length} professional${filteredPros.length !== 1 ? 's' : ''} found</div>
-                <div style="font-size: 0.9em; color: var(--text-light); margin-top: 5px;">
-                    Showing best matches first
-                </div>
-            `;
-        }
-    }
-    
-    // Display professionals with enhanced display
-    enhancedDisplayProfessionals(filteredPros);
-    
-    // Add back button if it doesn't exist
-    if (!document.querySelector('.back-to-home') && resultsContainer) {
-        const backButton = document.createElement('button');
-        backButton.className = 'back-to-home';
-        backButton.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Home';
-        backButton.onclick = () => {
-            resultsContainer.style.display = 'none';
-            document.querySelectorAll('.container > section').forEach(section => {
-                section.style.display = 'block';
-            });
-            if (searchInput) searchInput.value = '';
-            resetFilters();
-        };
-        resultsContainer.prepend(backButton);
-    }
-}
-
-// Update the event listeners to use the enhanced functions
-document.addEventListener('DOMContentLoaded', () => {
-    // Hide filters by default
-    const filterOptions = document.getElementById('filterOptions');
-    if (filterOptions) {
-        filterOptions.style.display = 'none';
-    }
-    
-    // Set up filter toggle
-    const filterToggle = document.getElementById('filterToggle');
-    if (filterToggle) {
-        filterToggle.addEventListener('click', toggleFilters);
-    }
-    
-    // Search button click handler - now using enhanced version
-    const searchBtn = document.getElementById('searchBtn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', enhancedPerformSearch);
-    }
-    
-    // Search on Enter key - now using enhanced version
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') enhancedPerformSearch();
-        });
-        
-        // Add placeholder with Indian context example
-        searchInput.placeholder = 'e.g., "lawyers in Mumbai under 20k with 5+ years experience"';
-    }
-    
-    // Filter change handlers - now using enhanced version
-    const filterIds = ['professionFilter', 'locationFilter', 'experienceFilter', 'priceFilter'];
-    filterIds.forEach(filterId => {
-        const filter = document.getElementById(filterId);
-        if (filter) {
-            filter.addEventListener('change', () => {
-                const resultsContainer = document.getElementById('searchResultsContainer');
-                if (resultsContainer && resultsContainer.style.display === 'block') {
-                    enhancedPerformSearch();
-                }
-            });
-        }
-    });
-});
-
-// Add some CSS for the new elements
-const style = document.createElement('style');
-style.textContent = `
-    .results-header {
-        grid-column: 1 / -1;
-        margin: 20px 0 10px;
-        color: var(--primary-color);
-        font-size: 1.2em;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 5px;
-    }
-    
-    .exact-match {
-        background-color: #4CAF50;
-        color: white;
-        padding: 2px 8px;
-        border-radius: 12px;
-        font-size: 0.8em;
-        display: inline-block;
-        margin-bottom: 5px;
-    }
-    
-    .partial-match {
-        background-color: #FFC107;
-        color: black;
-        padding: 2px 8px;
-        border-radius: 12px;
-        font-size: 0.8em;
-        display: inline-block;
-        margin-bottom: 5px;
-    }
-`;
-document.head.appendChild(style);
-
-// Export the new enhanced functions
-window.enhancedSearchProfessionals = enhancedSearchProfessionals;
-window.enhancedFilterProfessionals = enhancedFilterProfessionals;
-window.enhancedPerformSearch = enhancedPerformSearch;
-window.enhancedDisplayProfessionals = enhancedDisplayProfessionals;
+window.openBookingModal = openBookingModal;
+window.closeBookingModal = closeBookingModal;
+window.submitBooking = submitBooking;
