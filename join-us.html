@@ -515,21 +515,6 @@
     margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-    .checkbox-row {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .radio-group {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .form-subtitle {
-        font-size: 1.1rem;
-    }
-}
 .modal {
     display: none;
     position: fixed;
@@ -822,7 +807,6 @@
         }
     }
 }
-</style>
     </style>
 </head>
 <body>
@@ -908,300 +892,262 @@
 
         <!-- Form Section -->
         <section class="form-section" id="form-section">
-    <div class="container">
-        <h2 class="section-title">Join Our Network</h2>
-        <div class="form-container">
-            <form id="proForm">
-                <!-- ===== PERSONAL INFORMATION ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Personal Information</h3>
-                    <div class="form-group">
-                        <label for="fullName">Full Name *</label>
-                        <input type="text" id="fullName" name="fullName" required>
-                    </div>
+            <div class="container">
+                <h2 class="section-title">Join Our Network</h2>
+                <div class="form-container">
+                    <form id="proForm">
+                        <!-- ===== PERSONAL INFORMATION ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Personal Information</h3>
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">WhatsApp Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">WhatsApp Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
+
+                        <!-- ===== PROFESSIONAL DETAILS ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Professional Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="profession">Primary Profession *</label>
+                                    <select id="profession" name="profession" required>
+                                        <option value="">Select your profession</option>
+                                        <option value="Lawyer">Lawyer</option>
+                                        <option value="Chartered Accountant">Chartered Accountant</option>
+                                        <option value="Financial Advisor">Financial Advisor</option>
+                                        <option value="Accountant">Accountant</option>
+                                        <option value="Company Secretary">Company Secretary</option>
+                                        <option value="Tax Consultant">Tax Consultant</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="specialization">Specialization *</label>
+                                    <input type="text" id="specialization" name="specialization" required placeholder="e.g., Corporate Law, Tax Accounting">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="experience">Years of Experience *</label>
+                                    <input type="number" id="experience" name="experience" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="qualification">Highest Qualification *</label>
+                                    <input type="text" id="qualification" name="qualification" required placeholder="e.g., LLB, CA, CPA">
+                                </div>
+                            </div>
+
+                            
+                            <!-- Languages Spoken -->
+                            <div class="form-group">
+                                <label>Languages Spoken *</label>
+                                <div class="form-row checkbox-row">
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="english" name="languages[]" value="English">
+                                        <label for="english">English</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="hindi" name="languages[]" value="Hindi">
+                                        <label for="hindi">Hindi</label>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="regional" name="languages[]" value="Regional">
+                                        <label for="regional">Regional Languages</label>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <input type="text" id="regionalLanguagesText" name="regionalLanguagesText" style="display: none; margin-top: 5px; width: 100%;" placeholder="Please specify languages">
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- ===== PRACTICE DETAILS ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Practice Details</h3>
+                            <div class="form-group">
+                                <label for="practiceType">Type of Practice *</label>
+                                <select id="practiceType" name="practiceType" required>
+                                    <option value="">Select practice type</option>
+                                    <option value="Individual">Individual Practitioner</option>
+                                    <option value="Firm">Part of a Firm</option>
+                                    <option value="Company">Company Employee</option>
+                                    <option value="Freelance">Freelance/Independent</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firmName">Firm/Company Name (if applicable)</label>
+                                <input type="text" id="firmName" name="firmName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="services">Services You Offer *</label>
+                                <textarea id="services" name="services" rows="3" required placeholder="List the main services you provide to clients"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="consultationFee">Standard Consultation Fee *</label>
+                                    <input type="text" id="consultationFee" name="consultationFee" required placeholder="e.g., 5000 RS, $50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="maxClients">Maximum clients per week</label>
+                                    <input type="number" id="maxClients" name="maxClients" min="1" placeholder="Enter number">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== AVAILABILITY & WORK PREFERENCES ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Availability & Work Preferences</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="availableFrom">Available From *</label>
+                                    <input type="time" id="availableFrom" name="availableFrom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="availableTo">Available To *</label>
+                                    <input type="time" id="availableTo" name="availableTo" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Willing to work on fixed fees? *</label>
+                                    <div class="radio-group">
+                                        <input type="radio" id="fixedFeesYes" name="fixedFees" value="Yes" required>
+                                        <label for="fixedFeesYes">Yes</label>
+                                        <input type="radio" id="fixedFeesNo" name="fixedFees" value="No" required>
+                                        <label for="fixedFeesNo">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Willing to travel for cases? *</label>
+                                    <div class="radio-group">
+                                        <input type="radio" id="travelYes" name="willingToTravel" value="Yes" required>
+                                        <label for="travelYes">Yes</label>
+                                        <input type="radio" id="travelNo" name="willingToTravel" value="No" required>
+                                        <label for="travelNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred Work Mode *</label>
+                                <div class="radio-group">
+                                    <input type="radio" id="remote" name="workMode" value="Remote" required>
+                                    <label for="remote">Remote</label>
+                                    <input type="radio" id="inPerson" name="workMode" value="In-person" required>
+                                    <label for="inPerson">In-person</label>
+                                    <input type="radio" id="hybrid" name="workMode" value="Hybrid" required>
+                                    <label for="hybrid">Hybrid</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== LOCATION INFORMATION ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Location Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <input type="text" id="country" name="country" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== BRANDING & MARKETING ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Branding & Marketing</h3>
+                            <div class="form-group">
+                                <label for="profilePicture">Upload Profile Picture (optional)</label>
+                                <input type="file" id="profilePicture" name="profilePicture" accept=".jpg,.png">
+                                <small>Accepted formats: JPG, PNG (Max 2MB)</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="professionalBio">Professional Bio (100 words max)</label>
+                                <textarea id="professionalBio" name="professionalBio" rows="4" maxlength="1000" placeholder="Briefly describe your professional background and expertise"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="linkedin">LinkedIn Profile (optional)</label>
+                                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitter">Twitter Handle (optional)</label>
+                                    <input type="text" id="twitter" name="twitter" placeholder="@yourhandle">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== VERIFICATION & POLICIES ===== -->
+                        <div class="form-section-group">
+                            <h3 class="form-subtitle">Verification & Policies</h3>
+                            <div class="form-group">
+                                <label for="certificate">Upload Professional Certificate/License *</label>
+                                <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="idProof">Upload ID Proof (Passport/Driving License) *</label>
+                                <input type="file" id="idProof" name="idProof" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="referral">How did you hear about us?</label>
+                                <select id="referral" name="referral">
+                                    <option value="">Select an option</option>
+                                    <option value="Search Engine">Search Engine</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Referral">Referral from another professional</option>
+                                    <option value="Client">From a client</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="backgroundCheck" name="backgroundCheck" required>
+                                <label for="backgroundCheck">I consent to LawGlitch verifying my credentials and performing background checks *</label>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to LawGlitch's partnership policies and terms of service *</label>
+                                <button type="button" class="terms-popup-btn">
+                                    <i class="fas fa-question-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Honeypot field -->
+                        <input type="text" name="honeypot" class="honeypot">
+
+                        <button type="submit" class="btn submit-btn" id="submitBtn">Submit Application</button>
+                        <div id="form-message"></div>
+                    </form>
                 </div>
-
-                <!-- ===== PROFESSIONAL DETAILS ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Professional Details</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="profession">Primary Profession *</label>
-                            <select id="profession" name="profession" required>
-                                <option value="">Select your profession</option>
-                                <option value="Lawyer">Lawyer</option>
-                                <option value="Chartered Accountant">Chartered Accountant</option>
-                                <option value="Financial Advisor">Financial Advisor</option>
-                                <option value="Accountant">Accountant</option>
-                                <option value="Company Secretary">Company Secretary</option>
-                                <option value="Tax Consultant">Tax Consultant</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="specialization">Specialization *</label>
-                            <input type="text" id="specialization" name="specialization" required placeholder="e.g., Corporate Law, Tax Accounting">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="experience">Years of Experience *</label>
-                            <input type="number" id="experience" name="experience" min="0" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="qualification">Highest Qualification *</label>
-                            <input type="text" id="qualification" name="qualification" required placeholder="e.g., LLB, CA, CPA">
-                        </div>
-                    </div>
-
-                    <!-- Case Type Specialization -->
-                    <div class="form-group">
-                        <label>Case Type Specialization *</label>
-                        <div class="form-row checkbox-row">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="corporateLaw" name="caseTypes[]" value="Corporate Law">
-                                <label for="corporateLaw">Corporate Law</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="familyLaw" name="caseTypes[]" value="Family Law">
-                                <label for="familyLaw">Family Law</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="criminalDefense" name="caseTypes[]" value="Criminal Defense">
-                                <label for="criminalDefense">Criminal Defense</label>
-                            </div>
-                        </div>
-                        <div class="form-row checkbox-row">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="propertyLaw" name="caseTypes[]" value="Property & Real Estate">
-                                <label for="propertyLaw">Property & Real Estate</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="taxFinance" name="caseTypes[]" value="Tax & Finance">
-                                <label for="taxFinance">Tax & Finance</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="ipLaw" name="caseTypes[]" value="Intellectual Property">
-                                <label for="ipLaw">Intellectual Property</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="checkbox-group" style="flex: 1;">
-                                <input type="checkbox" id="otherCaseType" name="caseTypes[]" value="Other" onchange="toggleOtherCaseType()">
-                                <label for="otherCaseType">Other</label>
-                                <input type="text" id="otherCaseTypeText" name="otherCaseTypeText" style="display: none; margin-left: 10px; width: 70%;" placeholder="Please specify">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Languages Spoken -->
-                    <div class="form-group">
-                        <label>Languages Spoken *</label>
-                        <div class="form-row checkbox-row">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="english" name="languages[]" value="English">
-                                <label for="english">English</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="hindi" name="languages[]" value="Hindi">
-                                <label for="hindi">Hindi</label>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="regional" name="languages[]" value="Regional" onchange="toggleRegionalLanguages()">
-                                <label for="regional">Regional Languages</label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <input type="text" id="regionalLanguagesText" name="regionalLanguagesText" style="display: none; margin-top: 5px; width: 100%;" placeholder="Please specify languages">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== PRACTICE DETAILS ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Practice Details</h3>
-                    <div class="form-group">
-                        <label for="practiceType">Type of Practice *</label>
-                        <select id="practiceType" name="practiceType" required>
-                            <option value="">Select practice type</option>
-                            <option value="Individual">Individual Practitioner</option>
-                            <option value="Firm">Part of a Firm</option>
-                            <option value="Company">Company Employee</option>
-                            <option value="Freelance">Freelance/Independent</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="firmName">Firm/Company Name (if applicable)</label>
-                        <input type="text" id="firmName" name="firmName">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="services">Services You Offer *</label>
-                        <textarea id="services" name="services" rows="3" required placeholder="List the main services you provide to clients"></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="consultationFee">Standard Consultation Fee *</label>
-                            <input type="text" id="consultationFee" name="consultationFee" required placeholder="e.g., 5000 RS, $50">
-                        </div>
-                        <div class="form-group">
-                            <label for="maxClients">Maximum clients per week</label>
-                            <input type="number" id="maxClients" name="maxClients" min="1" placeholder="Enter number">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== AVAILABILITY & WORK PREFERENCES ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Availability & Work Preferences</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="availableFrom">Available From *</label>
-                            <input type="time" id="availableFrom" name="availableFrom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="availableTo">Available To *</label>
-                            <input type="time" id="availableTo" name="availableTo" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Willing to work on fixed fees? *</label>
-                            <div class="radio-group">
-                                <input type="radio" id="fixedFeesYes" name="fixedFees" value="Yes" required>
-                                <label for="fixedFeesYes">Yes</label>
-                                <input type="radio" id="fixedFeesNo" name="fixedFees" value="No" required>
-                                <label for="fixedFeesNo">No</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Willing to travel for cases? *</label>
-                            <div class="radio-group">
-                                <input type="radio" id="travelYes" name="willingToTravel" value="Yes" required>
-                                <label for="travelYes">Yes</label>
-                                <input type="radio" id="travelNo" name="willingToTravel" value="No" required>
-                                <label for="travelNo">No</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Preferred Work Mode *</label>
-                        <div class="radio-group">
-                            <input type="radio" id="remote" name="workMode" value="Remote" required>
-                            <label for="remote">Remote</label>
-                            <input type="radio" id="inPerson" name="workMode" value="In-person" required>
-                            <label for="inPerson">In-person</label>
-                            <input type="radio" id="hybrid" name="workMode" value="Hybrid" required>
-                            <label for="hybrid">Hybrid</label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== LOCATION INFORMATION ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Location Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="city">City *</label>
-                            <input type="text" id="city" name="city" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country *</label>
-                            <input type="text" id="country" name="country" required>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== BRANDING & MARKETING ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Branding & Marketing</h3>
-                    <div class="form-group">
-                        <label for="profilePicture">Upload Profile Picture (optional)</label>
-                        <input type="file" id="profilePicture" name="profilePicture" accept=".jpg,.png">
-                        <small>Accepted formats: JPG, PNG (Max 2MB)</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="professionalBio">Professional Bio (100 words max)</label>
-                        <textarea id="professionalBio" name="professionalBio" rows="4" maxlength="1000" placeholder="Briefly describe your professional background and expertise"></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="linkedin">LinkedIn Profile (optional)</label>
-                            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
-                        </div>
-                        <div class="form-group">
-                            <label for="twitter">Twitter Handle (optional)</label>
-                            <input type="text" id="twitter" name="twitter" placeholder="@yourhandle">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ===== VERIFICATION & POLICIES ===== -->
-                <div class="form-section-group">
-                    <h3 class="form-subtitle">Verification & Policies</h3>
-                    <div class="form-group">
-                        <label for="certificate">Upload Professional Certificate/License *</label>
-                        <input type="file" id="certificate" name="certificate" accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="idProof">Upload ID Proof (Passport/Driving License) *</label>
-                        <input type="file" id="idProof" name="idProof" accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="referral">How did you hear about us?</label>
-                        <select id="referral" name="referral">
-                            <option value="">Select an option</option>
-                            <option value="Search Engine">Search Engine</option>
-                            <option value="Social Media">Social Media</option>
-                            <option value="Referral">Referral from another professional</option>
-                            <option value="Client">From a client</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="backgroundCheck" name="backgroundCheck" required>
-                        <label for="backgroundCheck">I consent to LawGlitch verifying my credentials and performing background checks *</label>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">I agree to LawGlitch's partnership policies and terms of service *</label>
-                        <button type="button" class="terms-popup-btn" onclick="showTermsPopup()">
-                            <i class="fas fa-question-circle"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Honeypot field -->
-                <input type="text" name="honeypot" class="honeypot">
-
-                <button type="submit" class="btn submit-btn" id="submitBtn">Submit Application</button>
-                <div id="form-message"></div>
-            </form>
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-links">
@@ -1213,6 +1159,23 @@
         </div>
         <p class="copyright">© <span id="year"></span> LAWGLITCH. All rights reserved.</p>
     </footer>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>LawGlitch Partnership Policies</h3>
+            <div class="modal-text">
+                <p><strong>1. Professional Standards:</strong> All professionals must maintain the highest ethical standards and comply with all applicable laws and regulations.</p>
+                <p><strong>2. Service Fees:</strong> LawGlitch charges a 15% commission on consultation fees and a 10% commission on full case representation.</p>
+                <p><strong>3. Client Communication:</strong> All client communications must be conducted through LawGlitch platform for the first 30 days.</p>
+                <p><strong>4. Availability:</strong> Professionals must maintain accurate availability calendars and respond to client inquiries within 24 hours.</p>
+                <p><strong>5. Background Checks:</strong> LawGlitch reserves the right to verify credentials and perform background checks on all professionals.</p>
+                <p><strong>6. Termination:</strong> Either party may terminate the partnership with 30 days notice. LawGlitch may terminate immediately for violations of these terms.</p>
+                <p><strong>7. Data Protection:</strong> Professionals must protect client confidentiality and comply with all data protection regulations.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Theme Toggle Functionality
@@ -1249,6 +1212,52 @@
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Toggle functions for form elements
+        function toggleOtherCaseType() {
+            const otherCheckbox = document.getElementById('otherCaseType');
+            const otherText = document.getElementById('otherCaseTypeText');
+            otherText.style.display = otherCheckbox.checked ? 'block' : 'none';
+            if (otherCheckbox.checked) otherText.focus();
+        }
+
+        function toggleRegionalLanguages() {
+            const regionalCheckbox = document.getElementById('regional');
+            const regionalText = document.getElementById('regionalLanguagesText');
+            regionalText.style.display = regionalCheckbox.checked ? 'block' : 'none';
+            if (regionalCheckbox.checked) regionalText.focus();
+        }
+
+        // Modal functions
+        function showTermsPopup() {
+            document.getElementById('termsModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTermsModal() {
+            document.getElementById('termsModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners for modal
+        document.querySelector('.close-btn').addEventListener('click', closeTermsModal);
+        document.querySelectorAll('.terms-popup-btn').forEach(btn => {
+            btn.addEventListener('click', showTermsPopup);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('termsModal')) {
+                closeTermsModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTermsModal();
+            }
+        });
+
         // Form submission
         document.getElementById('proForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1262,6 +1271,23 @@
                 formMessage.textContent = 'Please fill all required fields correctly.';
                 formMessage.className = 'error';
                 formMessage.style.display = 'block';
+                return;
+            }
+            
+            
+            
+            // Check languages selection
+            const languages = document.querySelectorAll('input[name="languages[]"]:checked');
+            if (languages.length === 0) {
+                showError('Please select at least one language');
+                return;
+            }
+            
+            // Check time availability
+            const fromTime = document.getElementById('availableFrom').value;
+            const toTime = document.getElementById('availableTo').value;
+            if (fromTime && toTime && fromTime >= toTime) {
+                showError('Available "From" time must be before "To" time');
                 return;
             }
             
@@ -1279,6 +1305,12 @@
             try {
                 const formData = new FormData(form);
                 
+                
+                // Prepare languages text
+                const languagesText = Array.from(languages).map(lang => 
+                    lang.value === 'Regional' ? `Regional: ${document.getElementById('regionalLanguagesText').value}` : lang.value
+                ).join(', ');
+                
                 // Prepare the data for Telegram
                 const caption = `New Pro Registration:
 Name: ${formData.get('fullName')}
@@ -1288,22 +1320,21 @@ Profession: ${formData.get('profession')}
 Specialization: ${formData.get('specialization')}
 Experience: ${formData.get('experience')} years
 Qualification: ${formData.get('qualification')}
+Languages: ${languagesText}
 Location: ${formData.get('city')}, ${formData.get('country')}
 Practice Type: ${formData.get('practiceType')}
 Firm Name: ${formData.get('firmName') || 'N/A'}
 Services: ${formData.get('services')}
 Consultation Fee: ${formData.get('consultationFee')}
-Availability: ${formData.get('availability')}
+Availability: ${formData.get('availableFrom')} to ${formData.get('availableTo')}
+Fixed Fees: ${formData.get('fixedFees')}
+Travel Willingness: ${formData.get('willingToTravel')}
+Work Mode: ${formData.get('workMode')}
+Max Clients: ${formData.get('maxClients') || 'Not specified'}
 Website: ${formData.get('website') || 'N/A'}
 Referral Source: ${formData.get('referral') || 'N/A'}
 Policies Accepted: Yes`;
- Case Types: ${caseTypesText}
-    Languages: ${languagesText}
-    Travel Willingness: ${formData.get('willingToTravel')}
-    Work Mode: ${formData.get('workMode')}
-    Availability: ${formData.get('availableFrom')} to ${formData.get('availableTo')}
-    Fixed Fees: ${formData.get('fixedFees')}
-    Max Clients: ${formData.get('maxClients') || 'Not specified'}                
+                
                 const certificateFile = formData.get('certificate');
                 const idProofFile = formData.get('idProof');
                 
@@ -1373,6 +1404,12 @@ Policies Accepted: Yes`;
                 // Reset form
                 form.reset();
                 
+                // Scroll to message
+                window.scrollTo({
+                    top: formMessage.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
                 // Prevent form resubmission for 30 seconds
                 setTimeout(() => {
                     submitBtn.disabled = false;
@@ -1386,8 +1423,28 @@ Policies Accepted: Yes`;
                 formMessage.style.display = 'block';
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Application';
+                
+                // Scroll to message
+                window.scrollTo({
+                    top: formMessage.offsetTop - 100,
+                    behavior: 'smooth'
+                });
             }
         });
+
+        // Show error message
+        function showError(message) {
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = message;
+            formMessage.className = 'error';
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            window.scrollTo({
+                top: formMessage.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1398,145 +1455,10 @@ Policies Accepted: Yes`;
                 });
             });
         });
-		// Add this JavaScript to your existing script tag
-function toggleDetails() {
-    const content = document.getElementById('detailsContent');
-    const icon = document.querySelector('.details-toggle i');
-    content.classList.toggle('expanded');
-    icon.classList.toggle('fa-chevron-down');
-    icon.classList.toggle('fa-chevron-up');
-}
 
-function toggleOtherCaseType() {
-    const otherCheckbox = document.getElementById('otherCaseType');
-    const otherText = document.getElementById('otherCaseTypeText');
-    otherText.style.display = otherCheckbox.checked ? 'block' : 'none';
-    if (otherCheckbox.checked) otherText.focus();
-}
-
-function toggleRegionalLanguages() {
-    const regionalCheckbox = document.getElementById('regional');
-    const regionalText = document.getElementById('regionalLanguagesText');
-    regionalText.style.display = regionalCheckbox.checked ? 'block' : 'none';
-    if (regionalCheckbox.checked) regionalText.focus();
-}
-
-function showTermsPopup() {
-    document.getElementById('termsModal').style.display = 'flex';
-}
-
-function closeTermsModal() {
-    document.getElementById('termsModal').style.display = 'none';
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('termsModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
-
-// Enhance the existing form submission
-document.getElementById('proForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Validate new fields
-    const caseTypes = document.querySelectorAll('input[name="caseTypes[]"]:checked');
-    if (caseTypes.length === 0) {
-        showError('Please select at least one case type specialization');
-        return;
-    }
-    
-    const languages = document.querySelectorAll('input[name="languages[]"]:checked');
-    if (languages.length === 0) {
-        showError('Please select at least one language');
-        return;
-    }
-    
-    const fromTime = document.getElementById('availableFrom').value;
-    const toTime = document.getElementById('availableTo').value;
-    if (fromTime && toTime && fromTime >= toTime) {
-        showError('Available "From" time must be before "To" time');
-        return;
-    }
-    
-    // Rest of your existing submission logic...
-    // Make sure to include all new fields in the FormData and Telegram message
-    
-    // Example of how to include new data in the Telegram message:
-    const caseTypesText = Array.from(caseTypes).map(ct => 
-        ct.value === 'Other' ? `Other: ${document.getElementById('otherCaseTypeText').value}` : ct.value
-    ).join(', ');
-    
-    const languagesText = Array.from(languages).map(lang => 
-        lang.value === 'Regional' ? `Regional: ${document.getElementById('regionalLanguagesText').value}` : lang.value
-    ).join(', ');
-  
-    // Handle profile picture upload if present
-    const profilePic = document.getElementById('profilePicture').files[0];
-    if (profilePic) {
-        // Add to FormData and send as another document
-    }
-});
-
-function showError(message) {
-    const formMessage = document.getElementById('form-message');
-    formMessage.textContent = message;
-    formMessage.className = 'error';
-    formMessage.style.display = 'block';
-    window.scrollTo({
-        top: formMessage.offsetTop - 100,
-        behavior: 'smooth'
-    });
-}
+        // Initialize event listeners for dynamic elements
+        document.getElementById('otherCaseType').addEventListener('change', toggleOtherCaseType);
+        document.getElementById('regional').addEventListener('change', toggleRegionalLanguages);
     </script>
-	<!-- Add this right before the closing </body> tag -->
-<div id="termsModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h3>LawGlitch Partnership Policies</h3>
-        <div class="modal-text">
-            <p><strong>1. Professional Standards:</strong> All professionals must maintain the highest ethical standards and comply with all applicable laws and regulations.</p>
-            <p><strong>2. Service Fees:</strong> LawGlitch charges a 15% commission on consultation fees and a 10% commission on full case representation.</p>
-            <p><strong>3. Client Communication:</strong> All client communications must be conducted through LawGlitch platform for the first 30 days.</p>
-            <p><strong>4. Availability:</strong> Professionals must maintain accurate availability calendars and respond to client inquiries within 24 hours.</p>
-            <p><strong>5. Background Checks:</strong> LawGlitch reserves the right to verify credentials and perform background checks on all professionals.</p>
-            <p><strong>6. Termination:</strong> Either party may terminate the partnership with 30 days notice. LawGlitch may terminate immediately for violations of these terms.</p>
-            <p><strong>7. Data Protection:</strong> Professionals must protect client confidentiality and comply with all data protection regulations.</p>
-        </div>
-    </div>
-</div>
-
-<script>
-// Add this to your existing JavaScript
-function showTermsPopup() {
-    document.getElementById('termsModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-}
-
-function closeTermsModal() {
-    document.getElementById('termsModal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
-}
-
-// Close modal when clicking outside content
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('termsModal');
-    if (event.target === modal) {
-        closeTermsModal();
-    }
-});
-
-// Close modal when clicking the X button
-document.querySelector('.close-btn').addEventListener('click', closeTermsModal);
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeTermsModal();
-    }
-});
-</script>
 </body>
 </html>
