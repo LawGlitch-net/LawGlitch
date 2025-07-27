@@ -1274,12 +1274,7 @@ document.getElementById('proForm').addEventListener('submit', async function(e) 
         return;
     }
     
-    // Check case types selection
-    const caseTypes = document.querySelectorAll('input[name="caseTypes[]"]:checked');
-    if (caseTypes.length === 0) {
-        showError('Please select at least one case type specialization');
-        return;
-    }
+   
     
     // Check languages selection
     const languages = document.querySelectorAll('input[name="languages[]"]:checked');
@@ -1310,11 +1305,7 @@ document.getElementById('proForm').addEventListener('submit', async function(e) 
     try {
         const formData = new FormData(form);
         
-        // Prepare case types text
-        const caseTypesText = Array.from(caseTypes).map(ct => 
-            ct.value === 'Other' ? `Other: ${document.getElementById('otherCaseTypeText').value}` : ct.value
-        ).join(', ');
-        
+       
         // Prepare languages text
         const languagesText = Array.from(languages).map(lang => 
             lang.value === 'Regional' ? `Regional: ${document.getElementById('regionalLanguagesText').value}` : lang.value
@@ -1329,7 +1320,6 @@ Profession: ${formData.get('profession')}
 Specialization: ${formData.get('specialization')}
 Experience: ${formData.get('experience')} years
 Qualification: ${formData.get('qualification')}
-Case Types: ${caseTypesText}
 Languages: ${languagesText}
 Location: ${formData.get('city')}, ${formData.get('country')}
 Practice Type: ${formData.get('practiceType')}
