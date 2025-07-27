@@ -1099,6 +1099,201 @@ input, select, textarea {
     background-position: center 25%; /* Adjust this percentage */
     z-index: -1;
 }
+	    /* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(30, 30, 40, 0.95);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.modal-columns {
+    display: flex;
+    gap: 30px;
+}
+
+.pro-info {
+    flex: 1;
+    color: white;
+}
+
+.booking-form {
+    flex: 1;
+    color: white;
+}
+
+.modal-pro-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.pro-meta {
+    margin: 8px 0;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pro-description {
+    margin-top: 20px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.instruction {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+
+.time-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.time-slots select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: all 0.3s;
+}
+
+.time-slots select:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #4a90e2, #3a7bd5);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, #3a7bd5, #4a90e2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.success-message {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(46, 125, 50, 0.2);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 6px;
+    color: #a5d6a7;
+    display: none;
+}
+
+.book-btn {
+    background: linear-gradient(135deg, #4a90e2, #3a7bd5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.book-btn:hover {
+    background: linear-gradient(135deg, #3a7bd5, #4a90e2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-columns {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1261,7 +1456,55 @@ input, select, textarea {
         </div>
     </div>
 </section>
-
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-columns">
+            <div class="pro-info">
+                <img id="modalProImage" src="" alt="Professional" class="modal-pro-image">
+                <h2 id="modalProName"></h2>
+                <p id="modalProSpecialization" class="pro-meta"></p>
+                <p id="modalProLocation" class="pro-meta">📍 <span></span></p>
+                <p id="modalProPricing" class="pro-meta">💲 <span></span></p>
+                <p id="modalProHours" class="pro-meta">🕒 <span></span></p>
+                <p id="modalProDescription" class="pro-description"></p>
+            </div>
+            
+            <div class="booking-form">
+                <h3>Book Appointment</h3>
+                <p class="instruction">Select 3 preferred time slots (choose up to 4)</p>
+                
+                <div class="time-slots">
+                    <select id="timeSlot1" required>
+                        <option value="">Select Time 1 (Required)</option>
+                    </select>
+                    <select id="timeSlot2" required>
+                        <option value="">Select Time 2 (Required)</option>
+                    </select>
+                    <select id="timeSlot3" required>
+                        <option value="">Select Time 3 (Required)</option>
+                    </select>
+                    <select id="timeSlot4">
+                        <option value="">Select Time 4 (Optional)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" id="userName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="userEmail" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="userWhatsApp" placeholder="WhatsApp Number" required>
+                </div>
+                
+                <button id="submitBookingBtn" class="submit-btn">Book Appointment</button>
+                <div id="bookingSuccess" class="success-message"></div>
+            </div>
+        </div>
+    </div>
+</div>
     <footer>
         <div class="footer-links">
             <a href="#">Home</a>
