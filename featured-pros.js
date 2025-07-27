@@ -1,56 +1,12 @@
-// Featured professionals data
+// Featured professionals data - Now using IDs from pros.js database
 const featuredProfessionals = [
-    {
-        id: 101,
-        name: "Dr. Khalid Al-Farsi",
-        profession: "Legal Consultant",
-        specialization: "International Law",
-        experience: 20,
-        rating: 5,
-        fee: 15000,
-        description: "Renowned legal expert with experience in international arbitration and cross-border disputes.",
-        image: "https://randomuser.me/api/portraits/men/65.jpg",
-        whatsapp: "+966501234567"
-    },
-    {
-        id: 102,
-        name: "Sarah Al-Jaberi",
-        profession: "Investment Banker",
-        specialization: "Mergers & Acquisitions",
-        experience: 15,
-        rating: 4.9,
-        fee: 12000,
-        description: "Leading M&A expert with successful deals across the Middle East and Europe.",
-        image: "https://randomuser.me/api/portraits/women/72.jpg",
-        whatsapp: "+971501234567"
-    },
-    {
-        id: 103,
-        name: "Majid Al-Rashid",
-        profession: "Tax Attorney",
-        specialization: "International Taxation",
-        experience: 18,
-        rating: 4.8,
-        fee: 10000,
-        description: "Specialist in international tax planning and compliance for multinational corporations.",
-        image: "https://randomuser.me/api/portraits/men/85.jpg",
-        whatsapp: "+9647001234567"
-    },
-    {
-        id: 104,
-        name: "Aisha Al-Nouri",
-        profession: "Corporate Lawyer",
-        specialization: "IP Law",
-        experience: 12,
-        rating: 4.7,
-        fee: 9000,
-        description: "Expert in intellectual property protection and commercialization strategies.",
-        image: "https://randomuser.me/api/portraits/women/88.jpg",
-        whatsapp: "+966541234567"
-    }
-];
+    professionals.find(pro => pro.id === 1),  // Rajesh Sharma
+    professionals.find(pro => pro.id === 2),  // Priya Patel
+    professionals.find(pro => pro.id === 5),  // Vikram Reddy
+    professionals.find(pro => pro.id === 7)   // Amit Joshi
+].filter(pro => pro); // Filter out any undefined entries
 
-// Display featured professionals
+// Display featured professionals with booking functionality
 function displayFeaturedPros() {
     const featuredContainer = document.getElementById('featuredPros');
     
@@ -75,18 +31,19 @@ function displayFeaturedPros() {
         
         const featuredCard = document.createElement('div');
         featuredCard.className = 'featured-card';
+        featuredCard.dataset.proId = pro.id;
         
         featuredCard.innerHTML = `
             <img src="${pro.image}" alt="${pro.name}" class="featured-image">
             <h3>${pro.name}</h3>
-            <p style="color: var(--accent-gold); margin: 0.5rem 0;">${pro.profession}</p>
+            <p style="color: var(--accent-gold); margin: 0.5rem 0;">${pro.profession} - ${pro.specialization}</p>
             <div style="color: var(--accent-gold); margin: 0.5rem 0;">${stars}</div>
             <p style="font-size: 0.9rem; margin: 0.5rem 0; text-align: center;">${pro.description}</p>
             <p style="margin: 0.5rem 0;"><strong>${pro.experience}+ years experience</strong></p>
             <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 1rem;">
-                <span style="font-weight: bold; color: var(--accent-gold);">RS ${pro.fee.toLocaleString()}</span>
-                <button class="whatsapp-btn" onclick="window.open('https://wa.me/${pro.whatsapp}', '_blank')">
-                    <i class="fab fa-whatsapp"></i> Contact
+                <span style="font-weight: bold; color: var(--accent-gold);">₹${pro.fee.toLocaleString()}</span>
+                <button class="book-btn" onclick="openBookingModal(${pro.id})">
+                    <i class="fas fa-calendar-alt"></i> Book Now
                 </button>
             </div>
         `;
