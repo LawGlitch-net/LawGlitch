@@ -2,23 +2,23 @@
 const advertisements = [
     {
         id: 1,
-        image: "https://via.placeholder.com/1200x400/1E1E1E/D4AF37?text=Premium+Legal+Services",
-        link: "https://example.com/legal-services"
+        image: "image-ads/advertisement (1).png",
+        link: "https://lawglitch-net.github.io/LawGlitch/#searchInput"
     },
     {
         id: 2,
-        image: "image-ads/ads-1.jpg",
-        link: "https://example.com/financial-offer"
+        image: "image-ads/advertisement (2).png",
+        link: "https://lawglitch-net.github.io/LawGlitch/join-us.html"
     },
     {
         id: 3,
-        image: "https://via.placeholder.com/1200x400/1E1E1E/D4AF37?text=Tax+Season+Special",
-        link: "https://example.com/tax-special"
+        image: "image-ads/advertisement (3).png",
+        link: "https://lawglitch-net.github.io/LawGlitch/join-us.html"
     },
     {
         id: 4,
-        image: "https://via.placeholder.com/1200x400/1E1E1E/D4AF37?text=New+Business+Package",
-        link: null // No link for this ad
+        image: "image-ads/advertisement (4).png",
+        link: "https://lawglitch-net.github.io/LawGlitch/#searchInput"
     }
 ];
 
