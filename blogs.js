@@ -1,105 +1,234 @@
-// Blog data
-const blogs = [
+// Posts data
+const posts = [
     {
         id: 1,
-        title: "Understanding Corporate Law in the Middle East",
-        excerpt: "A comprehensive guide to navigating corporate legal structures in Middle Eastern countries.",
-        content: "<p>Corporate law in the Middle East has evolved significantly over the past decade, with many countries modernizing their legal frameworks to attract foreign investment. This article explores the key aspects of corporate law in major Middle Eastern jurisdictions including Iraq, UAE, and Saudi Arabia.</p><p>One of the most significant developments has been the introduction of free zones with 100% foreign ownership in the UAE. These zones offer tax exemptions and full repatriation of profits, making them attractive for international businesses.</p><p>In Iraq, the legal system is undergoing reforms to align with international standards, particularly in areas of contract enforcement and dispute resolution. Understanding these changes is crucial for businesses operating in the region.</p>",
-        image: "https://via.placeholder.com/800x400/1E1E1E/D4AF37?text=Corporate+Law",
-        author: "Ahmed Al-Mansoori",
+        author: "LegalEagle India",
         authorImage: "https://randomuser.me/api/portraits/men/32.jpg",
-        date: "June 15, 2025"
+        date: "July 30, 2025",
+        text: "When the client says 'just make it work' without understanding the legal implications... 😅 #LawyerLife #IndianLawMemes",
+        images: [
+            "https://via.placeholder.com/600x400/1E1E1E/D4AF37?text=Legal+Meme+1",
+            "https://via.placeholder.com/600x400/1E1E1E/D4AF37?text=Legal+Meme+2"
+        ]
     },
     {
         id: 2,
-        title: "Tax Planning Strategies for 2025",
-        excerpt: "Effective tax planning techniques to optimize your financial position in the coming year.",
-        content: "<p>With changing tax regulations across the Middle East, it's essential to stay informed about new opportunities for tax optimization. This article covers key strategies for individuals and businesses.</p><p>One effective approach is taking advantage of tax treaties between Middle Eastern countries and other jurisdictions. These treaties can help reduce withholding taxes on dividends, interest, and royalties.</p><p>For businesses, structuring operations through free zones can provide significant tax benefits. Many free zones offer corporate tax holidays for periods of 15-50 years, along with exemptions from import/export duties.</p>",
-        image: "https://via.placeholder.com/800x400/1E1E1E/D4AF37?text=Tax+Planning",
-        author: "Nadia Salem",
-        authorImage: "https://randomuser.me/api/portraits/women/68.jpg",
-        date: "May 28, 2025"
+        author: "Supreme Court Memes",
+        authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
+        date: "July 28, 2025",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        text: "How I explain the difference between civil and criminal cases to my friends... 🤣 #LawStudentProblems"
     },
     {
         id: 3,
-        title: "Investment Trends in the Gulf Region",
-        excerpt: "Analyzing the most promising sectors for investment in 2025 and beyond.",
-        content: "<p>The Gulf region continues to offer attractive investment opportunities across various sectors. This article highlights the most promising areas for investors in 2025.</p><p>Renewable energy is one of the fastest-growing sectors, with Saudi Arabia's NEOM project and UAE's Masdar City leading the way. These mega-projects are creating opportunities in solar, wind, and hydrogen energy.</p><p>Technology is another key sector, with governments investing heavily in digital transformation. Fintech, e-commerce, and AI startups are particularly well-positioned to benefit from these initiatives.</p><p>Finally, healthcare and education remain strong sectors as populations grow and demand for quality services increases.</p>",
-        image: "https://via.placeholder.com/800x400/1E1E1E/D4AF37?text=Investment+Trends",
-        author: "Fatima Al-Hashimi",
-        authorImage: "https://randomuser.me/api/portraits/women/44.jpg",
-        date: "April 10, 2025"
+        author: "Bar Council Banter",
+        authorImage: "https://randomuser.me/api/portraits/men/75.jpg",
+        date: "July 25, 2025",
+        text: "Just posted a new video about funny courtroom moments! Check it out!",
+        video: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+        id: 4,
+        author: "IPC Jokes",
+        authorImage: "https://randomuser.me/api/portraits/women/68.jpg",
+        date: "July 20, 2025",
+        text: "When you're trying to explain Section 420 IPC to non-lawyer friends and they just think you're talking about weed... 🌿 #IndianPenalCode #LawHumor"
     }
 ];
 
-// Display blogs in the grid
-function displayBlogs() {
-    const blogsGrid = document.getElementById('blogsGrid');
-    blogsGrid.innerHTML = '';
-    
-    blogs.forEach(blog => {
-        const blogCard = document.createElement('div');
-        blogCard.className = 'blog-card';
-        
-        blogCard.innerHTML = `
-            <img src="${blog.image}" alt="${blog.title}" class="blog-image">
-            <div class="blog-content">
-                <h3 class="blog-title">${blog.title}</h3>
-                <p class="blog-excerpt">${blog.excerpt}</p>
-                <div class="blog-author">
-                    <img src="${blog.authorImage}" alt="${blog.author}" class="author-avatar">
-                    <span class="author-name">Posted by ${blog.author} • ${blog.date}</span>
+// Utility function to safely parse dates
+function parseDate(dateString) {
+    try {
+        return new Date(dateString);
+    } catch (e) {
+        return new Date(); // Fallback to current date
+    }
+}
+
+// Display posts in the feed
+function displayPosts() {
+    const contentFeed = document.getElementById('contentFeed');
+    if (!contentFeed) {
+        console.error('Content feed container not found');
+        return;
+    }
+
+    // Clear existing content
+    contentFeed.innerHTML = '';
+
+    // Sort by date (newest first) with fallback for invalid dates
+    const sortedPosts = [...posts].sort((a, b) => {
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+        return dateB - dateA;
+    });
+
+    sortedPosts.forEach(post => {
+        if (!post.id || !post.author || !post.date) {
+            console.warn('Skipping invalid post:', post);
+            return;
+        }
+
+        const postCard = document.createElement('div');
+        postCard.className = 'post-card';
+
+        // Build media content with safety checks
+        let mediaContent = '';
+        if (post.video) {
+            try {
+                const url = new URL(post.video);
+                mediaContent = `
+                    <div class="post-video">
+                        <iframe src="${url.href}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+            } catch (e) {
+                console.error('Invalid video URL:', post.video);
+            }
+        } else if (post.images && post.images.length > 0) {
+            const validImages = post.images.filter(img => {
+                try {
+                    new URL(img);
+                    return true;
+                } catch (e) {
+                    console.error('Invalid image URL:', img);
+                    return false;
+                }
+            });
+
+            if (validImages.length > 0) {
+                const imageClass = validImages.length > 2 ? 'grid-layout' : '';
+                mediaContent = `
+                    <div class="post-images ${imageClass}">
+                        ${validImages.map(img => `
+                            <img src="${img}" alt="Post image" class="post-image" onerror="this.style.display='none'">
+                        `).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        // Safely escape text content
+        const safeText = post.text ? post.text.replace(/</g, '&lt;').replace(/>/g, '&gt;') : '';
+
+        postCard.innerHTML = `
+            <div class="post-header">
+                <img src="${post.authorImage || 'https://via.placeholder.com/40'}" alt="${post.author}" class="author-avatar" onerror="this.src='https://via.placeholder.com/40'">
+                <div class="post-author">
+                    <span class="author-name">${post.author || 'Unknown Author'}</span>
+                    <span class="post-date">${post.date || 'No date'}</span>
                 </div>
-                <span class="read-more" data-id="${blog.id}">Read More →</span>
+            </div>
+            <div class="post-text">${safeText}</div>
+            ${mediaContent}
+            <div class="post-actions">
+                <button class="share-btn" data-id="${post.id}">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path>
+                    </svg>
+                    Share
+                </button>
             </div>
         `;
-        
-        blogsGrid.appendChild(blogCard);
+
+        contentFeed.appendChild(postCard);
     });
-    
-    // Add event listeners to read more buttons
-    document.querySelectorAll('.read-more').forEach(button => {
+
+    // Add event listeners to share buttons
+    document.querySelectorAll('.share-btn').forEach(button => {
         button.addEventListener('click', function() {
-            const blogId = parseInt(this.getAttribute('data-id'));
-            openBlogModal(blogId);
+            const postId = parseInt(this.getAttribute('data-id'));
+            if (!isNaN(postId)) {
+                sharePost(postId);
+            }
         });
     });
 }
 
-// Open blog modal
-function openBlogModal(blogId) {
-    const blog = blogs.find(b => b.id === blogId);
-    if (!blog) return;
+// Share post function
+function sharePost(postId) {
+    const post = posts.find(p => p.id === postId);
+    if (!post) {
+        console.error('Post not found:', postId);
+        return;
+    }
+
+    const postUrl = `${window.location.origin}${window.location.pathname}?post=${postId}`;
     
-    document.getElementById('modalImage').src = blog.image;
-    document.getElementById('modalTitle').textContent = blog.title;
-    document.getElementById('modalAuthorImg').src = blog.authorImage;
-    document.getElementById('modalAuthorName').textContent = `By ${blog.author} • ${blog.date}`;
-    document.getElementById('modalText').innerHTML = blog.content;
-    
-    const modal = document.getElementById('blogModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    // Modern clipboard API with fallback
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(postUrl).then(() => {
+            showToast('Link copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            fallbackCopyToClipboard(postUrl);
+        });
+    } else {
+        fallbackCopyToClipboard(postUrl);
+    }
 }
 
-// Close blog modal
-function closeBlogModal() {
-    const modal = document.getElementById('blogModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-// Initialize blogs
-document.addEventListener('DOMContentLoaded', () => {
-    displayBlogs();
+// Fallback for older browsers
+function fallbackCopyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';  // Prevent scrolling to bottom
+    document.body.appendChild(textarea);
+    textarea.select();
     
-    // Close modal when clicking X
-    document.getElementById('closeModal').addEventListener('click', closeBlogModal);
-    
-    // Close modal when clicking outside content
-    document.getElementById('blogModal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeBlogModal();
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showToast('Link copied to clipboard!');
+        } else {
+            showToast('Press Ctrl+C to copy');
         }
-    });
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
+        showToast('Failed to copy link');
+    }
+    
+    document.body.removeChild(textarea);
+}
+
+// Show toast notification
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Remove after delay
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            if (toast.parentNode) {
+                document.body.removeChild(toast);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if content feed exists
+    if (document.getElementById('contentFeed')) {
+        displayPosts();
+    } else {
+        console.error('Content feed element not found');
+    }
 });
+
+// Export for testing/module use if needed
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        posts,
+        displayPosts,
+        sharePost
+    };
+}
