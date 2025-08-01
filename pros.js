@@ -1,4 +1,4 @@
-// Professional Database with Enhanced Fields
+// Professional Database with Enhanced Fields and Verification Status
 const professionals = [
     {
         id: 1,
@@ -14,7 +14,8 @@ const professionals = [
         description: "Specialized in corporate law with extensive experience in mergers and acquisitions. Expert in company formation and compliance.",
         workingHours: "10:00 AM - 7:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/32.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes" // Added verification status
     },
     {
         id: 2,
@@ -30,7 +31,8 @@ const professionals = [
         description: "Certified financial planner helping clients grow their wealth through strategic investment planning and mutual funds.",
         workingHours: "9:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     },
     {
         id: 3,
@@ -46,7 +48,8 @@ const professionals = [
         description: "Expert in GST, income tax, and financial reporting for small and medium businesses. CA qualified.",
         workingHours: "10:00 AM - 5:00 PM, Tue-Sat",
         image: "https://randomuser.me/api/portraits/men/75.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "no"
     },
     {
         id: 4,
@@ -62,7 +65,8 @@ const professionals = [
         description: "Compassionate family law attorney with expertise in divorce, child custody, and matrimonial disputes.",
         workingHours: "11:00 AM - 8:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/women/63.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     },
     {
         id: 5,
@@ -78,7 +82,8 @@ const professionals = [
         description: "Helping clients plan for secure retirement with personalized financial strategies and pension planning.",
         workingHours: "9:00 AM - 5:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/men/81.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "no"
     },
     {
         id: 6,
@@ -94,7 +99,8 @@ const professionals = [
         description: "Chartered accountant with expertise in financial auditing, compliance, and statutory reporting.",
         workingHours: "10:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/68.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     },
     {
         id: 7,
@@ -110,7 +116,8 @@ const professionals = [
         description: "Expert criminal defense attorney with a strong track record in complex criminal cases and bail applications.",
         workingHours: "10:00 AM - 7:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/45.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "no"
     },
     {
         id: 8,
@@ -126,7 +133,8 @@ const professionals = [
         description: "Skilled financial analyst helping businesses optimize their financial performance and cash flow management.",
         workingHours: "9:00 AM - 6:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/32.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     },
     {
         id: 9,
@@ -142,7 +150,8 @@ const professionals = [
         description: "Specialist in property law, real estate transactions, and property disputes. Expert in RERA compliance.",
         workingHours: "10:00 AM - 6:00 PM, Mon-Sat",
         image: "https://randomuser.me/api/portraits/men/28.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "no"
     },
     {
         id: 10,
@@ -158,7 +167,8 @@ const professionals = [
         description: "Certified insurance advisor specializing in life, health, and general insurance planning for individuals and families.",
         workingHours: "10:30 AM - 6:30 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/56.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     },
     {
         id: 11,
@@ -174,7 +184,8 @@ const professionals = [
         description: "GST expert with comprehensive knowledge of indirect tax compliance, returns filing, and GST audits.",
         workingHours: "11:00 AM - 7:00 PM, Tue-Sat",
         image: "https://randomuser.me/api/portraits/men/65.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "no"
     },
     {
         id: 12,
@@ -190,11 +201,12 @@ const professionals = [
         description: "Labour law specialist handling employment disputes, industrial relations, and HR compliance matters.",
         workingHours: "10:00 AM - 6:00 PM, Mon-Fri",
         image: "https://randomuser.me/api/portraits/women/41.jpg",
-        whatsapp: ""
+        whatsapp: "",
+        verified: "yes"
     }
 ];
 
-// Location Mapping (unchanged)
+// Location Mapping
 const locationMap = {
     'mumbai': { 
         aliases: ['mumbai', 'bombay', 'maharashtra mumbai', 'mumbai city'],
@@ -243,7 +255,7 @@ const locationMap = {
     }
 };
 
-// Search Keywords (unchanged)
+// Search Keywords
 const searchKeywords = {
     professions: {
         'lawyer': ['lawyer', 'attorney', 'advocate', 'legal', 'counsel', 'barrister', 'solicitor', 'law', 'lawyers'],
@@ -266,7 +278,7 @@ const searchKeywords = {
     }
 };
 
-// Distance Calculation (unchanged)
+// Distance Calculation
 function calculateDistance(lat1, lng1, lat2, lng2) {
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -278,7 +290,7 @@ function calculateDistance(lat1, lng1, lat2, lng2) {
     return R * c;
 }
 
-// Natural Query Parsing (unchanged)
+// Natural Query Parsing
 function parseNaturalQuery(query) {
     const queryLower = query.toLowerCase();
     const criteria = {
@@ -375,7 +387,7 @@ function parseNaturalQuery(query) {
     return criteria;
 }
 
-// Search Professionals (unchanged)
+// Search Professionals
 function searchProfessionals(query) {
     if (!query || query.trim() === '') return professionals;
     
@@ -453,7 +465,7 @@ function searchProfessionals(query) {
     return results;
 }
 
-// Filter Professionals (unchanged)
+// Filter Professionals
 function filterProfessionals(pros) {
     const professionFilter = document.getElementById('professionFilter')?.value || '';
     const locationFilter = document.getElementById('locationFilter')?.value || '';
@@ -470,7 +482,7 @@ function filterProfessionals(pros) {
     });
 }
 
-// Display Professionals (updated for booking modal)
+// Display Professionals with Share Button and Verified Badge
 function displayProfessionals(pros) {
     const prosGrid = document.getElementById('prosGrid');
     if (!prosGrid) return;
@@ -492,11 +504,34 @@ function displayProfessionals(pros) {
         
         const stars = '★'.repeat(Math.floor(pro.rating)) + '☆'.repeat(5 - Math.floor(pro.rating));
         
+        // Verified badge HTML
+        const verifiedBadge = pro.verified === "yes" 
+            ? '<span class="verified-badge" title="Verified Professional"><i class="fas fa-check-circle"></i></span>' 
+            : '';
+        
+        // Share button HTML
+        const shareButton = `
+            <div class="share-dropdown">
+                <button class="share-btn" onclick="toggleShareDropdown(${pro.id})">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+                <div class="share-dropdown-content" id="shareDropdown-${pro.id}">
+                    <a href="#" onclick="shareProfessional('${pro.id}', 'whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="#" onclick="shareProfessional('${pro.id}', 'telegram')"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="#" onclick="shareProfessional('${pro.id}', 'email')"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="#" onclick="copyProfileLink('${pro.id}')"><i class="fas fa-link"></i> Copy Link</a>
+                </div>
+            </div>
+        `;
+        
         proCard.innerHTML = `
             <img src="${pro.image}" alt="${pro.name}" class="pro-image">
             <div class="pro-details">
                 ${locationBadge}
-                <h3 class="pro-name">${pro.name}</h3>
+                <div class="pro-name-container">
+                    <h3 class="pro-name">${pro.name} ${verifiedBadge}</h3>
+                    ${shareButton}
+                </div>
                 <span class="pro-profession">${pro.profession}</span>
                 <div class="pro-rating" title="${pro.rating.toFixed(1)}/5">${stars}</div>
                 <p class="pro-experience">${pro.experience}+ years experience</p>
@@ -516,7 +551,74 @@ function displayProfessionals(pros) {
     });
 }
 
-// Toggle Filters (unchanged)
+// Share Professional Profile
+function shareProfessional(proId, platform) {
+    const pro = professionals.find(p => p.id === parseInt(proId));
+    if (!pro) return;
+    
+    const profileUrl = `${window.location.origin}${window.location.pathname}?proId=${proId}`;
+    const shareText = `Check out ${pro.name}, ${pro.profession} specializing in ${pro.specialization} in ${pro.location}. Book an appointment: ${profileUrl}`;
+    
+    switch (platform) {
+        case 'whatsapp':
+            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank');
+            break;
+        case 'telegram':
+            window.open(`https://t.me/share/url?url=${encodeURIComponent(profileUrl)}&text=${encodeURIComponent(shareText)}`, '_blank');
+            break;
+        case 'email':
+            window.open(`mailto:?subject=${encodeURIComponent(`Professional Recommendation: ${pro.name}`)}&body=${encodeURIComponent(shareText)}`, '_blank');
+            break;
+        case 'link':
+            // For direct link clicks in the modal, just copy the link
+            copyProfileLink(proId);
+            break;
+        default:
+            // For direct links from shared URLs, open the booking modal
+            openBookingModal(parseInt(proId));
+    }
+}
+
+// Copy Profile Link
+function copyProfileLink(proId) {
+    const profileUrl = `${window.location.origin}${window.location.pathname}?proId=${proId}`;
+    navigator.clipboard.writeText(profileUrl).then(() => {
+        alert('Profile link copied to clipboard! This link will open the booking form.');
+    }).catch(err => {
+        console.error('Failed to copy link: ', err);
+        alert('Failed to copy link. Please try again.');
+    });
+}
+
+// Toggle Share Dropdown
+function toggleShareDropdown(proId) {
+    const dropdown = document.getElementById(`shareDropdown-${proId}`);
+    if (!dropdown) return;
+    
+    // Close all other dropdowns first
+    document.querySelectorAll('.share-dropdown-content').forEach(dd => {
+        if (dd.id !== `shareDropdown-${proId}`) {
+            dd.style.display = 'none';
+        }
+    });
+    
+    // Toggle current dropdown
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'block';
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function closeDropdown(e) {
+        if (!dropdown.contains(e.target) && e.target.className !== 'share-btn' && !e.target.closest('.share-btn')) {
+            dropdown.style.display = 'none';
+            document.removeEventListener('click', closeDropdown);
+        }
+    });
+}
+
+// Toggle Filters
 function toggleFilters() {
     const filterOptions = document.getElementById('filterOptions');
     const filterToggle = document.getElementById('filterToggle');
@@ -532,7 +634,7 @@ function toggleFilters() {
     }
 }
 
-// Perform Search (unchanged)
+// Perform Search
 function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput ? searchInput.value.trim() : '';
@@ -586,7 +688,7 @@ function performSearch() {
     }
 }
 
-// Reset Filters (unchanged)
+// Reset Filters
 function resetFilters() {
     const filters = ['professionFilter', 'locationFilter', 'experienceFilter', 'priceFilter'];
     filters.forEach(filterId => {
@@ -609,7 +711,20 @@ function openBookingModal(proId) {
     // Populate professional info
     document.getElementById('modalProImage').src = pro.image;
     document.getElementById('modalProImage').alt = pro.name;
-    document.getElementById('modalProName').textContent = pro.name;
+    
+    // Add verified badge if professional is verified
+    const verifiedBadge = pro.verified === "yes" 
+        ? '<span class="verified-badge" title="Verified Professional"><i class="fas fa-check-circle"></i></span>' 
+        : '';
+    
+    // Add share button
+    const shareButton = `
+        <button class="share-btn" onclick="event.stopPropagation(); shareProfessional('${pro.id}', 'link')">
+            <i class="fas fa-share-alt"></i>
+        </button>
+    `;
+    
+    document.getElementById('modalProName').innerHTML = `${pro.name} ${verifiedBadge} ${shareButton}`;
     document.getElementById('modalProSpecialization').textContent = `${pro.profession} - ${pro.specialization}`;
     document.getElementById('modalProLocation').querySelector('span').textContent = pro.location;
     document.getElementById('modalProPricing').querySelector('span').textContent = pro.pricing || `₹${pro.fee.toLocaleString()}`;
@@ -723,7 +838,7 @@ async function submitBooking() {
     }
 }
 
-// Initialize (updated)
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // Hide filters by default
     const filterOptions = document.getElementById('filterOptions');
@@ -777,8 +892,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Submit booking form
     document.getElementById('submitBookingBtn').addEventListener('click', submitBooking);
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.share-dropdown')) {
+            document.querySelectorAll('.share-dropdown-content').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        }
+    });
 });
-
+// Check for proId in URL and open booking modal if present
+const urlParams = new URLSearchParams(window.location.search);
+const proId = urlParams.get('proId');
+if (proId) {
+    openBookingModal(parseInt(proId));
+}
 // Export functions
 window.searchProfessionals = searchProfessionals;
 window.filterProfessionals = filterProfessionals;
@@ -786,3 +915,6 @@ window.performSearch = performSearch;
 window.openBookingModal = openBookingModal;
 window.closeBookingModal = closeBookingModal;
 window.submitBooking = submitBooking;
+window.toggleShareDropdown = toggleShareDropdown;
+window.shareProfessional = shareProfessional;
+window.copyProfileLink = copyProfileLink;
