@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAWGLITCH - Hire Top Professionals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
     <style>
@@ -1068,7 +1068,7 @@ input, select, textarea {
 /* Responsive Background Images */
 @media screen and (min-width: 769px) {
     .marketing-hero {
-        background-image: url('hero-section-pc-real.png');
+          background-image: url('hero-section-pc-real.png');
     }
 }
 
@@ -1102,7 +1102,7 @@ input, select, textarea {
     background-position: center 25%; /* Adjust this percentage */
     z-index: -1;
 }
-	    /* Modal Styles */
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -1297,6 +1297,291 @@ input, select, textarea {
         padding: 20px;
     }
 }
+/* Verified Badge */
+.verified-badge {
+    display: inline-block;
+    margin-left: 5px;
+    color: #FFD700; /* Gold color */
+    font-size: 0.9em;
+    vertical-align: middle;
+}
+
+.dark-mode .verified-badge {
+    color: #FFD700; /* Gold color for dark mode */
+}
+
+.light-mode .verified-badge {
+    color: #28a745; /* Green color for light mode */
+}
+
+/* Share Button */
+.pro-name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.share-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--primary-color);
+}
+
+.share-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.share-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.share-dropdown-content a {
+    color: var(--text-color);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.share-dropdown-content a:hover {
+    background-color: var(--primary-color-light);
+    color: white;
+}
+
+.share-dropdown-content i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Modal Verified Badge */
+#modalVerifiedBadge {
+    display: inline-block;
+    margin-left: 8px;
+    color: #FFD700;
+    font-size: 1em;
+}
+ /* Content Feed Styles - YouTube-like Community Posts */
+    #contentFeed {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .post-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 16px;
+        margin-bottom: 24px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .post-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .author-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 12px;
+        object-fit: cover;
+        border: 2px solid var(--accent-gold);
+    }
+
+    .post-author {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-name {
+        font-weight: 600;
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    .post-date {
+        font-size: 0.8rem;
+        color: var(--secondary-color);
+        margin-top: 2px;
+    }
+
+    .post-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--text-light);
+        margin-bottom: 12px;
+        white-space: pre-line;
+    }
+
+    .post-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .post-images.grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .post-image {
+        width: 100%;
+        border-radius: 8px;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .post-image:hover {
+        transform: scale(1.02);
+    }
+
+    .post-video {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        margin-bottom: 12px;
+        border-radius: 8px;
+    }
+
+    .post-video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+    }
+
+    .post-actions {
+        display: flex;
+        padding-top: 12px;
+        border-top: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .share-btn {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        color: var(--accent-gold);
+        font-size: 0.9rem;
+        cursor: pointer;
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    .share-btn:hover {
+        background-color: rgba(212, 175, 55, 0.1);
+    }
+
+    .share-btn svg {
+        margin-right: 8px;
+        fill: var(--accent-gold);
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Toast notification */
+    .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 1000;
+    }
+
+    .toast.show {
+        opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .post-images {
+            grid-template-columns: 1fr;
+        }
+        
+        .post-images.grid-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+	.container {
+        overflow-y: auto; /* Ensure it remains scrollable */
+        height: 100vh; /* Or use min-height as needed */
+        padding-bottom: 100px; /* Space at bottom */
+    }
+
+    /* Content Feed Styles - Fixed version */
+    #contentFeed {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 16px;
+        overflow: visible; /* Important - don't constrain scrolling here */
+    }
+
+    .blogs-container {
+        padding-bottom: 2rem; /* Space below posts */
+    }
+
+    /* Keep all your post styling the same as before */
+    .post-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        padding: 16px;
+        margin-bottom: 24px;
+    }
+    
+    /* Ensure footer stays at bottom */
+    footer {
+        position: relative;
+        z-index: 1;
+    }
     </style>
 </head>
 <body>
@@ -1370,52 +1655,12 @@ input, select, textarea {
             <button class="carousel-btn next" id="nextAd"><i class="fas fa-chevron-right"></i></button>
         </section>
 
-        <section class="featured-pros">
-            <h2 class="section-title">Featured Professionals</h2>
-            <div class="featured-container" id="featuredPros">
-                <!-- Featured pros will be loaded here by featured-pros.js -->
-            </div>
-        </section>
-
-
-<!-- How It Works Section -->
-<section class="how-it-works" style="padding: 3rem 5%; background-color: var(--primary-bg);">
-    <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">How It Works</h2>
-        
-        <div class="steps-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; position: relative;">
-            <!-- Connecting line for visual flow -->
-            <div class="connecting-line" style="position: absolute; height: 3px; background: linear-gradient(90deg, var(--accent-gold), transparent); width: 80%; top: 50%; left: 10%; z-index: 1; display: none;"></div>
-            
-            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
-                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">1</div>
-                <i class="fas fa-search" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Search</h3>
-                <p style="color: var(--text-light); opacity: 0.9;">Find professionals by expertise, location, or service needed.</p>
-            </div>
-            
-            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
-                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">2</div>
-                <i class="fas fa-sliders-h" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Filter</h3>
-                <p style="color: var(--text-light); opacity: 0.9;">Refine results by experience, pricing, or availability.</p>
-            </div>
-            
-            <div class="step-card" style="background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); text-align: center; box-shadow: var(--box-shadow); position: relative; z-index: 2;">
-                <div class="step-number" style="width: 50px; height: 50px; background-color: var(--accent-gold); color: var(--text-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem; box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);">3</div>
-                <i class="fas fa-handshake" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Hire</h3>
-                <p style="color: var(--text-light); opacity: 0.9;">Connect instantly and get your legal or financial matters resolved.</p>
-            </div>
-        </div>
-    </div>
-</section>
-        <section class="blogs-container" id="blogs">
-            <h2 class="section-title">Latest Blogs</h2>
-            <div class="blogs-grid" id="blogsGrid">
-                <!-- Blogs will be loaded here by blogs.js -->
-            </div>
-        </section>
+      <div class="container"> <!-- This should be scrollable -->
+    <section class="blogs-container" id="blogs">
+        <h2 class="section-title">Latest Blogs</h2>
+        <div id="contentFeed"></div> <!-- Posts go here -->
+    </section>
+</div>
     </div>
 
     <div class="blog-modal" id="blogModal">
@@ -1428,8 +1673,19 @@ input, select, textarea {
                 <span class="author-name" id="modalAuthorName"></span>
             </div>
             <div class="modal-text" id="modalText"></div>
+			</section>
         </div>
     </div>
+      <section class="lawglitch-featured-pros-container" id="lawglitch-featured-pros-container">
+    <h2 class="lawglitch-section-title">Featured Legal Professionals</h2>
+    <button class="lawglitch-scroll-btn lawglitch-scroll-left">&lt;</button>
+    <div class="lawglitch-featured-pros" id="lawglitch-featured-pros">
+        <!-- Featured pros will be loaded here by the self-contained JS -->
+    </div>
+    <button class="lawglitch-scroll-btn lawglitch-scroll-right">&gt;</button>
+</section>
+
+
 <!-- About LawGlitch Section -->
 <section class="about-section" style="padding: 3rem 5%; background-color: var(--secondary-bg);">
     <div class="container" style="max-width: 1200px; margin: 0 auto;">
