@@ -908,6 +908,173 @@ const proId = urlParams.get('proId');
 if (proId) {
     openBookingModal(parseInt(proId));
 }
+// =============================================
+// BOOKING MODAL TEXT CONTRAST FIX
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Inject CSS that properly handles text contrast
+    const style = document.createElement('style');
+    style.id = 'booking-modal-contrast-fix';
+    style.textContent = `
+        /* Ensure proper text contrast in both themes */
+        #bookingModal .modal-content {
+            background: var(--secondary-bg) !important;
+            color: var(--text-light) !important;
+        }
+        
+        /* Professional info section - darker text for better readability */
+        #bookingModal .pro-info {
+            color: var(--text-light) !important;
+        }
+        
+        /* Description text - slightly darker than regular text */
+        #bookingModal .pro-description {
+            color: var(--text-light) !important;
+            opacity: 0.9 !important;
+        }
+        
+        /* Meta information (location, pricing, hours) */
+        #bookingModal .pro-meta {
+            color: var(--text-light) !important;
+            opacity: 0.85 !important;
+        }
+        
+        /* Form labels and instructions */
+        #bookingModal .instruction {
+            color: var(--text-light) !important;
+            opacity: 0.9 !important;
+        }
+        
+        /* Input fields */
+        #bookingModal select,
+        #bookingModal input {
+            background: var(--card-bg) !important;
+            color: var(--text-light) !important;
+            border-color: var(--accent-gold) !important;
+        }
+        
+        /* Placeholder text */
+        #bookingModal ::placeholder {
+            color: var(--text-light) !important;
+            opacity: 0.7 !important;
+        }
+        
+        /* Submit button */
+        #bookingModal .submit-btn {
+            background: var(--accent-gold) !important;
+            color: var(--text-dark) !important;
+            font-weight: bold !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Function to enhance text contrast based on theme
+    function enhanceModalContrast() {
+        const modal = document.getElementById('bookingModal');
+        if (!modal) return;
+
+        const isDarkMode = document.body.getAttribute('data-theme') === 'dark' || 
+                         (!document.body.hasAttribute('data-theme') && 
+                          window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        // Adjust text opacity based on theme
+        const textElements = modal.querySelectorAll('.pro-description, .pro-meta, .instruction');
+        textElements.forEach(el => {
+            el.style.opacity = isDarkMode ? '0.85' : '0.95';
+        });
+
+        // Special handling for the main content
+        const mainContent = modal.querySelector('.modal-content');
+        if (mainContent) {
+            mainContent.style.color = isDarkMode ? 
+                'rgba(255, 255, 255, 0.95)' : 
+                'rgba(0, 0, 0, 0.85)';
+        }
+    }
+
+    // Override the openModal function to enhance contrast when opened
+    const originalOpenModal = window.openBookingModal;
+    window.openBookingModal = function(proId) {
+        originalOpenModal(proId);
+        // Small delay to ensure modal is fully rendered
+        setTimeout(enhanceModalContrast, 50);
+    };
+
+    // Watch for theme changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+                enhanceModalContrast();
+            }
+        });
+    });
+
+    observer.observe(document.body, {
+        attributes: true
+    });
+
+    // Initialize when modal is already open (from URL parameter)
+    if (document.getElementById('bookingModal')?.classList.contains('show')) {
+        enhanceModalContrast();
+    }
+});
+// =============================================
+// PRO CARD DESCRIPTION VISIBILITY FIX
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Inject CSS specifically for pro card description
+    const style = document.createElement('style');
+    style.id = 'pro-card-description-fix';
+    style.textContent = `
+        /* Fix for pro card description visibility */
+        .pro-card .pro-description {
+            color: var(--text-light) !important;
+            opacity: 0.9 !important;
+        }
+        
+        /* Slightly darker in light mode for better contrast */
+        [data-theme="light"] .pro-card .pro-description {
+            opacity: 0.85 !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Function to update description visibility
+    function updateProDescriptions() {
+        const isLightMode = document.body.getAttribute('data-theme') === 'light';
+        const descriptions = document.querySelectorAll('.pro-card .pro-description');
+        
+        descriptions.forEach(desc => {
+            desc.style.color = '';
+            desc.style.opacity = isLightMode ? '0.85' : '0.9';
+        });
+    }
+
+    // Watch for theme changes
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'data-theme') {
+                updateProDescriptions();
+            }
+        });
+    });
+
+    observer.observe(document.body, {
+        attributes: true
+    });
+
+    // Initialize
+    updateProDescriptions();
+
+    // Also update when new cards are loaded (like after search)
+    const originalDisplayProfessionals = window.displayProfessionals;
+    window.displayProfessionals = function(pros) {
+        originalDisplayProfessionals(pros);
+        setTimeout(updateProDescriptions, 50);
+    };
+});
 // Export functions
 window.searchProfessionals = searchProfessionals;
 window.filterProfessionals = filterProfessionals;
