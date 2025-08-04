@@ -1583,132 +1583,77 @@ input, select, textarea {
         position: relative;
         z-index: 1;
     }
-/* ===== Mobile Header & Navigation (768px and below) ===== */
+/* ===== Mobile Header Fix (768px and below) ===== */
 @media (max-width: 768px) {
-  /* 1. Compact Header that hides on scroll */
+  /* 1. Compact Header */
   header {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
     padding: 0.5rem 1rem;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--secondary-bg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    transform: translateY(0);
+    height: 50px; /* Fixed height */
+    z-index: 100;
   }
 
-  header.hide-header {
-    transform: translateY(-100%);
-  }
-
+  /* 2. Logo sizing */
   .logo {
     font-size: 1.2rem;
-    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
   }
 
-  /* 2. Minimal Theme Toggle */
-  .theme-toggle {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .theme-toggle i {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-
-  .theme-toggle span {
-    display: none;
-  }
-
-  /* 3. Hamburger Menu for Navigation */
-  .nav-toggle {
-    display: block;
-    background: transparent;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.4rem;
-    padding: 0.5rem;
-  }
-
+  /* 3. Visible navigation buttons */
   nav ul {
-    position: fixed;
-    top: 3rem;
-    left: 0;
-    width: 100%;
-    background: var(--secondary-bg);
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    margin: 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    display: none;
-  }
-
-  nav ul.show-menu {
-    display: flex;
+    display: flex !important;
+    gap: 0.5rem;
   }
 
   nav ul li {
-    margin: 0.5rem 0;
+    margin-left: 0;
   }
 
   nav ul li a {
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
 
-  /* Adjust content spacing */
-  .marketing-hero,
-  .container {
-    padding-top: 3.5rem !important;
+  /* 4. Compact theme toggle */
+  .theme-toggle {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    min-width: auto;
+  }
+
+  .theme-toggle i {
+    margin-right: 4px;
+    font-size: 0.9rem;
+  }
+
+  /* 5. Header layout adjustments */
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 6. Content spacing adjustment */
+  .marketing-hero {
+    margin-top: 50px; /* Match header height */
   }
 }
-
-/* Header Scroll Behavior */
-let lastScroll = 0;
-window.addEventListener('scroll', function() {
-  if (window.innerWidth <= 768) {
-    const currentScroll = window.pageYOffset;
-    const header = document.querySelector('header');
-    
-    if (currentScroll <= 100) {
-      header.classList.remove('hide-header');
-    } else if (currentScroll > lastScroll) {
-      // Scrolling down
-      header.classList.add('hide-header');
-    } else {
-      // Scrolling up
-      header.classList.remove('hide-header');
-    }
-    lastScroll = currentScroll;
-  }
-});
-
-/* Mobile Menu Toggle */
-document.addEventListener('DOMContentLoaded', function() {
-  const navToggle = document.createElement('button');
-  navToggle.className = 'nav-toggle mobile-only';
-  navToggle.innerHTML = '<i class="fas fa-bars"></i>';
-  document.querySelector('header').appendChild(navToggle);
-
-  navToggle.addEventListener('click', function() {
-    document.querySelector('nav ul').classList.toggle('show-menu');
-  });
-});
     </style>
 </head>
 <body>
