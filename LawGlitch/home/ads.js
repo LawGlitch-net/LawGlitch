@@ -5,19 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample ad data - in a real application, this would come from a server
     const ads = [
         {
-            imageUrl: "https://via.placeholder.com/1200x300/3498db/ffffff?text=Special+Offer+-+20%25+Off+First+Consultation",
-            linkUrl: "offers.html",
-            altText: "Special Offer - 20% Off First Consultation"
+            imageUrl: "/assets/ads/free-10min.png",
+            linkUrl: "../search/index.html",
+            altText: "Special Offer - free 10 min consultation"
         },
         {
-            imageUrl: "https://via.placeholder.com/1200x300/e74c3c/ffffff?text=New+Legal+Services+Available",
-            linkUrl: "services.html",
-            altText: "New Legal Services Available"
+            imageUrl: "/assets/ads/privacy.png",
+            linkUrl: "",
+            altText: "we respect your privacy"
         },
         {
-            imageUrl: "https://via.placeholder.com/1200x300/2ecc71/ffffff?text=Expert+Legal+Advice+24/7",
-            linkUrl: "consultation.html",
-            altText: "Expert Legal Advice 24/7"
+            imageUrl: "/assets/ads/Join-us.png",
+            linkUrl: "../join-us/index.html",
+            altText: "Join now to get the best offers limited time only"
         }
     ];
     
@@ -137,4 +137,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize carousel
     initCarousel();
+
 });
