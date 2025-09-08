@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawGlitch - Login & Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <h1 class="logo">Law<span class="glitch">Glitch</span></h1>
+            <p class="tagline">Your Legal Solutions Partner</p>
+        </div>
+
+        <!-- Auth Forms Container -->
+        <div class="auth-container">
+            <!-- Login Form -->
+            <div class="form-container" id="loginForm">
+                <h2>Welcome Back</h2>
+                <form class="auth-form">
+                    <div class="input-group">
+                        <label for="loginPhone">Phone Number</label>
+                        <div class="phone-input">
+                            <span class="country-code">+91</span>
+                            <input type="tel" id="loginPhone" placeholder="Enter your phone number" maxlength="10" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="button" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</button>
+                    
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                
+                <div class="switch-form">
+                    <p>Don't have an account? <button type="button" onclick="showSignup()" class="switch-link">Sign Up</button></p>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form-container hidden" id="signupForm">
+                <h2>Create Account</h2>
+                <form class="auth-form">
+                    <div class="input-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <div class="phone-input">
+                            <span class="country-code">+91</span>
+                            <input type="tel" id="signupPhone" placeholder="Enter your phone number" maxlength="10" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signupState">State</label>
+                        <select id="signupState" required>
+                            <option value="">Select your state</option>
+                            <option value="andhra-pradesh">Andhra Pradesh</option>
+                            <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal-pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya-pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar-pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west-bengal">West Bengal</option>
+                            <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                            <option value="chandigarh">Chandigarh</option>
+                            <option value="dadra-nagar-haveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="jammu-kashmir">Jammu and Kashmir</option>
+                            <option value="ladakh">Ladakh</option>
+                            <option value="lakshadweep">Lakshadweep</option>
+                            <option value="puducherry">Puducherry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a strong password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send OTP</button>
+                </form>
+                
+                <div class="switch-form">
+                    <p>Already have an account? <button type="button" onclick="showLogin()" class="switch-link">Login</button></p>
+                </div>
+            </div>
+
+            <!-- OTP Verification Form -->
+            <div class="form-container hidden" id="otpForm">
+                <h2>Verify Phone Number</h2>
+                <p class="otp-message">We've sent a 6-digit OTP to <span id="otpPhoneNumber"></span></p>
+                
+                <form class="auth-form">
+                    <div class="input-group">
+                        <label for="otpInput">Enter OTP</label>
+                        <div class="otp-input-container">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="0">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="1">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="2">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="3">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="4">
+                            <input type="text" class="otp-digit" maxlength="1" data-index="5">
+                        </div>
+                    </div>
+                    
+                    <div class="otp-timer">
+                        <p>Resend OTP in <span id="timer">60</span> seconds</p>
+                        <button type="button" id="resendOtp" class="resend-btn hidden">Resend OTP</button>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Verify & Sign Up</button>
+                </form>
+                
+                <div class="switch-form">
+                    <p><button type="button" onclick="showSignup()" class="switch-link">← Back to Sign Up</button></p>
+                </div>
+            </div>
+
+            <!-- Forgot Password Form -->
+            <div class="form-container hidden" id="forgotForm">
+                <h2>Reset Password</h2>
+                <p class="forgot-message">Enter your phone number to receive OTP for password reset</p>
+                
+                <form class="auth-form">
+                    <div class="input-group">
+                        <label for="forgotPhone">Phone Number</label>
+                        <div class="phone-input">
+                            <span class="country-code">+91</span>
+                            <input type="tel" id="forgotPhone" placeholder="Enter your phone number" maxlength="10" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send OTP</button>
+                </form>
+                
+                <div class="switch-form">
+                    <p><button type="button" onclick="showLogin()" class="switch-link">← Back to Login</button></p>
+                </div>
+            </div>
+
+            <!-- Reset Password Form -->
+            <div class="form-container hidden" id="resetForm">
+                <h2>Create New Password</h2>
+                <p class="reset-message">Enter your new password below</p>
+                
+                <form class="auth-form">
+                    <div class="input-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message hidden">
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h3>Success!</h3>
+            <p id="successText">Account created successfully!</p>
+            <button onclick="closeSuccess()" class="success-btn">Continue</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawGlitch - Previous Chats</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#FFD700">
+    <meta name="description" content="Access your previous consultations with legal professionals on LawGlitch">
+</head>
+<body>
+    <!-- Enhanced Header with branding and search -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+        </div>
+        <div class="golden-underline"></div>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <div class="search-container">
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search professionals by name, specialization..." id="searchInput">
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="chat-container">
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-tab active" data-filter="all">
+                <i class="fas fa-users"></i> All
+            </button>
+            <button class="filter-tab" data-filter="Lawyer">
+                <i class="fas fa-balance-scale"></i> Lawyers
+            </button>
+            <button class="filter-tab" data-filter="Chartered Accountant">
+                <i class="fas fa-calculator"></i> CA
+            </button>
+            <button class="filter-tab" data-filter="Financial Advisor">
+                <i class="fas fa-chart-line"></i> FA
+            </button>
+            
+        </div>
+
+        <!-- Chat List -->
+        <div id="chat-list" class="chat-list">
+            <!-- Chat items will be dynamically inserted here -->
+        </div>
+        
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state hidden">
+            <div class="empty-state-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h2>No Previous Chats</h2>
+            <p>Start your legal journey by connecting with verified professionals. Get expert advice tailored to your needs.</p>
+            <button id="find-professionals" class="btn-primary">
+                <i class="fas fa-search"></i>
+                Find Professionals
+            </button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="empty-state hidden">
+            <div class="empty-state-icon">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <h2>Loading Chats...</h2>
+            <p>Please wait while we fetch your previous consultations.</p>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="toast success hidden">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Action completed successfully!</span>
+        </div>
+    </div>
+
+    <!-- Error Toast -->
+    <div id="error-toast" class="toast error hidden">
+        <div class="toast-content">
+            <i class="fas fa-exclamation-circle"></i>
+            <span class="toast-message">Something went wrong. Please try again.</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../search/pros.js"></script>
+
+</body>
+</html>

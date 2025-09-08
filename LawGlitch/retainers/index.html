@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retainers - LawGlitch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* LawGlitch Professional Retainers Page - Golden Cream Theme */
+        :root {
+            --gold: #FFD700;
+            --gold-dark: #B8941F;
+            --gold-light: #FFF8DC;
+            --cream: #FDF6E3;
+            --cream-light: #FFFEF7;
+            --navy: #0d2c4e;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-light: #F8F9FA;
+            --gray-medium: #E9ECEF;
+            --gray-dark: #6C757D;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
+            --shadow-strong: rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+            --border-radius-large: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-light) 100%);
+            color: var(--navy);
+            line-height: 1.6;
+            padding-top: 80px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            padding: 0.75rem 1rem;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-dark);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 1px;
+        }
+
+        .header-underline {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            width: 100%;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 1rem;
+            background: var(--white);
+            border-radius: var(--border-radius-large);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: slideAcross 3s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--white);
+            border-radius: var(--border-radius-large);
+            box-shadow: 0 4px 20px var(--shadow-light);
+            border: 2px solid var(--gold-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .coming-soon-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        /* Animated Icons */
+        .animated-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: var(--cream-light);
+            border-radius: var(--border-radius-large);
+            border: 2px solid var(--gold-light);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .icon-container:hover::before {
+            left: 100%;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+            border-color: var(--gold);
+        }
+
+        .animated-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            animation: bounce 2s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-container:nth-child(2) .animated-icon {
+            animation-delay: 0.3s;
+        }
+
+        .icon-container:nth-child(3) .animated-icon {
+            animation-delay: 0.6s;
+        }
+
+        .icon-container:nth-child(4) .animated-icon {
+            animation-delay: 0.9s;
+        }
+
+        .icon-label {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-description {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            text-align: center;
+            max-width: 150px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Notification Banner */
+        .notification-banner {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--cream) 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-medium);
+            margin: 3rem 0;
+            border: 2px solid var(--gold);
+            position: relative;
+            z-index: 2;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            animation: ring 2s ease-in-out infinite;
+        }
+
+        .notification-text {
+            font-weight: 600;
+            color: var(--navy);
+            text-align: center;
+        }
+
+      
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideAcross {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: -100%; }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .coming-soon-title {
+                font-size: 2rem;
+            }
+
+            .animated-icons {
+                gap: 1.5rem;
+            }
+
+            .icon-container {
+                padding: 1.5rem;
+            }
+
+            .animated-icon {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .hero-section,
+            .coming-soon-section {
+                padding: 2rem 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .coming-soon-title {
+                font-size: 1.6rem;
+            }
+
+            .animated-icons {
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .icon-container {
+                padding: 1rem;
+                min-width: 120px;
+            }
+
+            .animated-icon {
+                font-size: 2rem;
+            }
+
+            .icon-label {
+                font-size: 1rem;
+            }
+
+            .icon-description {
+                font-size: 0.8rem;
+            }
+        }
+		@media (max-width: 768px) {
+    /* Make icon containers (cards) larger */
+    .icon-container {
+        padding: 2rem 1.5rem; /* Increased from 1.5rem */
+        min-width: 160px; /* Increased from default */
+    }
+
+    .animated-icon {
+        font-size: 3rem; /* Increased from 2.5rem */
+    }
+
+    .icon-label {
+        font-size: 1.1rem; /* Slightly larger */
+    }
+
+    .icon-description {
+        font-size: 0.9rem; /* Slightly larger */
+        max-width: 180px; /* Increased width */
+    }
+
+    /* Make notification banner smaller */
+    .notification-banner {
+        padding: 1rem; /* Reduced from 1.5rem */
+        margin: 2rem 0; /* Reduced from 3rem 0 */
+    }
+
+    .notification-icon {
+        font-size: 1.2rem; /* Reduced from 1.5rem */
+    }
+
+    .notification-text {
+        font-size: 0.9rem; /* Add smaller font size */
+        font-weight: 500; /* Slightly lighter weight */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for smaller screens */
+    .icon-container {
+        padding: 1.5rem 1rem; /* Balanced padding */
+        min-width: 140px; /* Adjusted for smaller screens */
+    }
+
+    .animated-icon {
+        font-size: 2.5rem; /* Slightly reduced for very small screens */
+    }
+
+    .icon-label {
+        font-size: 1rem;
+    }
+
+    .icon-description {
+        font-size: 0.85rem;
+        max-width: 160px;
+    }
+
+    /* Even smaller notification for tiny screens */
+    .notification-banner {
+        padding: 0.8rem;
+        margin: 1.5rem 0;
+    }
+
+    .notification-icon {
+        font-size: 1rem;
+    }
+
+    .notification-text {
+        font-size: 1rem;
+    }
+
+    .notification-content {
+        gap: 0.8rem; /* Reduced gap */
+    }
+}
+    </style>
+</head>
+<body>
+        <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="../home/index.html" div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+        </div>
+        <div class="header-underline"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Legal Retainers</h1>
+            <p class="hero-subtitle">Streamline Your Legal Services</p>
+            <p class="hero-description">
+                Welcome to your retainer management hub. Here, you'll seamlessly receive retainer agreements from your chosen legal professionals, review terms, and effortlessly assign them to your specific cases. Our intelligent system ensures complete transparency, secure payments, and efficient case management—transforming how you engage with legal services.
+            </p>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <section class="coming-soon-section">
+            <h2 class="coming-soon-title">Coming Soon</h2>
+            
+            <div class="animated-icons">
+                <div class="icon-container">
+                    <i class="fas fa-file-contract animated-icon"></i>
+                    <span class="icon-label">Smart Contracts</span>
+                    <span class="icon-description">Automated retainer agreements with digital signatures</span>
+                </div>
+                
+                <div class="icon-container">
+                    <i class="fas fa-credit-card animated-icon"></i>
+                    <span class="icon-label">Secure Payments</span>
+                    <span class="icon-description">Protected escrow system for retainer funds</span>
+                </div>
+                
+                <div class="icon-container">
+                    <i class="fas fa-tasks animated-icon"></i>
+                    <span class="icon-label">Case Management</span>
+                    <span class="icon-description">Link retainers to specific legal cases</span>
+                </div>
+                
+                <div class="icon-container">
+                    <i class="fas fa-chart-line animated-icon"></i>
+                    <span class="icon-label">Analytics</span>
+                    <span class="icon-description">Track spending and case progress</span>
+                </div>
+            </div>
+
+            <div class="notification-banner">
+                <div class="notification-content">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <span class="notification-text">
+                        Be the first to know when retainer management goes live! Join our waitlist for early access.
+                    </span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+    <script>
+        // Enhanced animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add stagger animation to icon containers
+            const iconContainers = document.querySelectorAll('.icon-container');
+            iconContainers.forEach((container, index) => {
+                container.style.animationDelay = `${index * 0.2}s`;
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    container.style.transition = 'all 0.6s ease-out';
+                    container.style.opacity = '1';
+                    container.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Add hover sound effect simulation (visual feedback)
+            iconContainers.forEach(container => {
+                container.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.animated-icon');
+                    icon.style.transform = 'scale(1.2) rotateZ(10deg)';
+                });
+
+                container.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.animated-icon');
+                    icon.style.transform = 'scale(1) rotateZ(0deg)';
+                });
+            });
+
+            // Notification banner click interaction
+            const banner = document.querySelector('.notification-banner');
+            banner.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+
+            // Add floating particles effect
+            createFloatingParticles();
+        });
+
+        function createFloatingParticles() {
+            const particleCount = 20;
+            const body = document.body;
+
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: rgba(255, 215, 0, 0.6);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 1;
+                        left: ${Math.random() * 100}vw;
+                        top: 100vh;
+                        animation: float-up ${5 + Math.random() * 5}s linear infinite;
+                    `;
+                    
+                    body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 10000);
+                }, Math.random() * 5000);
+            }
+
+            // Add CSS for float animation
+            if (!document.getElementById('particle-styles')) {
+                const style = document.createElement('style');
+                style.id = 'particle-styles';
+                style.textContent = `
+                    @keyframes float-up {
+                        to {
+                            transform: translateY(-100vh) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Repeat the effect
+            setTimeout(createFloatingParticles, 8000);
+        }
+    </script>
+</body>
+</html>

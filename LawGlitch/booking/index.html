@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session - LawGlitch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+           <div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+    </header>
+
+    <main class="container">
+        <div id="professional-details" class="pro-card">
+            <!-- Professional details will be loaded here -->
+        </div>
+
+        <div class="booking-form-container">
+            <h2>Book Your Session</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" name="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">WhatsApp Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <small class="field-note">We'll confirm your booking via WhatsApp</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duration">Consultation Duration (minutes) *</label>
+                    <select id="duration" name="duration" required>
+                        <option value="">Select duration</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferred-date">Preferred Date (Optional)</label>
+                    <input type="date" id="preferred-date" name="preferredDate">
+                    <div class="limited-offer">
+                        <i class="fas fa-bolt"></i>
+                        <span>Limited time offer: Get same-day consultation if professional is available at no extra charge!</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="book-btn">
+                    📞 Book Session
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="../search/pros.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

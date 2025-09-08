@@ -1,0 +1,570 @@
+:root {
+    --golden: #d4af37;
+    --cream: #fdf6e3;
+    --navy: #0d2c4e;
+    --light-gold: #f8e9a1;
+    --dark-navy: #091c33;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--dark-navy);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--cream);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    color: var(--golden);
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem 0;
+    margin: 2rem auto;
+}
+
+.pro-card {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form-container {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form-container h2 {
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.pro-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.pro-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--golden);
+    margin-right: 1.5rem;
+}
+
+.pro-info h2 {
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.verified-badge {
+    color: var(--golden);
+    font-size: 0.9rem;
+}
+
+.pro-info p {
+    color: var(--dark-navy);
+    margin-bottom: 0.3rem;
+}
+
+.rating {
+    color: var(--golden);
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.fee {
+    color: var(--navy);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.description {
+    margin-top: 1.5rem;
+    color: var(--dark-navy);
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--golden);
+    box-shadow: 0 0 0 2px var(--light-gold);
+}
+
+.book-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--golden);
+    color: var(--dark-navy);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: var(--light-gold);
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    .pro-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pro-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+@media (max-width: 1200px) {
+    .container {
+        width: 95%;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .pro-card, .booking-form-container {
+        padding: 1.5rem;
+    }
+    
+    .pro-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pro-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        margin: 1.5rem auto;
+    }
+    
+    .pro-card, .booking-form-container {
+        min-width: 100%;
+        border-radius: 8px;
+    }
+    
+    header {
+        padding: 0.8rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .pro-info h2 {
+        font-size: 1.3rem;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .fee {
+        font-size: 1.1rem;
+    }
+    
+    .booking-form-container h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .pro-card, .booking-form-container {
+        padding: 1.2rem;
+        border-radius: 6px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .pro-image {
+        width: 85px;
+        height: 85px;
+    }
+    
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .form-group input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .book-btn {
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+    
+    /* Animation for form elements */
+    .form-group input {
+        transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+    }
+    
+    /* Animation for booking button */
+    .book-btn {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .book-btn:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+    }
+    
+    .book-btn:focus:not(:active)::after {
+        animation: ripple 1s ease-out;
+    }
+    
+    @keyframes ripple {
+        0% {
+            transform: scale(0, 0);
+            opacity: 0.5;
+        }
+        20% {
+            transform: scale(10, 10);
+            opacity: 0.3;
+        }
+        100% {
+            transform: scale(30, 30);
+            opacity: 0;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .pro-card, .booking-form-container {
+        padding: 1rem;
+    }
+    
+    .pro-image {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .pro-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .booking-form-container h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .book-btn {
+        padding: 0.8rem;
+    }
+}
+
+/* Smooth animations for page elements */
+.pro-card, .booking-form-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced focus states for accessibility */
+input:focus, button:focus {
+    outline: 2px solid var(--golden);
+    outline-offset: 2px;
+}
+
+/* Improved touch targets for mobile */
+.form-group input, .book-btn {
+    min-height: 44px; /* Minimum touch target size */
+}
+
+/* Prevent zoom on input focus for iOS */
+@supports (-webkit-touch-callout: none) {
+    input, select, textarea {
+        font-size: 16px !important; /* Prevents zoom on focus in iOS */
+    }
+}
+
+/* Loading animation for form submission */
+.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s ease infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation for form validation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    15%, 45%, 75% { transform: translateX(-10px); }
+    30%, 60%, 90% { transform: translateX(10px); }
+}
+
+.input-error {
+    animation: shake 0.6s ease;
+    border-color: #ff3860 !important;
+    box-shadow: 0 0 0 2px rgba(255, 56, 96, 0.2) !important;
+}
+/* New styles for updated booking form */
+.field-note {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.limited-offer {
+    background-color: #fff8e1;
+    border-left: 4px solid var(--golden);
+    padding: 0.8rem;
+    margin-top: 0.8rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.limited-offer i {
+    color: var(--golden);
+    font-size: 1.2rem;
+}
+
+.limited-offer span {
+    color: var(--dark-navy);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    transition: border-color 0.3s;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--golden);
+    box-shadow: 0 0 0 2px var(--light-gold);
+}
+
+.instructions {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid var(--navy);
+}
+
+.instructions h3 {
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.instructions ul {
+    padding-left: 1.5rem;
+}
+
+.instructions li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.instructions li i {
+    color: var(--golden);
+    margin-top: 0.2rem;
+    min-width: 16px;
+}
+
+.fee-per-min {
+    font-weight: bold;
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.fee-per-min::before {
+    content: "₹";
+}
+
+.fee-per-min::after {
+    content: "/min";
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .limited-offer {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+    }
+    
+    .instructions h3 {
+        font-size: 1rem;
+    }
+}
+.share-pro-view {
+    background: var(--golden);
+    color: var(--dark-navy);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.share-pro-view:hover {
+    background: var(--light-gold);
+}
+
+.client-email {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+    .share-pro-view {
+        margin-top: 1rem;
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+}

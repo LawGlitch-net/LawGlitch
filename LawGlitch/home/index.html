@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawGlitch - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header with fixed navigation -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+            <div class="header-icons">
+                <button id="profileBtn" class="icon-btn" aria-label="Profile">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <button id="supportBtn" class="icon-btn" aria-label="Customer Support">
+                    <i class="fas fa-headset"></i>
+                </button>
+            </div>
+        </div>
+        <div class="header-underline"></div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Search bar section -->
+        <section class="search-section">
+    <div class="search-container">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search lawyers near me">
+    </div>
+  </section>
+
+        <!-- Quick actions section -->
+        <section class="quick-actions">
+            <div class="action-grid">
+                <a href="../chats/index.html" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <span class="action-label">Chats</span>
+                </a>
+                <a href="../retainers/index.html" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <span class="action-label">Retainers</span>
+                </a>
+                <a href="../join-us/index.html" class="action-btn">
+                    <div class="action-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <span class="action-label">Join Us</span>
+                </a>
+                <button class="action-btn" id="supportQuickBtn">
+                    <div class="action-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <span class="action-label">Support</span>
+                </button>
+            </div>
+        </section>
+<!-- Add this section right after the quick actions section -->
+<section class="ad-banner" id="adContainer">
+    <!-- Ad content will be loaded dynamically from ads.js -->
+</section>
+<!-- Featured professionals section -->
+<section class="featured-pros">
+    <h2 class="section-title">Featured Professionals</h2>
+    <div class="professionals-grid">
+        <!-- Professional cards will be loaded dynamically from featured.js -->
+    </div>
+        </section>
+
+        <!-- Message to CEO section -->
+        <section class="ceo-message">
+            <h2 class="section-title">Message to the CEO</h2>
+            <form id="ceoForm" class="ceo-form">
+                <textarea id="ceoMessage" class="message-input" placeholder="Type your message here..." required></textarea>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+       
+        <p class="copyright">© LawGlitch 2025</p>
+    </footer>
+
+    
+
+    <!-- Support Popup -->
+    <div id="supportPopup" class="popup" aria-hidden="true">
+        <div class="popup-content support-content">
+            <button class="close-btn" aria-label="Close popup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-body">
+                <h2>Customer Support</h2>
+                <form id="supportForm" class="support-form">
+                    <div class="form-group">
+                        <label for="supportName">Name</label>
+                        <input type="text" id="supportName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="supportEmail">Email</label>
+                        <input type="email" id="supportEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="supportIssue">Issue Description</label>
+                        <textarea id="supportIssue" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="supportScreenshot">Screenshot (optional)</label>
+                        <input type="file" id="supportScreenshot" accept="image/*">
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for popups -->
+    <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+
+<!-- Load pros.js first -->
+<script src="../search/pros.js"></script>
+<!-- Then load your other scripts -->
+<script src="script.js"></script>
+<script src="ads.js"></script>
+<script src="featured.js"></script>
+</html>

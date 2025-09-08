@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawGlitch Chatroom</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header Section -->
+        <header class="chat-header">
+            <div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+            <div class="header-content" id="header-content">
+                <!-- Dynamically populated with pro or client info -->
+            </div>
+        </header>
+
+        <!-- Timer Section -->
+        <div class="timer-section">
+            <span id="timer">00:00</span>
+        </div>
+
+        <!-- Pinned Message -->
+        <div class="pinned-message">
+            <div class="pinned-header">
+                <i class="fas fa-thumbtack"></i>
+                <span>INSTRUCTIONS</span>
+            </div>
+            <p>We are putting finishing touches to India's first Micro consultation platform we hope you stay with us through this journey for trying to make a change. Are you a lawyer/CA/financial advisor? join our team to get exclusive benifits</p>
+            <div class="pinned-timer">
+                Session timer: <span id="session-timer">00:00</span> min
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area" id="chat-area">
+            <!-- Locked State -->
+            <div class="locked-state" id="locked-state">
+                <i class="fas fa-lock"></i>
+                <p>Chat is locked</p>
+                <button id="unlock-btn" class="unlock-btn">Back to booking</button>
+            </div>
+
+            <!-- Messages will be populated here -->
+        </div>
+
+        <!-- Message Input Area -->
+        <div class="input-area">
+            <input type="text" id="message-input" placeholder="Type a message..." disabled>
+            <button id="send-btn" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Locked Popup -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <i class="fas fa-lock"></i>
+            <h3>Hey there, sorry we are not done Yet.</h3>
+            <p>When we are ready hope you stay with us to get your first consultation.</p>
+            <button id="book-now-btn" class="book-now-btn">Back to booking page</button>
+            <button id="close-popup" class="close-popup">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/idb@7/build/umd.js"></script>
+    <script src="../search/pros.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

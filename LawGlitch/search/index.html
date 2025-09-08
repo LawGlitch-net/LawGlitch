@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawGlitch - Find Legal Professionals</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+  <span style="color:black;">Law</span><span style="color:gold;">Glitch</span>
+</div>
+      
+    </header>
+
+    <main class="main-content">
+        <section class="search-section">
+            <div class="search-container">
+                <form id="search-form" onsubmit="return false;">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search by name, profession, or location..." aria-label="Search professionals">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="filters-section">
+    <button class="filter-toggle" id="filterToggle"><i class="fas fa-sliders-h"></i> Filters</button>
+    <div class="filter-options" id="filterOptions">
+        <div class="filter-group">
+            <label for="professionFilter">Profession</label>
+            <select id="professionFilter">
+                <option value="">All Professions</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="locationFilter">Location</label>
+            <select id="locationFilter">
+                <option value="">All Locations</option>
+            </select>
+        </div>
+       <div class="filter-group">
+    <label for="experienceFilter">Min Experience</label>
+    <select id="experienceFilter">
+        <option value="">Any Experience</option>
+        <option value="1">1+ years</option>
+        <option value="3">3+ years</option>
+        <option value="5">5+ years</option>
+        <option value="8">8+ years</option>
+        <option value="10">10+ years</option>
+    </select>
+</div>
+<div class="filter-group">
+    <label for="ratingFilter">Min Rating</label>
+    <select id="ratingFilter">
+        <option value="">Any Rating</option>
+        <option value="4.0">4.0+ stars</option>
+        <option value="4.5">4.5+ stars</option>
+        <option value="4.8">4.8+ stars</option>
+    </select>
+</div>
+<div class="filter-group">
+    <label for="priceFilter">Max Price</label>
+    <select id="priceFilter">
+        <option value="">Any Price</option>
+        <option value="5000">Under ₹5,000</option>
+        <option value="8000">Under ₹8,000</option>
+        <option value="10000">Under ₹10,000</option>
+        <option value="15000">Under ₹15,000</option>
+    </select>
+</div>
+        </div>
+    </div>
+</section>
+
+        <section class="results-section">
+            <div class="results-header" id="resultsHeader"></div>
+            <div id="resultsGrid" class="results-grid">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="copyright">&copy; 2025 LawGlitch. All rights reserved.</p>
+    </footer>
+    
+    <script src="pros.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
