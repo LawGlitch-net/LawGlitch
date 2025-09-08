@@ -751,4 +751,133 @@ body {
         width: 30px;
         height: 30px;
     }
+
+}
+/* Ad Carousel Styles */
+#adContainer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-carousel {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust as needed */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ad-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.ad-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    text-decoration: none;
+}
+
+.ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Navigation arrows */
+.ad-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.ad-nav:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.ad-prev {
+    left: 10px;
+}
+
+.ad-next {
+    right: 10px;
+}
+
+/* Indicators */
+.ad-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.ad-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.ad-indicator.active,
+.ad-indicator:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ad-carousel {
+        height: 200px;
+    }
+    
+    .ad-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .ad-prev {
+        left: 5px;
+    }
+    
+    .ad-next {
+        right: 5px;
+    }
+    
+    .ad-indicators {
+        bottom: 10px;
+    }
+    
+    .ad-indicator {
+        width: 10px;
+        height: 10px;
+    }
 }
