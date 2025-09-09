@@ -84,25 +84,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
             
             try {
-              // Collect form data
+// Collect form data
 const formData = new FormData(form);
 const data = {
     name: formData.get('name') || '',
     profession: formData.get('profession') || '',
     phone: formData.get('phone') || '',
     email: formData.get('email') || '',
-	state/city: formData.get('state/city') || '',
+    location: formData.get('location') || '', // Added this line
     expertise: formData.get('expertise') || '',
     experience: formData.get('experience') || '',
     languages: formData.get('languages') || '',
-	Bio: formData.get('Bio') ||'',
+    Bio: formData.get('Bio') ||'',
     rate: formData.get('rate') || '',
     availability: formData.get('availability') || '',
     photo: formData.get('photo'),
     id_proof: formData.get('id_proof'),
     terms: formData.get('terms') === 'on'
-};
-                
+};             
                 // Send to Telegram with files
                 const success = await sendToTelegramWithFiles(data);
                 
@@ -305,11 +304,11 @@ const data = {
 *Profession:* ${data.profession}
 *Phone:* ${data.phone}
 *Email:* ${data.email}
-*state/city:*${data.state/city}
+*Location:* ${data.location}
 *Expertise:* ${data.expertise}
 *Experience:* ${data.experience} years
 *Languages:* ${data.languages}
-*Bio:*${data.Bio}
+*Bio:* ${data.Bio}
 *Rate:* ₹${data.rate}/min
 *Availability:* ${data.availability || '8am to 8pm daily (default)'}
 *Terms Accepted:* ${data.terms ? 'Yes' : 'No'}
