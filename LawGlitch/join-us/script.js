@@ -91,6 +91,7 @@ const data = {
     profession: formData.get('profession') || '',
     phone: formData.get('phone') || '',
     email: formData.get('email') || '',
+	state/city: formData.get('state/city') || '',
     expertise: formData.get('expertise') || '',
     experience: formData.get('experience') || '',
     languages: formData.get('languages') || '',
@@ -304,6 +305,7 @@ const data = {
 *Profession:* ${data.profession}
 *Phone:* ${data.phone}
 *Email:* ${data.email}
+*state/city:*${data.state/city}
 *Expertise:* ${data.expertise}
 *Experience:* ${data.experience} years
 *Languages:* ${data.languages}
