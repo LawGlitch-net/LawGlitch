@@ -94,6 +94,7 @@ const data = {
     expertise: formData.get('expertise') || '',
     experience: formData.get('experience') || '',
     languages: formData.get('languages') || '',
+	Bio: formData.get('Bio') ||'',
     rate: formData.get('rate') || '',
     availability: formData.get('availability') || '',
     photo: formData.get('photo'),
@@ -306,6 +307,7 @@ const data = {
 *Expertise:* ${data.expertise}
 *Experience:* ${data.experience} years
 *Languages:* ${data.languages}
+*Bio:*${data.Bio}
 *Rate:* ₹${data.rate}/min
 *Availability:* ${data.availability || '8am to 8pm daily (default)'}
 *Terms Accepted:* ${data.terms ? 'Yes' : 'No'}
