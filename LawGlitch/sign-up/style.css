@@ -1,4 +1,4 @@
-<style>
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -13,8 +13,10 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    line-height: 1.6;
 }
 
+/* Main Container */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -24,6 +26,7 @@ body {
     align-items: center;
 }
 
+/* Logo Section */
 .logo-section {
     text-align: center;
     padding: 40px;
@@ -42,24 +45,7 @@ body {
     position: relative;
 }
 
-.glitch::before {
-    content: 'Glitch';
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #FFD700;
-    opacity: 0.8;
-    animation: glitch 2s infinite;
-}
 
-@keyframes glitch {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0, 0); }
-}
 
 .tagline {
     font-size: 1.2rem;
@@ -67,6 +53,7 @@ body {
     margin-bottom: 40px;
 }
 
+/* Auth Container */
 .auth-container {
     background: white;
     border-radius: 20px;
@@ -74,8 +61,10 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     position: relative;
     min-height: 500px;
+    backdrop-filter: blur(10px);
 }
 
+/* Form Containers */
 .form-container {
     width: 100%;
 }
@@ -92,6 +81,7 @@ body {
     font-weight: 700;
 }
 
+/* Forms */
 .auth-form {
     display: flex;
     flex-direction: column;
@@ -118,6 +108,7 @@ body {
     font-size: 1rem;
     transition: all 0.3s ease;
     background: #FAFAFA;
+    width: 100%;
 }
 
 .input-group input:focus,
@@ -128,40 +119,7 @@ body {
     box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
-.phone-input {
-    display: flex;
-    align-items: center;
-    border: 2px solid #E5E5E5;
-    border-radius: 10px;
-    background: #FAFAFA;
-    transition: all 0.3s ease;
-}
-
-.phone-input:focus-within {
-    border-color: #FFD700;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-}
-
-.country-code {
-    padding: 15px 12px;
-    font-weight: 600;
-    color: #666;
-    border-right: 1px solid #E5E5E5;
-}
-
-.phone-input input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    box-shadow: none;
-}
-
-.phone-input input:focus {
-    border: none;
-    box-shadow: none;
-}
-
+/* Buttons */
 .submit-btn {
     padding: 15px;
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
@@ -173,6 +131,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 10px;
+    min-height: 50px;
 }
 
 .submit-btn:hover {
@@ -184,6 +143,12 @@ body {
     transform: translateY(0);
 }
 
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .forgot-link {
     background: none;
     border: none;
@@ -193,12 +158,14 @@ body {
     text-align: right;
     font-size: 0.9rem;
     margin-top: -10px;
+    padding: 8px 0;
 }
 
 .forgot-link:hover {
     text-decoration: underline;
 }
 
+/* Form Switching */
 .switch-form {
     text-align: center;
     margin-top: 25px;
@@ -217,12 +184,15 @@ body {
     font-weight: 600;
     cursor: pointer;
     font-size: inherit;
+    padding: 4px 8px;
+    margin: -4px -8px;
 }
 
 .switch-link:hover {
     text-decoration: underline;
 }
 
+/* Messages */
 .otp-message,
 .forgot-message,
 .reset-message {
@@ -232,10 +202,12 @@ body {
     line-height: 1.5;
 }
 
+/* OTP Input */
 .otp-input-container {
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .otp-digit {
@@ -245,6 +217,7 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .otp-timer {
@@ -273,6 +246,64 @@ body {
     color: #000;
 }
 
+/* Google Sign In */
+.google-signin {
+    margin-top: 20px;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: #666;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #E5E5E5;
+    z-index: 1;
+}
+
+.divider span {
+    background: white;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #E5E5E5;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    border-color: #4285F4;
+    box-shadow: 0 2px 10px rgba(66, 133, 244, 0.1);
+}
+
+.google-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Success Modal */
 .success-message {
     position: fixed;
     top: 0;
@@ -284,6 +315,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    padding: 20px;
 }
 
 .success-content {
@@ -292,7 +324,9 @@ body {
     border-radius: 20px;
     text-align: center;
     max-width: 400px;
-    width: 90%;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .success-icon {
@@ -338,619 +372,41 @@ body {
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
+/* Utility */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Large Desktop */
+@media (min-width: 1400px) {
     .container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 20px;
+        max-width: 1400px;
     }
     
     .logo {
-        font-size: 3rem;
+        font-size: 4.5rem;
     }
     
     .auth-container {
-        padding: 30px 25px;
-    }
-    
-    .form-container h2 {
-        font-size: 1.5rem;
-    }
-    
-    .otp-digit {
-        width: 40px !important;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .otp-input-container {
-        gap: 8px;
+        padding: 50px;
     }
 }
 
-@media (max-width: 480px) {
+/* Desktop */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1000px;
+        gap: 50px;
+    }
+    
     .logo {
-        font-size: 2.5rem;
-    }
-    
-    .auth-container {
-        padding: 25px 20px;
-    }
-    
-    .otp-digit {
-        width: 35px !important;
-        height: 35px;
-        font-size: 1rem;
-    }
-    
-    .otp-input-container {
-        gap: 6px;
+        font-size: 3.5rem;
     }
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LawGlitch - Login & Sign Up</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Logo Section -->
-        <div class="logo-section">
-            <h1 class="logo">Law<span class="glitch">Glitch</span></h1>
-            <p class="tagline">Your Legal Solutions Partner</p>
-        </div>
 
-        <!-- Auth Forms Container -->
-        <div class="auth-container">
-            <!-- Login Form -->
-            <div class="form-container" id="loginForm">
-                <h2>Welcome Back</h2>
-                <form class="auth-form">
-                    <div class="input-group">
-                        <label for="loginPhone">Phone Number</label>
-                        <div class="phone-input">
-                            <span class="country-code">+91</span>
-                            <input type="tel" id="loginPhone" placeholder="Enter your phone number" maxlength="10" required>
-                        </div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                    </div>
-                    
-                    <button type="button" class="forgot-link" onclick="showForgotPassword()">Forgot Password?</button>
-                    
-                    <button type="submit" class="submit-btn">Login</button>
-                </form>
-                
-                <div class="switch-form">
-                    <p>Don't have an account? <button type="button" onclick="showSignup()" class="switch-link">Sign Up</button></p>
-                </div>
-            </div>
-
-            <!-- Signup Form -->
-            <div class="form-container hidden" id="signupForm">
-                <h2>Create Account</h2>
-                <form class="auth-form">
-                    <div class="input-group">
-                        <label for="signupName">Full Name</label>
-                        <input type="text" id="signupName" placeholder="Enter your full name" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="signupPhone">Phone Number</label>
-                        <div class="phone-input">
-                            <span class="country-code">+91</span>
-                            <input type="tel" id="signupPhone" placeholder="Enter your phone number" maxlength="10" required>
-                        </div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="signupState">State</label>
-                        <select id="signupState" required>
-                            <option value="">Select your state</option>
-                            <option value="andhra-pradesh">Andhra Pradesh</option>
-                            <option value="arunachal-pradesh">Arunachal Pradesh</option>
-                            <option value="assam">Assam</option>
-                            <option value="bihar">Bihar</option>
-                            <option value="chhattisgarh">Chhattisgarh</option>
-                            <option value="goa">Goa</option>
-                            <option value="gujarat">Gujarat</option>
-                            <option value="haryana">Haryana</option>
-                            <option value="himachal-pradesh">Himachal Pradesh</option>
-                            <option value="jharkhand">Jharkhand</option>
-                            <option value="karnataka">Karnataka</option>
-                            <option value="kerala">Kerala</option>
-                            <option value="madhya-pradesh">Madhya Pradesh</option>
-                            <option value="maharashtra">Maharashtra</option>
-                            <option value="manipur">Manipur</option>
-                            <option value="meghalaya">Meghalaya</option>
-                            <option value="mizoram">Mizoram</option>
-                            <option value="nagaland">Nagaland</option>
-                            <option value="odisha">Odisha</option>
-                            <option value="punjab">Punjab</option>
-                            <option value="rajasthan">Rajasthan</option>
-                            <option value="sikkim">Sikkim</option>
-                            <option value="tamil-nadu">Tamil Nadu</option>
-                            <option value="telangana">Telangana</option>
-                            <option value="tripura">Tripura</option>
-                            <option value="uttar-pradesh">Uttar Pradesh</option>
-                            <option value="uttarakhand">Uttarakhand</option>
-                            <option value="west-bengal">West Bengal</option>
-                            <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
-                            <option value="chandigarh">Chandigarh</option>
-                            <option value="dadra-nagar-haveli">Dadra and Nagar Haveli and Daman and Diu</option>
-                            <option value="delhi">Delhi</option>
-                            <option value="jammu-kashmir">Jammu and Kashmir</option>
-                            <option value="ladakh">Ladakh</option>
-                            <option value="lakshadweep">Lakshadweep</option>
-                            <option value="puducherry">Puducherry</option>
-                        </select>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" placeholder="Create a strong password" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send OTP</button>
-                </form>
-                
-                <div class="switch-form">
-                    <p>Already have an account? <button type="button" onclick="showLogin()" class="switch-link">Login</button></p>
-                </div>
-            </div>
-
-            <!-- OTP Verification Form -->
-            <div class="form-container hidden" id="otpForm">
-                <h2>Verify Phone Number</h2>
-                <p class="otp-message">We've sent a 6-digit OTP to <span id="otpPhoneNumber"></span></p>
-                
-                <form class="auth-form">
-                    <div class="input-group">
-                        <label for="otpInput">Enter OTP</label>
-                        <div class="otp-input-container">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="0">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="1">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="2">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="3">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="4">
-                            <input type="text" class="otp-digit" maxlength="1" data-index="5">
-                        </div>
-                    </div>
-                    
-                    <div class="otp-timer">
-                        <p>Resend OTP in <span id="timer">60</span> seconds</p>
-                        <button type="button" id="resendOtp" class="resend-btn hidden">Resend OTP</button>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Verify & Sign Up</button>
-                </form>
-                
-                <div class="switch-form">
-                    <p><button type="button" onclick="showSignup()" class="switch-link">← Back to Sign Up</button></p>
-                </div>
-            </div>
-
-            <!-- Forgot Password Form -->
-            <div class="form-container hidden" id="forgotForm">
-                <h2>Reset Password</h2>
-                <p class="forgot-message">Enter your phone number to receive OTP for password reset</p>
-                
-                <form class="auth-form">
-                    <div class="input-group">
-                        <label for="forgotPhone">Phone Number</label>
-                        <div class="phone-input">
-                            <span class="country-code">+91</span>
-                            <input type="tel" id="forgotPhone" placeholder="Enter your phone number" maxlength="10" required>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send OTP</button>
-                </form>
-                
-                <div class="switch-form">
-                    <p><button type="button" onclick="showLogin()" class="switch-link">← Back to Login</button></p>
-                </div>
-            </div>
-
-            <!-- Reset Password Form -->
-            <div class="form-container hidden" id="resetForm">
-                <h2>Create New Password</h2>
-                <p class="reset-message">Enter your new password below</p>
-                
-                <form class="auth-form">
-                    <div class="input-group">
-                        <label for="newPassword">New Password</label>
-                        <input type="password" id="newPassword" placeholder="Enter new password" required>
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="confirmNewPassword">Confirm New Password</label>
-                        <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Update Password</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Message -->
-    <div id="successMessage" class="success-message hidden">
-        <div class="success-content">
-            <div class="success-icon">✓</div>
-            <h3>Success!</h3>
-            <p id="successText">Account created successfully!</p>
-            <button onclick="closeSuccess()" class="success-btn">Continue</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #F5F5DC 0%, #FFFEF7 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.logo-section {
-    text-align: center;
-    padding: 40px;
-}
-
-.logo {
-    font-size: 4rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-    color: #000;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.glitch {
-    color: #FFD700;
-    position: relative;
-}
-
-.glitch::before {
-    content: 'Glitch';
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #FFD700;
-    opacity: 0.8;
-    animation: glitch 2s infinite;
-}
-
-@keyframes glitch {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0, 0); }
-}
-
-.tagline {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 40px;
-}
-
-.auth-container {
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    position: relative;
-    min-height: 500px;
-}
-
-.form-container {
-    width: 100%;
-}
-
-.form-container.hidden {
-    display: none;
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #000;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.input-group label {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.9rem;
-}
-
-.input-group input,
-.input-group select {
-    padding: 15px;
-    border: 2px solid #E5E5E5;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: #FAFAFA;
-}
-
-.input-group input:focus,
-.input-group select:focus {
-    outline: none;
-    border-color: #FFD700;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-}
-
-.phone-input {
-    display: flex;
-    align-items: center;
-    border: 2px solid #E5E5E5;
-    border-radius: 10px;
-    background: #FAFAFA;
-    transition: all 0.3s ease;
-}
-
-.phone-input:focus-within {
-    border-color: #FFD700;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
-}
-
-.country-code {
-    padding: 15px 12px;
-    font-weight: 600;
-    color: #666;
-    border-right: 1px solid #E5E5E5;
-}
-
-.phone-input input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    box-shadow: none;
-}
-
-.phone-input input:focus {
-    border: none;
-    box-shadow: none;
-}
-
-.submit-btn {
-    padding: 15px;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
-}
-
-.submit-btn:active {
-    transform: translateY(0);
-}
-
-.forgot-link {
-    background: none;
-    border: none;
-    color: #FFD700;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: right;
-    font-size: 0.9rem;
-    margin-top: -10px;
-}
-
-.forgot-link:hover {
-    text-decoration: underline;
-}
-
-.switch-form {
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 25px;
-    border-top: 1px solid #E5E5E5;
-}
-
-.switch-form p {
-    color: #666;
-}
-
-.switch-link {
-    background: none;
-    border: none;
-    color: #FFD700;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: inherit;
-}
-
-.switch-link:hover {
-    text-decoration: underline;
-}
-
-.otp-message,
-.forgot-message,
-.reset-message {
-    text-align: center;
-    color: #666;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-.otp-input-container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.otp-digit {
-    width: 50px !important;
-    height: 50px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border-radius: 10px;
-}
-
-.otp-timer {
-    text-align: center;
-    margin: 15px 0;
-}
-
-.otp-timer p {
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.resend-btn {
-    background: none;
-    border: 2px solid #FFD700;
-    color: #FFD700;
-    padding: 8px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.resend-btn:hover {
-    background: #FFD700;
-    color: #000;
-}
-
-.success-message {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.success-content {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-}
-
-.success-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: #000;
-    font-weight: 900;
-    margin: 0 auto 20px;
-}
-
-.success-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #000;
-}
-
-.success-content p {
-    color: #666;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-
-.success-btn {
-    padding: 12px 30px;
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.success-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-}
-
-.hidden {
-    display: none;
-}
-
-/* Enhanced Mobile Optimization */
-
-/* Tablet Styles */
+/* Tablet */
 @media (max-width: 1024px) {
     .container {
         max-width: 900px;
@@ -958,7 +414,7 @@ body {
     }
     
     .logo {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
     }
     
     .auth-container {
@@ -970,13 +426,11 @@ body {
 @media (max-width: 768px) {
     body {
         padding: 15px;
-        background: linear-gradient(135deg, #F5F5DC 0%, #FFFEF7 100%);
     }
     
     .container {
         grid-template-columns: 1fr;
         gap: 25px;
-        padding: 0;
         max-width: 100%;
     }
     
@@ -1008,6 +462,10 @@ body {
         margin-bottom: 25px;
     }
     
+    .auth-form {
+        gap: 18px;
+    }
+    
     .input-group {
         gap: 6px;
     }
@@ -1032,10 +490,12 @@ body {
         font-size: 0.9rem;
     }
     
-    .submit-btn {
+    .submit-btn,
+    .google-btn {
         padding: 14px;
         font-size: 1rem;
         border-radius: 8px;
+        min-height: 50px;
     }
     
     .otp-digit {
@@ -1086,7 +546,6 @@ body {
     .auth-container {
         padding: 25px 20px;
         border-radius: 12px;
-        margin: 0 auto;
     }
     
     .form-container h2 {
@@ -1095,13 +554,13 @@ body {
     }
     
     .auth-form {
-        gap: 18px;
+        gap: 16px;
     }
     
     .input-group input,
     .input-group select {
         padding: 12px;
-        font-size: 0.95rem;
+        font-size: 16px; /* Prevents zoom on iOS */
         border-radius: 6px;
     }
     
@@ -1114,10 +573,12 @@ body {
         font-size: 0.85rem;
     }
     
-    .submit-btn {
+    .submit-btn,
+    .google-btn {
         padding: 13px;
-        font-size: 0.95rem;
+        font-size: 16px; /* Prevents zoom on iOS */
         border-radius: 6px;
+        min-height: 48px;
     }
     
     .otp-digit {
@@ -1175,6 +636,11 @@ body {
         padding: 10px 25px;
         font-size: 0.9rem;
     }
+    
+    .google-btn {
+        font-size: 0.9rem;
+        gap: 10px;
+    }
 }
 
 /* Very Small Mobile Devices */
@@ -1185,7 +651,6 @@ body {
     
     .auth-container {
         padding: 20px 15px;
-        margin: 0;
         border-radius: 10px;
     }
     
@@ -1196,7 +661,7 @@ body {
     .input-group input,
     .input-group select {
         padding: 11px;
-        font-size: 0.9rem;
+        font-size: 16px;
     }
     
     .country-code {
@@ -1224,46 +689,14 @@ body {
         height: 50px;
         font-size: 1.5rem;
     }
-}
-
-/* Touch-friendly improvements */
-@media (hover: none) and (pointer: coarse) {
-    .input-group input,
-    .input-group select,
-    .submit-btn,
-    .otp-digit {
-        min-height: 44px; /* Apple's recommended touch target size */
-    }
     
-    .switch-link,
-    .forgot-link,
-    .resend-btn {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-        padding: 8px 12px;
-        margin: -8px -12px;
-    }
-    
-    .otp-digit {
-        min-width: 44px;
-        min-height: 44px;
+    .google-btn svg {
+        width: 16px;
+        height: 16px;
     }
 }
 
-/* Prevent zoom on input focus for iOS */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    input[type="text"],
-    input[type="tel"],
-    input[type="password"],
-    select {
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-}
-
-
-
-/* Landscape orientation optimizations */
+/* Landscape Orientation Optimizations */
 @media screen and (orientation: landscape) and (max-height: 500px) {
     .container {
         grid-template-columns: 1fr 1fr;
@@ -1282,6 +715,8 @@ body {
     
     .auth-container {
         padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
     
     .form-container h2 {
@@ -1299,13 +734,40 @@ body {
     }
 }
 
-/* High DPI display optimizations */
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    .input-group input,
+    .input-group select,
+    .submit-btn,
+    .google-btn,
+    .otp-digit {
+        min-height: 48px;
+    }
+    
+    .switch-link,
+    .forgot-link,
+    .resend-btn {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 16px;
+        margin: -12px -16px;
+    }
+    
+    .otp-digit {
+        min-width: 48px;
+        min-height: 48px;
+    }
+}
+
+/* High DPI Display Optimizations */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
     .logo {
         text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     
-    .submit-btn {
+    .submit-btn,
+    .google-btn {
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
@@ -1313,3 +775,31 @@ body {
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 }
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    .glitch::before {
+        animation: none;
+    }
+    
+    .submit-btn:hover,
+    .success-btn:hover {
+        transform: none;
+    }
+    
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+.submit-btn:focus-visible,
+.google-btn:focus-visible,
+.switch-link:focus-visible,
+.forgot-link:focus-visible,
+.resend-btn:focus-visible {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+}
+
