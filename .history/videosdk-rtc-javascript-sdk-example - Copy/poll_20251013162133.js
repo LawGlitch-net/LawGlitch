@@ -1,0 +1,414 @@
+function pollRoomLink() {
+  if (roomPollingInterval) clearInterval(roomPollingInterval);
+  
+  roomPollingInterval = setInterval(async () => {
+    try {
+      const { data, error } = await supabaseClient
+        .from('bookings')
+        .select('room_link')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (error) throw error;
+
+      if (data && data.room_link) {
+        const joinMeetingCode = document.getElementById('joinMeetingId');
+        if (joinMeetingCode && joinMeetingCode.value !== data.room_link) {
+          joinMeetingCode.value = data.room_link;
+          joinMeetingCode.dispatchEvent(new Event('input'));
+        }
+      }
+    } catch (err) {
+      console.error('Error polling room_link:', err);
+    }
+  }, 5000); // Poll every 5 seconds
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+  // Watcher to detect unexpected programmatic changes to the meeting input.
+  try {
+    const joinInputWatcher = document.getElementById('joinMeetingId');
+    if (joinInputWatcher) {
+      let _lastJoinVal = joinInputWatcher.value;
+      setInterval(() => {
+        try {
+          if (joinInputWatcher.value !== _lastJoinVal) {
+            console.log('DEBUG: joinMeetingId changed from', _lastJoinVal, 'to', joinInputWatcher.value);
+            console.trace();
+            _lastJoinVal = joinInputWatcher.value;
+          }
+        } catch (e) {
+          console.error('Error in joinInputWatcher:', e);
+        }
+      }, 500);
+    }
+  } catch (e) {
+    console.error('Error setting up joinMeetingId watcher:', e);
+  }
+  // Start polling for room link from Supabase after DOM is ready
+  startRoomLinkPolling();
+  // Clear any existing meeting code value
+  const joinMeetingCode = document.getElementById('joinMeetingId');
+  if (joinMeetingCode) {
+    joinMeetingCode.value = "";
+  }
+  /*
+
+  const audioPermission = await window.VideoSDK.requestPermission(
+    window.VideoSDK.Constants.permission.AUDIO,
+  );
+
+  console.log(
+    "request Audio Permissions",
+    audioPermission.get(window.VideoSDK.Constants.permission.AUDIO)
+  );
+
+
+  const videoPermission = await window.VideoSDK.requestPermission(
+    window.VideoSDK.Constants.permission.VIDEO,
+  );
+
+  console.log(
+    "request Video Permissions",
+    videoPermission.get(window.VideoSDK.Constants.permission.VIDEO)
+  );
+
+  const audiovideoPermission = await window.VideoSDK.requestPermission(
+    window.VideoSDK.Constants.permission.AUDIO_AND_VIDEO,
+  );
+
+  console.log(
+    "request Audio and Video Permissions",
+    audiovideoPermission.get(window.VideoSDK.Constants.permission.AUDIO),
+    audiovideoPermission.get(window.VideoSDK.Constants.permission.VIDEO)
+  );
+
+  */
+
+  /*
+
+  try {
+    const checkAudioPermission = await window.VideoSDK.checkPermissions(
+      window.VideoSDK.Constants.permission.AUDIO,
+    );
+    console.log(
+      "Check Audio Permissions",
+      checkAudioPermission.get(window.VideoSDK.Constants.permission.AUDIO)
+    );
+  } catch (e) {
+    console.error(e.message);
+  }
+
+  try {
+    const checkVideoPermission = await window.VideoSDK.checkPermissions(
+      window.VideoSDK.Constants.permission.VIDEO,
+    );
+    console.log(
+      "Check Video Permissions",
+      checkVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO)
+    );
+  } catch (e) {
+    console.error(e.message);
+  }
+
+  try {
+    const checkAudioVideoPermission = await window.VideoSDK.checkPermissions(
+      window.VideoSDK.Constants.permission.AUDIO_AND_VIDEO,
+    );
+    console.log(
+      "Check Audio Video Permissions",
+      checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO),
+      checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.AUDIO)
+    );
+  } catch (e) {
+    console.error(e.message);
+  }
+
+  */
+
+  let checkAudioVideoPermission;
+
+  try {
+    checkAudioVideoPermission = await VideoSDK.checkPermissions(
+      VideoSDK.Constants.permission.AUDIO_AND_VIDEO,
+    );
+    console.log(
+      "check Audio and Video Permissions",
+      checkAudioVideoPermission.get(VideoSDK.Constants.permission.AUDIO),
+      checkAudioVideoPermission.get(VideoSDK.Constants.permission.VIDEO)
+    );
+  } catch (ex) {
+    console.log("Error in checkPermissions ", ex);
+  }
+
+
+  if (checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO) === false || checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.AUDIO) === false) {
+    checkAudioVideoPermission = await window.VideoSDK.requestPermission(
+      window.VideoSDK.Constants.permission.AUDIO_AND_VIDEO,
+    );
+  }
+
+
+
+
+
+
+  // if(requestPermission.get(window.VideoSDK.Constants.permission.AUDIO)){
+  //   console.log("permission check called");
+
+  //   var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  //   svg.setAttribute("width", "20");
+  //   svg.setAttribute("height", "20");
+  //   svg.setAttribute("viewBox", "0 0 20 20");
+  //   svg.setAttribute("fill", "none");
+
+  //   svg.innerHTML = `
+  //   <g filter="url(#filter0_d_20_967)">
+  //   <circle cx="10" cy="8" r="8" fill="#FF8A00"/>
+  //   </g>
+  //   <path d="M10.876 4.258V7.69C10.876 8.058 10.854 8.424 10.81 8.788C10.766 9.148 10.708 9.516 10.636 9.892H9.37605C9.30405 9.516 9.24605 9.148 9.20205 8.788C9.15805 8.424 9.13605 8.058 9.13605 7.69V4.258H10.876ZM8.93205 12.058C8.93205 11.914 8.95805 11.78 9.01005 11.656C9.06605 11.532 9.14005 11.424 9.23205 11.332C9.32805 11.24 9.44005 11.168 9.56805 11.116C9.69605 11.06 9.83605 11.032 9.98805 11.032C10.136 11.032 10.274 11.06 10.402 11.116C10.53 11.168 10.642 11.24 10.738 11.332C10.834 11.424 10.908 11.532 10.96 11.656C11.016 11.78 11.044 11.914 11.044 12.058C11.044 12.202 11.016 12.338 10.96 12.466C10.908 12.59 10.834 12.698 10.738 12.79C10.642 12.882 10.53 12.954 10.402 13.006C10.274 13.058 10.136 13.084 9.98805 13.084C9.83605 13.084 9.69605 13.058 9.56805 13.006C9.44005 12.954 9.32805 12.882 9.23205 12.79C9.14005 12.698 9.06605 12.59 9.01005 12.466C8.95805 12.338 8.93205 12.202 8.93205 12.058Z" fill="white"/>
+  //   <defs>
+  //   <filter id="filter0_d_20_967" x="0" y="0" width="20" height="20" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+  //   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  //   <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+  //   <feOffset dy="2"/>
+  //   <feGaussianBlur stdDeviation="1"/>
+  //   <feComposite in2="hardAlpha" operator="out"/>
+  //   <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+  //   <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_20_967"/>
+  //   <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_20_967" result="shape"/>
+  //   </filter>
+  //   </defs>
+  //   `
+  //   document.querySelector(".video-content").appendChild(svg);
+  // }
+
+  console.log(
+    "request Audio and Video Permissions",
+    checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.AUDIO),
+    checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO)
+  );
+
+  if (checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.AUDIO) === false) {
+    document.getElementById("micButton").style.display = "none";
+    document.getElementById("no-microphone-permission").style.display = "block";
+  }
+
+  if (checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO) === false) {
+    document.getElementById("camButton").style.display = "none";
+    document.getElementById("no-camera-permission").style.display = "block";
+  }
+
+  await updateDevices();
+  await enableCam();
+  await enableMic();
+
+  // microphonePermission.addEventListener('click', async () => {
+  //   console.log("microphone permission request called");
+  //   try{
+  //     requestPermission = await window.VideoSDK.requestPermission(
+  //       window.VideoSDK.Constants.permission.AUDIO,
+  //     );
+  //     console.log("permission taken")
+  //   }catch(e){
+  //     console.log("Error while requesting microphone permission", e);
+  //   }
+  // })
+
+  // cameraPermission.addEventListener('click', async () => {
+  //   try{
+  //     requestPermission = await window.VideoSDK.requestPermission(
+  //       window.VideoSDK.Constants.permission.VIDEO,
+  //     );
+  //   }catch(e){
+  //     console.log("Error while requesting camera permission", e);
+  //   }
+  // })
+  deviceChangeEventListener = async (devices) => {
+    await updateDevices();
+    await enableCam();
+  };
+  window.VideoSDK.on("device-changed", deviceChangeEventListener);
+  refreshButton.addEventListener('click', async () => {
+  try {
+      const refreshElement = document.getElementById("refresh");
+      console.log(refreshElement);
+      document.getElementById("download-speed-div").style.display = "none";
+      document.getElementById("upload-speed-div").style.display = "none";
+      document.getElementById("check-speed-div").style.display = "unset";
+      document.getElementById("network-stats").style.marginLeft = "445px";
+      refreshElement.firstElementChild.classList.remove("bi-arrow-clockwise");
+      refreshElement.firstElementChild.classList.add("bi-arrow-repeat");
+      refreshElement.classList.add("spin");
+      const result = await window.VideoSDK.getNetworkStats({ timeoutDuration: 120000 });
+      document.getElementById("download-speed-div").style.display = "flex";
+      document.getElementById("upload-speed-div").style.display = "flex";
+      document.getElementById("check-speed-div").style.display = "none";
+      document.getElementById("network-stats").style.marginLeft = "375px";
+      refreshElement.firstElementChild.classList.add("bi-arrow-clockwise");
+      refreshElement.firstElementChild.classList.remove("bi-arrow-repeat");
+      refreshElement.classList.remove("spin");
+      document.getElementById("network-error-offline").style.display = "none";
+      document.getElementById("network-error-online").style.display = "none";
+      console.log("Network Stats : ", result);
+      document.getElementById("download-speed").innerHTML = result["downloadSpeed"] + " MBPS";
+      document.getElementById("upload-speed").innerHTML = result["uploadSpeed"] + " MBPS";
+      document.getElementById("network-stats").style.display = "flex";
+    } catch (error) {
+      document.getElementById("network-stats").style.display = "none";
+      console.log(error);
+      if (error == "Not able to get NetworkStats due to no Network") {
+        document.getElementById("network-error-offline").style.display = "flex";
+        console.log("Error in Network Stats : ", error);
+      } else if (error == "Not able to get NetworkStats due to timeout") {
+        document.getElementById("network-error-online").style.display = "flex";
+        console.log("Error in Network Stats : ", error);
+      }
+    }
+  });
+
+  networkErrorRefreshButton.forEach((refersh) => {
+    refersh.addEventListener("click", async () => {
+      try {
+        const refreshElement = document.getElementById("refresh");
+        console.log(refreshElement);
+        refreshElement.firstElementChild.classList.remove("bi-arrow-clockwise");
+        refreshElement.firstElementChild.classList.add("bi-arrow-repeat");
+        refreshElement.classList.add("spin");
+        document.getElementById("download-speed-div").style.display = "none";
+        document.getElementById("upload-speed-div").style.display = "none";
+        document.getElementById("check-speed-div").style.display = "unset";
+        document.getElementById("network-stats").style.marginLeft = "445px";
+        const result = await window.VideoSDK.getNetworkStats({ timeoutDuration: 120000 });
+        // console.log("SUII");
+        document.getElementById("download-speed-div").style.display = "flex";
+        document.getElementById("upload-speed-div").style.display = "flex";
+        document.getElementById("check-speed-div").style.display = "none";
+        document.getElementById("network-stats").style.marginLeft = "375px";
+        refreshElement.firstElementChild.classList.remove("bi-arrow-repeat");
+        refreshElement.classList.remove("spin");
+        refreshElement.firstElementChild.classList.add("bi-arrow-clockwise");
+        document.getElementById("network-error-offline").style.display = "none";
+        document.getElementById("network-error-online").style.display = "none";
+        console.log("Network Stats : ", result);
+        document.getElementById("download-speed").innerHTML = result["downloadSpeed"] + " MBPS";
+        document.getElementById("upload-speed").innerHTML = result["uploadSpeed"] + " MBPS";
+        document.getElementById("network-stats").style.display = "flex";
+      } catch (error) {
+        document.getElementById("network-stats").style.display = "none";
+        console.log(error);
+        if (error == "Not able to get NetworkStats due to no Network") {
+          document.getElementById("network-error-offline").style.display = "flex";
+          console.log("Error in Network Stats : ", error);
+        } else if (error == "Not able to get NetworkStats due to timeout") {
+          document.getElementById("network-error-online").style.display = "flex";
+          console.log("Error in Network Stats : ", error);
+        }
+      }
+    })
+  })
+
+  await window.VideoSDK.getNetworkStats({ timeoutDuration: 120000 })
+    .then((result) => {
+      const refreshElement = document.getElementById("refresh");
+      document.getElementById("download-speed-div").style.display = "flex";
+      document.getElementById("upload-speed-div").style.display = "flex";
+      document.getElementById("check-speed-div").style.display = "none";
+      document.getElementById("network-stats").style.marginLeft = "375px";
+      // console.log("repeat removed")
+      refreshElement.classList.remove("spin");
+      refreshElement.firstElementChild.classList.remove("bi-arrow-repeat");
+      refreshElement.firstElementChild.classList.add("bi-arrow-clockwise");
+      document.getElementById("network-error-offline").style.display = "none";
+      document.getElementById("network-error-online").style.display = "none";
+      console.log("Network Stats : ", result);
+      document.getElementById("download-speed").innerHTML = result["downloadSpeed"] + " MBPS";
+      document.getElementById("upload-speed").innerHTML = result["uploadSpeed"] + " MBPS";
+      document.getElementById("network-stats").style.display = "flex";
+    })
+    .catch((error) => {
+      console.log(error);
+      if (error == "Not able to get NetworkStats due to no Network") {
+        document.getElementById("network-error-offline").style.display = "flex"
+        console.log("Error in Network Stats : ", error);
+      } else if (error == "Not able to get NetworkStats due to timeout") {
+        document.getElementById("network-error-online").style.display = "flex"
+        console.log("Error in Network Stats : ", error);
+      }
+    });
+
+
+});
+
+
+/ Update Supabase with the displayed meeting code
+    try {
+      if (displayedId && finalBookingId) {
+        const { data: updated, error: updateError } = await supabaseClient
+          .from('bookings')
+          .update({ room_link: displayedId })
+          .eq('id', finalBookingId)
+          .select();
+
+        if (updateError) {
+          console.error('Failed to update booking room_link:', updateError);
+        } else {
+          console.log('Booking updated with room_link:', updated);
+          
+          // Update parent window form if accessible
+          try {
+            const parentForm = window.parent.document;
+            if (parentForm) {
+              const bookingInput = parentForm.getElementById('booking-id');
+              const clientNameInput = parentForm.getElementById('client-name');
+              const clientEmailInput = parentForm.getElementById('client-email');
+              
+              if (updated && updated[0]) {
+                if (bookingInput) bookingInput.value = updated[0].id;
+                if (clientNameInput) clientNameInput.value = updated[0].name || '';
+                if (clientEmailInput) clientEmailInput.value = updated[0].email || '';
+              }
+            }
+          } catch (e) {
+            console.warn('Could not update parent window form:', e);
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error updating room_link in Supabase:', e);
+    }
+
+    document.getElementById("joinPage").style.display = "none";
+    document.getElementById("gridPpage").style.display = "flex";
+    toggleControls();
+
+    // If we have a bookingId (from URL), update the booking row in Supabase
+    try {
+      if (bookingId && displayId) {
+        console.log('Updating booking', bookingId, 'with room_link =', displayId);
+        const { data: updated, error: updateError } = await supabaseClient
+          .from('bookings')
+          .update({ room_link: displayId })
+          .eq('id', bookingId);
+        if (updateError) {
+          console.error('Failed to update booking room_link:', updateError);
+        } else {
+          console.log('Booking updated with room_link:', updated);
+        }
+      } else {
+        console.log('No bookingId or displayId available; skipping booking update');
+      }
+    } catch (e) {
+      console.error('Exception while updating booking room_link:', e);
+    }
+
+    // Start the meeting using roomLink if available, otherwise roomId
+    const meetingToStart = roomLink || roomId;
+    startMeeting(token, meetingToStart, 'Admin');
+    
+  } catch (error) {
+    console.error("Error creating meeting:", error);
+    alert("Failed to create meeting: " + error.message);
+  }
+}
