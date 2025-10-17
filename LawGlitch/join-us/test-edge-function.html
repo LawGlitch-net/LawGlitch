@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Edge Function</title>
+    <script>
+        async function testEdgeFunction() {
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB4d2J1bXRwbnpiYnF6cWhuc293Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyNjM4NTcsImV4cCI6MjA3Mzg3OTg1N30.CfDyCEQCCoc4p1KrE_G43ToVGExuVvGAGWk3hMQxf3s';
+            const username = 'testuser';
+            
+            try {
+                const corsProxy = 'https://api.allorigins.win/raw?url=';
+                const targetUrl = `https://pxwbumtpnzbbqzqhnsow.supabase.co/functions/v1/check-username-availability?username=${encodeURIComponent(username)}`;
+                
+                const response = await fetch(corsProxy + encodeURIComponent(targetUrl), {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
+                
+                const result = await response.json();
+                console.log('Response:', result);
+                document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Test Edge Function</h1>
+    <button onclick="testEdgeFunction()">Test Edge Function</button>
+    <pre id="result">Click the button to test</pre>
+</body>
+</html>

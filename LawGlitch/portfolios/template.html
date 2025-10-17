@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Current Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .loading {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .success {
+            background: #efe;
+            border: 1px solid #cfc;
+            color: #3c3;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .live-preview {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        a.btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        a.btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Fetching your live portfolio from GitHub...</p>
+        </div>
+    </div>
+
+    <script>
+        (async function() {
+            const container = document.querySelector('.container');
+            const username = localStorage.getItem('username');
+
+            if (!username) {
+                container.innerHTML = '<div class="error"><strong>Error:</strong> Username not found. Please log in first.</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://webedit.lawglitch.workers.dev/profile?username=${encodeURIComponent(username)}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch portfolio');
+                }
+
+                const data = await response.json();
+
+                if (data.html) {
+                    // Replace entire page with the fetched portfolio
+                    document.open();
+                    document.write(data.html);
+                    document.close();
+                } else {
+                    container.innerHTML = '<div class="error"><strong>No portfolio found.</strong><p>Start creating your portfolio in the editor.</p></div>';
+                }
+            } catch (error) {
+                console.error('Error loading portfolio:', error);
+                container.innerHTML = `<div class="error"><strong>Error:</strong> Failed to load your GitHub portfolio. Please try again later.<pre style="margin-top: 1rem; text-align: left; background: #f5f5f5; padding: 1rem; border-radius: 4px; font-size: 0.85em; overflow: auto;">${escapeHtml(error.message)}</pre></div>`;
+            }
+        })();
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+    </script>
+</body>
+</html>
